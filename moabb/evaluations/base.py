@@ -1,9 +1,12 @@
 import logging
 from abc import ABC, abstractmethod
 
+import optuna
 import pandas as pd
+
+# from sklearn.model_selection import GridSearchCV
+from optuna.integration import OptunaSearchCV
 from sklearn.base import BaseEstimator
-from sklearn.model_selection import GridSearchCV
 
 from moabb.analysis import Results
 from moabb.datasets.base import BaseDataset
@@ -248,16 +251,32 @@ class BaseEvaluation(ABC):
             The dataset to verify.
         """
 
+    def _convert_sklearn_params_to_optuna(self, param_grid):
+        optuna_params = {}
+        for key, value in param_grid.items():
+            if isinstance(value, list):
+                import pdb
+
+                pdb.set_trace()
+                optuna_params[key] = optuna.distributions.IntDistribution(
+                    min(value), max(value), step=1
+                )
+            else:
+                optuna_params[key] = value
+            return optuna_params
+
     def _grid_search(self, param_grid, name, grid_clf, inner_cv):
         if param_grid is not None:
             if name in param_grid:
-                search = GridSearchCV(
+                optuna_params = self._convert_sklearn_params_to_optuna(param_grid[name])
+                search = OptunaSearchCV(
                     grid_clf,
-                    param_grid[name],
+                    optuna_params,
                     refit=True,
                     cv=inner_cv,
                     n_jobs=self.n_jobs,
                     scoring=self.paradigm.scoring,
+                    timeout=60 * 15,
                     return_train_score=True,
                 )
                 return search
