@@ -24,7 +24,7 @@ pipeline:
   - name: SVC
     from: sklearn.svm
     parameters:
-      kernel: "rbf"
+      kernel: "linear"
 
 param_grid:
   augmenteddataset__order:
@@ -49,10 +49,3 @@ param_grid:
     - 8
     - 9
     - 10
-  svc__C:
-    - 0.5
-    - 1
-    - 1.5
-  svc__kernel:
-    - "rbf"
-    - "linear"
