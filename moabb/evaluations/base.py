@@ -255,15 +255,14 @@ class BaseEvaluation(ABC):
         optuna_params = {}
         for key, value in param_grid.items():
             if isinstance(value, list):
-                import pdb
-
-                pdb.set_trace()
+                # import pdb
+                # pdb.set_trace()
                 optuna_params[key] = optuna.distributions.IntDistribution(
                     min(value), max(value), step=1
                 )
             else:
                 optuna_params[key] = value
-            return optuna_params
+        return optuna_params
 
     def _grid_search(self, param_grid, name, grid_clf, inner_cv):
         if param_grid is not None:
