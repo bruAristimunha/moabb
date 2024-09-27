@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
     <link rel="moabb icon" sizes="180x180" href="../_static/moabb_logo.png" type="image/png">
-    <title>Tutorial 0: Getting Started &#8212; moabb 1.1.0-dev documentation</title>
+    <title>Tutorial 0: Getting Started &#8212; moabb 1.1.1-dev documentation</title>
   
   
   
@@ -709,14 +709,14 @@ is the name of the pipeline and the value is the Pipeline object</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a><span class="p">()</span><span class="o">.</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">datasets</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f93fbfeb280&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f93fbfebe80&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f93e95c1b20&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f93fbfebca0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f93e95c1850&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f93f0a71e80&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f93f0a71100&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f93f0a71fd0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f93e95c14f0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f93f0a71970&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f93e99c74c0&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f93f0a71dc0&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7fc99f2bb700&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7fc99f2bb1c0&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7fc99f2bb520&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7fc99f2bb4f0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7fc99f2bb820&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7fc99f2bb850&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7fc99c9a4bb0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7fc99c9a43d0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7fc9b15d72e0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7fc99c9a4340&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7fc9a26ff190&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7fc99c9a4100&gt;]
 </pre></div>
 </div>
 <p>Or you can run a search through the available datasets:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="../generated/moabb.datasets.utils.dataset_search.html#moabb.datasets.utils.dataset_search" title="moabb.datasets.utils.dataset_search" class="sphx-glr-backref-module-moabb-datasets-utils sphx-glr-backref-type-py-function"><span class="n">utils</span><span class="o">.</span><span class="n">dataset_search</span></a><span class="p">(</span><a href="../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">,</span> <span class="n">min_subjects</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7f93eaae4af0&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f93eaae4b50&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7f93eaae4be0&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f93eaae4a00&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7f93eaae4a60&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7f93ea99e8b0&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f93e96854f0&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7f93ea99e850&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f93e99c74c0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f93e99c76d0&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f93e99c7be0&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7f93e99c7730&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f93e99c79a0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f93e99c73a0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f93e99c7430&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f93e99c7520&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f93e9316bb0&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7fc9a2611f70&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7fc9a25c35e0&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7fc9a25c3fa0&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7fc9b0bb5220&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7fc9b0bb5730&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7fc9a25a3100&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7fc9a25a3b50&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7fc9a25a3ac0&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7fc99fbb4d60&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7fc99fbb4250&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7fc9bcf69e80&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7fc9a0989e20&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7fc9bcf69100&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7fc9a20d4fa0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7fc9a20d45e0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7fc99fb917f0&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7fc9a251f7c0&gt;]
 </pre></div>
 </div>
 <p>Or you can simply make your own list (which we do here due to computational
@@ -751,106 +751,106 @@ subjects. This also is the correct place to specify multiple threads.</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-001-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-001-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-
-BNCI2014-001-CrossSession:  50%|#####     | 1/2 [00:03&lt;00:03,  3.63s/it]/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 6 s, baseline off, ~4.1 MB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
  &#39;left_hand&#39;: 12
  &#39;right_hand&#39;: 12&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
 
-BNCI2014-001-CrossSession: 100%|##########| 2/2 [00:07&lt;00:00,  3.53s/it]
-BNCI2014-001-CrossSession: 100%|##########| 2/2 [00:07&lt;00:00,  3.55s/it]
+BNCI2014-001-CrossSession:  50%|#####     | 1/2 [00:03&lt;00:03,  3.73s/it]/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+
+BNCI2014-001-CrossSession: 100%|##########| 2/2 [00:07&lt;00:00,  3.59s/it]
+BNCI2014-001-CrossSession: 100%|##########| 2/2 [00:07&lt;00:00,  3.61s/it]
 </pre></div>
 </div>
 <p>Results are returned as a pandas DataFrame, and from here you can do as you
@@ -859,17 +859,17 @@ want with them</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      score      time  samples  ... n_sessions       dataset  pipeline
-0  0.797068  0.158549    144.0  ...          2  BNCI2014-001    AM+SVM
-1  0.773920  0.171717    144.0  ...          2  BNCI2014-001    AM+SVM
-2  0.550733  0.267481    144.0  ...          2  BNCI2014-001    AM+SVM
-3  0.471451  0.172243    144.0  ...          2  BNCI2014-001    AM+SVM
-4  0.786458  0.033207    144.0  ...          2  BNCI2014-001    AM+LDA
+0  0.797068  0.160900    144.0  ...          2  BNCI2014-001    AM+SVM
+1  0.773920  0.166839    144.0  ...          2  BNCI2014-001    AM+SVM
+2  0.550733  0.268056    144.0  ...          2  BNCI2014-001    AM+SVM
+3  0.471451  0.182864    144.0  ...          2  BNCI2014-001    AM+SVM
+4  0.786458  0.024374    144.0  ...          2  BNCI2014-001    AM+LDA
 
 [5 rows x 9 columns]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.030 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  264 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.176 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  47 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-tutorials-plot-getting-started-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/55cdcc1a57595324be0a4f77a5294187/plot_Getting_Started.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_Getting_Started.py</span></code></a></p>
