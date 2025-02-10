@@ -424,7 +424,7 @@ document.write(`
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="changing_download_directory.html">Change Download Directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_codecarbon.html">Benchmarking with MOABB showing the CO2 footprint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="load_model.html">Load Model (Scikit, Pytorch, Keras) with MOABB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_model.html">Load Model (Scikit, Keras) with MOABB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="noplot_bids_conversion.html">Convert a MOABB dataset to BIDS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="noplot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="noplot_vr_pc_p300_different_epoch_size.html">Changing epoch size in P300 VR dataset</a></li>
@@ -432,9 +432,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="plot_benchmark_DL.html">Benchmarking on MOABB with Tensorflow deep net architectures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_benchmark_braindecode.html">Benchmarking on MOABB with Braindecode (PyTorch) deep net architectures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_braindecode.html">Cross-session motor imagery with deep learning EEGNet v4 model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_cross_session_motor_imagery.html">Cross-Session Motor Imagery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_cross_session_multiple_datasets.html">Cross-Session on Multiple Datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_cross_subject_ssvep.html">Cross-Subject SSVEP</a></li>
@@ -563,8 +561,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.pipelines.utils_deep_model.EEGNet.html">moabb.pipelines.utils_deep_model.EEGNet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.pipelines.utils_deep_model.EEGNet_TC.html">moabb.pipelines.utils_deep_model.EEGNet_TC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.pipelines.utils_deep_model.TCN_block.html">moabb.pipelines.utils_deep_model.TCN_block</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.pipelines.utils_pytorch.BraindecodeDatasetLoader.html">moabb.pipelines.utils_pytorch.BraindecodeDatasetLoader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.pipelines.utils_pytorch.InputShapeSetterEEG.html">moabb.pipelines.utils_pytorch.InputShapeSetterEEG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.analysis.plotting.score_plot.html">moabb.analysis.plotting.score_plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.analysis.plotting.paired_plot.html">moabb.analysis.plotting.paired_plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.analysis.plotting.summary_plot.html">moabb.analysis.plotting.summary_plot</a></li>
@@ -660,23 +656,23 @@ The pipelines under consideration are:</p>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># License: BSD (3-clause)</span>
 
-<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">pyriemann.channelselection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">ElectrodeSelection</span></a>
-<span class="kn">from</span> <span class="nn">pyriemann.estimation</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Covariances</span></a>
-<span class="kn">from</span> <span class="nn">pyriemann.spatialfilters</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Xdawn</span></a>
-<span class="kn">from</span> <span class="nn">pyriemann.tangentspace</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TangentSpace</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TransformerMixin</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis" title="sklearn.discriminant_analysis.LinearDiscriminantAnalysis" class="sphx-glr-backref-module-sklearn-discriminant_analysis sphx-glr-backref-type-py-class"><span class="n">LDA</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyriemann.channelselection</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">ElectrodeSelection</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyriemann.estimation</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Covariances</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyriemann.spatialfilters</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Xdawn</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyriemann.tangentspace</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TangentSpace</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TransformerMixin</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.discriminant_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis" title="sklearn.discriminant_analysis.LinearDiscriminantAnalysis" class="sphx-glr-backref-module-sklearn-discriminant_analysis sphx-glr-backref-type-py-class"><span class="n">LDA</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
 
-<span class="kn">from</span> <span class="nn">moabb</span> <span class="kn">import</span> <a href="../generated/moabb.set_log_level.html#moabb.set_log_level" title="moabb.set_log_level" class="sphx-glr-backref-module-moabb sphx-glr-backref-type-py-function"><span class="n">set_log_level</span></a>
-<span class="kn">from</span> <span class="nn">moabb.datasets</span> <span class="kn">import</span> <a href="../generated/moabb.datasets.Hinss2021.html#moabb.datasets.Hinss2021" title="moabb.datasets.Hinss2021" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class"><span class="n">Hinss2021</span></a>
-<span class="kn">from</span> <span class="nn">moabb.evaluations</span> <span class="kn">import</span> <a href="../generated/moabb.evaluations.CrossSessionEvaluation.html#moabb.evaluations.CrossSessionEvaluation" title="moabb.evaluations.CrossSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">CrossSessionEvaluation</span></a>
-<span class="kn">from</span> <span class="nn">moabb.paradigms</span> <span class="kn">import</span> <a href="../generated/moabb.paradigms.RestingStateToP300Adapter.html#moabb.paradigms.RestingStateToP300Adapter" title="moabb.paradigms.RestingStateToP300Adapter" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">RestingStateToP300Adapter</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb</span><span class="w"> </span><span class="kn">import</span> <a href="../generated/moabb.set_log_level.html#moabb.set_log_level" title="moabb.set_log_level" class="sphx-glr-backref-module-moabb sphx-glr-backref-type-py-function"><span class="n">set_log_level</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="../generated/moabb.datasets.Hinss2021.html#moabb.datasets.Hinss2021" title="moabb.datasets.Hinss2021" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class"><span class="n">Hinss2021</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.evaluations</span><span class="w"> </span><span class="kn">import</span> <a href="../generated/moabb.evaluations.CrossSessionEvaluation.html#moabb.evaluations.CrossSessionEvaluation" title="moabb.evaluations.CrossSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">CrossSessionEvaluation</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.paradigms</span><span class="w"> </span><span class="kn">import</span> <a href="../generated/moabb.paradigms.RestingStateToP300Adapter.html#moabb.paradigms.RestingStateToP300Adapter" title="moabb.paradigms.RestingStateToP300Adapter" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">RestingStateToP300Adapter</span></a>
 
 
 <span class="c1"># Suppressing future and runtime warnings for cleaner output</span>
@@ -690,15 +686,15 @@ The pipelines under consideration are:</p>
 <h2>Create util transformer<a class="headerlink" href="#create-util-transformer" title="Permalink to this heading">#</a></h2>
 <p>Let’s create a scikit transformer mixin, that will
 select electrodes based on the covariance information</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EpochSelectChannel</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TransformerMixin</span></a><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EpochSelectChannel</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="sklearn.base.TransformerMixin" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">TransformerMixin</span></a><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Select channels based on covariance information.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_chan</span><span class="p">,</span> <span class="n">cov_est</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_chan</span><span class="p">,</span> <span class="n">cov_est</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_chs_idx</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_chan</span> <span class="o">=</span> <span class="n">n_chan</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cov_est</span> <span class="o">=</span> <span class="n">cov_est</span>
 
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">_y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">_y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># Get the covariances of the channels for each epoch.</span>
         <span class="n">covs</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Covariances</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cov_est</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="c1"># Get the average covariance between the channels</span>
@@ -721,7 +717,7 @@ select electrodes based on the covariance information</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_chs_idx</span> <span class="o">=</span> <span class="n">indices</span>
         <span class="k">return</span> <span class="bp">self</span>
 
-    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chs_idx</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
@@ -787,7 +783,7 @@ select electrodes based on the covariance information</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2024-11-11 12:10:18,817 INFO MainThread moabb.evaluations.base Processing dataset: Hinss2021
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-10 16:34:40,547 INFO MainThread moabb.evaluations.base Processing dataset: Hinss2021
 
 Hinss2021-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]MNE_DATA is not already configured. It will be set to default location in the home directory - /home/runner/mne_data
 All datasets will be downloaded to this location, if anything is already downloaded, please move manually to this location
@@ -799,184 +795,134 @@ All datasets will be downloaded to this location, if anything is already downloa
 
   0%|                                               | 0.00/181M [00:00&lt;?, ?B/s]
 
-  0%|                                      | 15.4k/181M [00:00&lt;39:08, 77.1kB/s]
+  0%|                                      | 15.4k/181M [00:00&lt;35:48, 84.2kB/s]
 
-  0%|                                       | 46.1k/181M [00:00&lt;22:43, 133kB/s]
+  0%|                                       | 49.2k/181M [00:00&lt;19:50, 152kB/s]
 
-  0%|                                        | 105k/181M [00:00&lt;13:04, 231kB/s]
+  0%|                                        | 115k/181M [00:00&lt;11:33, 261kB/s]
 
-  0%|                                        | 173k/181M [00:00&lt;10:04, 299kB/s]
+  0%|                                        | 211k/181M [00:00&lt;07:48, 386kB/s]
 
-  0%|                                        | 325k/181M [00:00&lt;05:48, 518kB/s]
+  0%|                                        | 430k/181M [00:00&lt;04:10, 722kB/s]
 
-  0%|                                        | 413k/181M [00:01&lt;05:44, 524kB/s]
+  0%|▏                                      | 888k/181M [00:01&lt;02:07, 1.41MB/s]
 
-  0%|                                        | 510k/181M [00:01&lt;05:30, 546kB/s]
+  1%|▍                                     | 1.82M/181M [00:01&lt;01:04, 2.79MB/s]
 
-  0%|▏                                       | 592k/181M [00:01&lt;05:40, 531kB/s]
+  2%|▊                                     | 3.67M/181M [00:01&lt;00:32, 5.45MB/s]
 
-  0%|▏                                       | 674k/181M [00:01&lt;05:45, 521kB/s]
+  4%|█▌                                    | 7.36M/181M [00:01&lt;00:16, 10.7MB/s]
 
-  0%|▏                                       | 756k/181M [00:01&lt;05:50, 514kB/s]
+  6%|██▎                                   | 10.8M/181M [00:01&lt;00:12, 13.8MB/s]
 
-  0%|▏                                       | 838k/181M [00:01&lt;05:53, 509kB/s]
+  7%|██▊                                   | 13.4M/181M [00:01&lt;00:11, 14.4MB/s]
 
-  1%|▏                                       | 920k/181M [00:02&lt;05:56, 506kB/s]
+  9%|███▍                                  | 16.2M/181M [00:02&lt;00:10, 15.2MB/s]
 
-  1%|▏                                      | 1.07M/181M [00:02&lt;04:49, 622kB/s]
+ 11%|████                                  | 19.3M/181M [00:02&lt;00:09, 16.3MB/s]
 
-  1%|▏                                      | 1.13M/181M [00:02&lt;05:23, 555kB/s]
+ 12%|████▋                                 | 22.4M/181M [00:02&lt;00:09, 17.0MB/s]
 
-  1%|▎                                     | 1.54M/181M [00:02&lt;02:37, 1.14MB/s]
+ 14%|█████▎                                | 25.4M/181M [00:02&lt;00:09, 17.2MB/s]
 
-  1%|▍                                     | 1.84M/181M [00:02&lt;02:13, 1.34MB/s]
+ 16%|█████▉                                | 28.4M/181M [00:02&lt;00:08, 17.6MB/s]
 
-  1%|▍                                     | 2.37M/181M [00:02&lt;01:32, 1.93MB/s]
+ 17%|██████▌                               | 31.3M/181M [00:02&lt;00:08, 17.3MB/s]
 
-  2%|▊                                     | 3.99M/181M [00:02&lt;00:40, 4.32MB/s]
+ 19%|███████▏                              | 34.4M/181M [00:03&lt;00:08, 17.8MB/s]
 
-  3%|█▎                                    | 6.28M/181M [00:03&lt;00:24, 7.22MB/s]
+ 21%|███████▊                              | 37.4M/181M [00:03&lt;00:08, 17.7MB/s]
 
-  4%|█▋                                    | 8.11M/181M [00:03&lt;00:20, 8.42MB/s]
+ 22%|████████▍                             | 40.2M/181M [00:03&lt;00:08, 17.4MB/s]
 
-  6%|██▏                                   | 10.2M/181M [00:03&lt;00:17, 9.73MB/s]
+ 24%|█████████                             | 43.3M/181M [00:03&lt;00:07, 17.8MB/s]
 
-  7%|██▌                                   | 12.2M/181M [00:03&lt;00:16, 10.5MB/s]
+ 26%|█████████▊                            | 46.5M/181M [00:03&lt;00:07, 18.2MB/s]
 
-  8%|███                                   | 14.4M/181M [00:03&lt;00:14, 11.3MB/s]
+ 28%|██████████▍                           | 49.9M/181M [00:03&lt;00:06, 19.0MB/s]
 
-  9%|███▍                                  | 16.4M/181M [00:03&lt;00:14, 11.6MB/s]
+ 29%|███████████▏                          | 53.2M/181M [00:04&lt;00:06, 19.3MB/s]
 
- 10%|███▉                                  | 18.5M/181M [00:04&lt;00:13, 12.0MB/s]
+ 31%|███████████▉                          | 56.7M/181M [00:04&lt;00:06, 19.8MB/s]
 
- 11%|████▎                                 | 20.5M/181M [00:04&lt;00:13, 12.1MB/s]
+ 33%|████████████▌                         | 60.1M/181M [00:04&lt;00:06, 20.0MB/s]
 
- 13%|████▊                                 | 22.6M/181M [00:04&lt;00:12, 12.4MB/s]
+ 35%|█████████████▎                        | 63.5M/181M [00:04&lt;00:05, 20.2MB/s]
 
- 14%|█████▏                                | 24.7M/181M [00:04&lt;00:12, 12.4MB/s]
+ 37%|██████████████▏                       | 67.5M/181M [00:04&lt;00:05, 21.4MB/s]
 
- 15%|█████▋                                | 26.8M/181M [00:04&lt;00:12, 12.6MB/s]
+ 39%|██████████████▊                       | 70.5M/181M [00:04&lt;00:05, 20.4MB/s]
 
- 16%|██████                                | 28.8M/181M [00:04&lt;00:12, 12.5MB/s]
+ 41%|███████████████▍                      | 73.3M/181M [00:04&lt;00:05, 19.4MB/s]
 
- 17%|██████▍                               | 30.9M/181M [00:05&lt;00:11, 12.5MB/s]
+ 42%|████████████████                      | 76.8M/181M [00:05&lt;00:05, 19.8MB/s]
 
- 18%|██████▉                               | 33.0M/181M [00:05&lt;00:11, 12.7MB/s]
+ 44%|████████████████▊                     | 80.2M/181M [00:05&lt;00:05, 20.1MB/s]
 
- 19%|███████▍                              | 35.2M/181M [00:05&lt;00:11, 12.8MB/s]
+ 46%|█████████████████▍                    | 83.2M/181M [00:05&lt;00:05, 19.5MB/s]
 
- 21%|███████▊                              | 37.3M/181M [00:05&lt;00:11, 12.9MB/s]
+ 48%|██████████████████▏                   | 86.6M/181M [00:05&lt;00:04, 19.8MB/s]
 
- 22%|████████▎                             | 39.4M/181M [00:05&lt;00:10, 12.9MB/s]
+ 50%|██████████████████▊                   | 89.9M/181M [00:05&lt;00:04, 19.8MB/s]
 
- 23%|████████▋                             | 41.6M/181M [00:05&lt;00:10, 13.0MB/s]
+ 52%|███████████████████▌                  | 93.4M/181M [00:05&lt;00:04, 20.3MB/s]
 
- 24%|█████████▏                            | 43.7M/181M [00:06&lt;00:10, 13.0MB/s]
+ 53%|████████████████████▎                 | 96.5M/181M [00:06&lt;00:04, 19.8MB/s]
 
- 25%|█████████▋                            | 46.0M/181M [00:06&lt;00:10, 13.2MB/s]
+ 55%|████████████████████▉                 | 99.6M/181M [00:06&lt;00:04, 19.4MB/s]
 
- 27%|██████████                            | 48.2M/181M [00:06&lt;00:09, 13.3MB/s]
+ 57%|██████████████████████▏                | 103M/181M [00:06&lt;00:03, 19.8MB/s]
 
- 28%|██████████▌                           | 50.4M/181M [00:06&lt;00:09, 13.4MB/s]
+ 58%|██████████████████████▊                | 106M/181M [00:06&lt;00:03, 19.0MB/s]
 
- 29%|███████████                           | 52.7M/181M [00:06&lt;00:09, 13.5MB/s]
+ 60%|███████████████████████▌               | 109M/181M [00:06&lt;00:03, 19.5MB/s]
 
- 30%|███████████▌                          | 54.9M/181M [00:06&lt;00:09, 13.6MB/s]
+ 62%|████████████████████████▎              | 113M/181M [00:07&lt;00:03, 19.2MB/s]
 
- 32%|████████████                          | 57.2M/181M [00:07&lt;00:09, 13.6MB/s]
+ 64%|████████████████████████▉              | 116M/181M [00:07&lt;00:03, 18.6MB/s]
 
- 33%|████████████▍                         | 59.4M/181M [00:07&lt;00:08, 13.6MB/s]
+ 66%|█████████████████████████▋             | 119M/181M [00:07&lt;00:03, 19.4MB/s]
 
- 34%|████████████▉                         | 61.7M/181M [00:07&lt;00:08, 13.7MB/s]
+ 67%|██████████████████████████▎            | 122M/181M [00:07&lt;00:03, 19.0MB/s]
 
- 35%|█████████████▍                        | 63.9M/181M [00:07&lt;00:08, 13.7MB/s]
+ 69%|██████████████████████████▉            | 125M/181M [00:07&lt;00:02, 19.0MB/s]
 
- 37%|█████████████▉                        | 66.2M/181M [00:07&lt;00:08, 13.8MB/s]
+ 71%|███████████████████████████▋           | 129M/181M [00:07&lt;00:02, 19.3MB/s]
 
- 38%|██████████████▎                       | 68.5M/181M [00:07&lt;00:08, 13.8MB/s]
+ 73%|████████████████████████████▍          | 132M/181M [00:07&lt;00:02, 19.7MB/s]
 
- 39%|██████████████▊                       | 70.8M/181M [00:08&lt;00:07, 13.9MB/s]
+ 75%|█████████████████████████████▏         | 135M/181M [00:08&lt;00:02, 19.9MB/s]
 
- 41%|███████████████▌                      | 74.0M/181M [00:08&lt;00:06, 15.5MB/s]
+ 76%|█████████████████████████████▊         | 138M/181M [00:08&lt;00:02, 19.1MB/s]
 
- 42%|████████████████                      | 76.6M/181M [00:08&lt;00:06, 15.7MB/s]
+ 78%|██████████████████████████████▌        | 142M/181M [00:08&lt;00:01, 20.0MB/s]
 
- 44%|████████████████▌                     | 79.0M/181M [00:08&lt;00:06, 15.4MB/s]
+ 80%|███████████████████████████████▏       | 145M/181M [00:08&lt;00:01, 19.4MB/s]
 
- 45%|█████████████████▏                    | 81.9M/181M [00:08&lt;00:06, 16.1MB/s]
+ 82%|███████████████████████████████▊       | 148M/181M [00:08&lt;00:01, 18.9MB/s]
 
- 47%|█████████████████▊                    | 84.7M/181M [00:08&lt;00:05, 16.5MB/s]
+ 84%|████████████████████████████████▌      | 151M/181M [00:08&lt;00:01, 19.5MB/s]
 
- 48%|██████████████████▎                   | 87.5M/181M [00:09&lt;00:05, 16.5MB/s]
+ 85%|█████████████████████████████████▏     | 154M/181M [00:09&lt;00:01, 19.0MB/s]
 
- 50%|██████████████████▉                   | 90.4M/181M [00:09&lt;00:05, 17.0MB/s]
+ 87%|█████████████████████████████████▉     | 158M/181M [00:09&lt;00:01, 19.4MB/s]
 
- 51%|███████████████████▌                  | 93.2M/181M [00:09&lt;00:05, 17.0MB/s]
+ 89%|██████████████████████████████████▋    | 161M/181M [00:09&lt;00:01, 19.6MB/s]
 
- 53%|████████████████████▏                 | 96.0M/181M [00:09&lt;00:05, 17.0MB/s]
+ 90%|███████████████████████████████████▎   | 164M/181M [00:09&lt;00:00, 18.9MB/s]
 
- 55%|████████████████████▋                 | 98.8M/181M [00:09&lt;00:04, 17.1MB/s]
+ 93%|████████████████████████████████████   | 167M/181M [00:09&lt;00:00, 19.9MB/s]
 
- 56%|█████████████████████▉                 | 102M/181M [00:09&lt;00:04, 17.0MB/s]
+ 94%|████████████████████████████████████▋  | 171M/181M [00:09&lt;00:00, 19.4MB/s]
 
- 58%|██████████████████████▍                | 104M/181M [00:10&lt;00:04, 16.9MB/s]
+ 96%|█████████████████████████████████████▍ | 174M/181M [00:10&lt;00:00, 19.0MB/s]
 
- 59%|███████████████████████                | 107M/181M [00:10&lt;00:04, 17.0MB/s]
+ 98%|██████████████████████████████████████▏| 177M/181M [00:10&lt;00:00, 19.6MB/s]
 
- 61%|███████████████████████▋               | 110M/181M [00:10&lt;00:04, 16.9MB/s]
-
- 62%|████████████████████████▎              | 113M/181M [00:10&lt;00:04, 16.9MB/s]
-
- 64%|████████████████████████▊              | 115M/181M [00:10&lt;00:03, 17.0MB/s]
-
- 65%|█████████████████████████▍             | 118M/181M [00:10&lt;00:03, 16.9MB/s]
-
- 67%|██████████████████████████             | 121M/181M [00:11&lt;00:03, 17.0MB/s]
-
- 68%|██████████████████████████▋            | 124M/181M [00:11&lt;00:03, 17.1MB/s]
-
- 70%|███████████████████████████▎           | 127M/181M [00:11&lt;00:03, 17.0MB/s]
-
- 71%|███████████████████████████▊           | 129M/181M [00:11&lt;00:03, 17.0MB/s]
-
- 73%|████████████████████████████▍          | 132M/181M [00:11&lt;00:02, 17.1MB/s]
-
- 75%|█████████████████████████████          | 135M/181M [00:11&lt;00:02, 17.2MB/s]
-
- 76%|█████████████████████████████▋         | 138M/181M [00:12&lt;00:02, 17.2MB/s]
-
- 78%|██████████████████████████████▎        | 141M/181M [00:12&lt;00:02, 17.0MB/s]
-
- 79%|██████████████████████████████▉        | 143M/181M [00:12&lt;00:02, 17.1MB/s]
-
- 81%|███████████████████████████████▌       | 146M/181M [00:12&lt;00:02, 17.1MB/s]
-
- 82%|████████████████████████████████▏      | 149M/181M [00:12&lt;00:01, 17.2MB/s]
-
- 84%|████████████████████████████████▋      | 152M/181M [00:12&lt;00:01, 17.3MB/s]
-
- 86%|█████████████████████████████████▎     | 155M/181M [00:12&lt;00:01, 17.2MB/s]
-
- 87%|█████████████████████████████████▉     | 158M/181M [00:13&lt;00:01, 17.3MB/s]
-
- 89%|██████████████████████████████████▌    | 161M/181M [00:13&lt;00:01, 17.5MB/s]
-
- 90%|███████████████████████████████████▏   | 163M/181M [00:13&lt;00:01, 17.1MB/s]
-
- 92%|███████████████████████████████████▊   | 166M/181M [00:13&lt;00:00, 17.2MB/s]
-
- 93%|████████████████████████████████████▍  | 169M/181M [00:13&lt;00:00, 17.3MB/s]
-
- 95%|█████████████████████████████████████  | 172M/181M [00:13&lt;00:00, 17.3MB/s]
-
- 97%|█████████████████████████████████████▋ | 175M/181M [00:14&lt;00:00, 17.4MB/s]
-
- 98%|██████████████████████████████████████▎| 178M/181M [00:14&lt;00:00, 17.4MB/s]
-
-100%|██████████████████████████████████████▉| 180M/181M [00:14&lt;00:00, 17.6MB/s]
+100%|██████████████████████████████████████▊| 180M/181M [00:10&lt;00:00, 19.6MB/s]
 
   0%|                                               | 0.00/181M [00:00&lt;?, ?B/s]
-100%|████████████████████████████████████████| 181M/181M [00:00&lt;00:00, 735GB/s]
+100%|████████████████████████████████████████| 181M/181M [00:00&lt;00:00, 746GB/s]
 /home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 298 events (all good), 0 – 0.5 s (baseline off), ~34.9 MB, data loaded,
  &#39;easy&#39;: 149
  &#39;diff&#39;: 149&gt;
@@ -985,14 +931,14 @@ All datasets will be downloaded to this location, if anything is already downloa
  &#39;easy&#39;: 149
  &#39;diff&#39;: 149&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-2024-11-11 12:10:40,686 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 1 | 1: Score 0.712
-2024-11-11 12:10:41,203 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 1 | 2: Score 0.473
-2024-11-11 12:10:43,084 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 1 | 1: Score 0.597
-2024-11-11 12:10:44,958 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 1 | 2: Score 0.791
-2024-11-11 12:10:45,551 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 1 | 1: Score 0.885
-2024-11-11 12:10:46,159 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 1 | 2: Score 0.687
+2025-02-10 16:34:59,289 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 1 | 1: Score 0.712
+2025-02-10 16:34:59,766 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 1 | 2: Score 0.473
+2025-02-10 16:35:01,648 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 1 | 1: Score 0.597
+2025-02-10 16:35:03,541 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 1 | 2: Score 0.791
+2025-02-10 16:35:04,109 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 1 | 1: Score 0.885
+2025-02-10 16:35:04,680 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 1 | 2: Score 0.687
 
-Hinss2021-CrossSession:  50%|#####     | 1/2 [00:27&lt;00:27, 27.51s/it]/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+Hinss2021-CrossSession:  50%|#####     | 1/2 [00:24&lt;00:24, 24.29s/it]/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
 /home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
@@ -1000,156 +946,130 @@ Hinss2021-CrossSession:  50%|#####     | 1/2 [00:27&lt;00:27, 27.51s/it]/home/ru
 
   0%|                                               | 0.00/181M [00:00&lt;?, ?B/s]
 
-  0%|                                    | 1.02k/181M [00:00&lt;6:35:08, 7.64kB/s]
+  0%|                                   | 1.02k/181M [00:00&lt;10:02:07, 5.01kB/s]
 
-  0%|                                      | 15.4k/181M [00:00&lt;51:34, 58.5kB/s]
+  0%|                                       | 49.2k/181M [00:00&lt;20:05, 150kB/s]
 
-  0%|                                       | 56.3k/181M [00:00&lt;20:07, 150kB/s]
+  0%|                                        | 104k/181M [00:00&lt;12:37, 239kB/s]
 
-  0%|                                        | 123k/181M [00:00&lt;11:52, 254kB/s]
+  0%|                                        | 251k/181M [00:00&lt;06:09, 490kB/s]
 
-  0%|                                        | 270k/181M [00:00&lt;06:07, 491kB/s]
+  0%|                                        | 516k/181M [00:00&lt;03:23, 888kB/s]
 
-  0%|                                        | 564k/181M [00:00&lt;03:11, 940kB/s]
+  1%|▏                                     | 1.04M/181M [00:01&lt;01:48, 1.66MB/s]
 
-  1%|▏                                     | 1.15M/181M [00:01&lt;01:39, 1.82MB/s]
+  1%|▍                                     | 2.12M/181M [00:01&lt;00:55, 3.25MB/s]
 
-  1%|▍                                     | 2.35M/181M [00:01&lt;00:50, 3.57MB/s]
+  2%|▉                                     | 4.26M/181M [00:01&lt;00:27, 6.34MB/s]
 
-  3%|▉                                     | 4.72M/181M [00:01&lt;00:25, 7.00MB/s]
+  4%|█▍                                    | 6.96M/181M [00:01&lt;00:18, 9.47MB/s]
 
-  4%|█▌                                    | 7.63M/181M [00:01&lt;00:16, 10.3MB/s]
+  5%|██                                    | 9.74M/181M [00:01&lt;00:14, 11.7MB/s]
 
-  6%|██                                    | 10.0M/181M [00:01&lt;00:14, 11.6MB/s]
+  7%|██▋                                   | 12.5M/181M [00:01&lt;00:12, 13.3MB/s]
 
-  7%|██▌                                   | 12.4M/181M [00:01&lt;00:13, 12.5MB/s]
+  9%|███▎                                  | 15.6M/181M [00:02&lt;00:11, 14.7MB/s]
 
-  8%|███▏                                  | 14.9M/181M [00:02&lt;00:12, 13.4MB/s]
+ 11%|████                                  | 19.1M/181M [00:02&lt;00:09, 16.7MB/s]
 
- 10%|███▋                                  | 17.5M/181M [00:02&lt;00:11, 14.1MB/s]
+ 13%|████▊                                 | 23.0M/181M [00:02&lt;00:08, 18.1MB/s]
 
- 11%|████▏                                 | 19.9M/181M [00:02&lt;00:11, 14.4MB/s]
+ 15%|█████▌                                | 26.5M/181M [00:02&lt;00:08, 19.0MB/s]
 
- 12%|████▋                                 | 22.4M/181M [00:02&lt;00:10, 14.5MB/s]
+ 17%|██████▎                               | 30.3M/181M [00:02&lt;00:07, 20.3MB/s]
 
- 14%|█████▏                                | 24.9M/181M [00:02&lt;00:10, 14.8MB/s]
+ 18%|███████                               | 33.5M/181M [00:02&lt;00:07, 19.9MB/s]
 
- 15%|█████▊                                | 27.4M/181M [00:02&lt;00:10, 14.9MB/s]
+ 20%|███████▋                              | 36.5M/181M [00:03&lt;00:07, 19.5MB/s]
 
- 16%|██████▎                               | 29.9M/181M [00:03&lt;00:10, 14.9MB/s]
+ 22%|████████▍                             | 40.4M/181M [00:03&lt;00:06, 20.6MB/s]
 
- 18%|██████▊                               | 32.3M/181M [00:03&lt;00:10, 14.9MB/s]
+ 24%|█████████▏                            | 43.5M/181M [00:03&lt;00:06, 20.2MB/s]
 
- 19%|███████▎                              | 34.8M/181M [00:03&lt;00:09, 15.0MB/s]
+ 26%|█████████▉                            | 47.3M/181M [00:03&lt;00:06, 20.9MB/s]
 
- 21%|███████▊                              | 37.2M/181M [00:03&lt;00:09, 15.0MB/s]
+ 28%|██████████▌                           | 50.3M/181M [00:03&lt;00:06, 20.1MB/s]
 
- 22%|████████▏                             | 39.0M/181M [00:03&lt;00:11, 12.1MB/s]
+ 30%|███████████▎                          | 53.9M/181M [00:03&lt;00:06, 20.4MB/s]
 
- 23%|████████▊                             | 41.8M/181M [00:03&lt;00:10, 13.5MB/s]
+ 32%|████████████                          | 57.7M/181M [00:04&lt;00:05, 21.2MB/s]
 
- 24%|█████████▎                            | 44.3M/181M [00:04&lt;00:09, 14.0MB/s]
+ 34%|████████████▉                         | 61.6M/181M [00:04&lt;00:05, 22.0MB/s]
 
- 26%|█████████▊                            | 46.7M/181M [00:04&lt;00:09, 14.2MB/s]
+ 36%|█████████████▋                        | 65.1M/181M [00:04&lt;00:04, 24.6MB/s]
 
- 27%|██████████▎                           | 49.1M/181M [00:04&lt;00:09, 14.3MB/s]
+ 37%|██████████████▏                       | 67.7M/181M [00:04&lt;00:05, 22.2MB/s]
 
- 28%|██████████▊                           | 51.5M/181M [00:04&lt;00:08, 14.5MB/s]
+ 39%|██████████████▋                       | 70.0M/181M [00:04&lt;00:05, 20.3MB/s]
 
- 30%|███████████▎                          | 53.9M/181M [00:04&lt;00:08, 14.6MB/s]
+ 40%|███████████████▎                      | 73.0M/181M [00:04&lt;00:05, 20.2MB/s]
 
- 31%|███████████▊                          | 56.4M/181M [00:04&lt;00:08, 14.7MB/s]
+ 43%|████████████████▏                     | 77.1M/181M [00:04&lt;00:05, 20.5MB/s]
 
- 32%|████████████▎                         | 58.8M/181M [00:05&lt;00:08, 14.8MB/s]
+ 44%|████████████████▉                     | 80.6M/181M [00:05&lt;00:04, 20.6MB/s]
 
- 34%|████████████▊                         | 61.3M/181M [00:05&lt;00:08, 14.9MB/s]
+ 46%|█████████████████▋                    | 84.0M/181M [00:05&lt;00:04, 20.6MB/s]
 
- 35%|█████████████▎                        | 63.7M/181M [00:05&lt;00:07, 14.9MB/s]
+ 48%|██████████████████▍                   | 87.6M/181M [00:05&lt;00:04, 21.0MB/s]
 
- 37%|█████████████▉                        | 66.5M/181M [00:05&lt;00:07, 15.6MB/s]
+ 51%|███████████████████▏                  | 91.5M/181M [00:05&lt;00:04, 21.8MB/s]
 
- 38%|██████████████▌                       | 69.2M/181M [00:05&lt;00:07, 15.7MB/s]
+ 53%|████████████████████                  | 95.3M/181M [00:05&lt;00:03, 22.2MB/s]
 
- 40%|███████████████                       | 71.7M/181M [00:05&lt;00:07, 15.6MB/s]
+ 54%|████████████████████▋                 | 98.4M/181M [00:05&lt;00:03, 21.2MB/s]
 
- 41%|███████████████▌                      | 74.4M/181M [00:06&lt;00:06, 15.8MB/s]
+ 56%|█████████████████████▉                 | 102M/181M [00:06&lt;00:03, 21.5MB/s]
 
- 43%|████████████████▏                     | 77.1M/181M [00:06&lt;00:06, 16.2MB/s]
+ 58%|██████████████████████▋                | 106M/181M [00:06&lt;00:03, 21.4MB/s]
 
- 44%|████████████████▊                     | 79.8M/181M [00:06&lt;00:06, 16.3MB/s]
+ 60%|███████████████████████▌               | 109M/181M [00:06&lt;00:03, 21.7MB/s]
 
- 46%|█████████████████▎                    | 82.6M/181M [00:06&lt;00:05, 16.4MB/s]
+ 62%|████████████████████████▎              | 113M/181M [00:06&lt;00:02, 25.3MB/s]
 
- 47%|█████████████████▉                    | 85.3M/181M [00:06&lt;00:05, 16.6MB/s]
+ 64%|████████████████████████▉              | 116M/181M [00:06&lt;00:02, 22.2MB/s]
 
- 49%|██████████████████▍                   | 88.1M/181M [00:06&lt;00:05, 16.6MB/s]
+ 65%|█████████████████████████▍             | 118M/181M [00:06&lt;00:03, 20.2MB/s]
 
- 50%|███████████████████                   | 90.8M/181M [00:07&lt;00:05, 16.7MB/s]
+ 66%|█████████████████████████▉             | 120M/181M [00:06&lt;00:03, 18.8MB/s]
 
- 52%|███████████████████▋                  | 93.6M/181M [00:07&lt;00:05, 16.7MB/s]
+ 68%|██████████████████████████▋            | 124M/181M [00:07&lt;00:02, 19.6MB/s]
 
- 53%|████████████████████▏                 | 96.3M/181M [00:07&lt;00:05, 16.8MB/s]
+ 70%|███████████████████████████▍           | 127M/181M [00:07&lt;00:02, 20.0MB/s]
 
- 55%|████████████████████▊                 | 99.1M/181M [00:07&lt;00:04, 16.8MB/s]
+ 72%|████████████████████████████▏          | 131M/181M [00:07&lt;00:02, 20.1MB/s]
 
- 56%|█████████████████████▉                 | 102M/181M [00:07&lt;00:04, 16.7MB/s]
+ 74%|████████████████████████████▊          | 134M/181M [00:07&lt;00:02, 19.6MB/s]
 
- 58%|██████████████████████▌                | 105M/181M [00:07&lt;00:04, 16.7MB/s]
+ 76%|█████████████████████████████▌         | 137M/181M [00:07&lt;00:02, 19.4MB/s]
 
- 59%|███████████████████████                | 107M/181M [00:08&lt;00:04, 16.8MB/s]
+ 78%|██████████████████████████████▎        | 141M/181M [00:07&lt;00:01, 20.6MB/s]
 
- 61%|███████████████████████▊               | 110M/181M [00:08&lt;00:04, 17.5MB/s]
+ 80%|███████████████████████████████        | 144M/181M [00:08&lt;00:01, 20.5MB/s]
 
- 63%|████████████████████████▍              | 113M/181M [00:08&lt;00:03, 17.6MB/s]
+ 82%|███████████████████████████████▊       | 148M/181M [00:08&lt;00:01, 20.7MB/s]
 
- 64%|█████████████████████████              | 116M/181M [00:08&lt;00:03, 17.5MB/s]
+ 84%|████████████████████████████████▋      | 151M/181M [00:08&lt;00:01, 21.3MB/s]
 
- 66%|█████████████████████████▋             | 119M/181M [00:08&lt;00:03, 17.4MB/s]
+ 86%|█████████████████████████████████▍     | 155M/181M [00:08&lt;00:01, 21.5MB/s]
 
- 67%|██████████████████████████▏            | 122M/181M [00:08&lt;00:03, 17.2MB/s]
+ 87%|██████████████████████████████████     | 158M/181M [00:08&lt;00:01, 20.2MB/s]
 
- 69%|██████████████████████████▊            | 125M/181M [00:09&lt;00:03, 17.2MB/s]
+ 89%|██████████████████████████████████▋    | 161M/181M [00:08&lt;00:01, 19.4MB/s]
 
- 70%|███████████████████████████▍           | 127M/181M [00:09&lt;00:03, 17.3MB/s]
+ 91%|███████████████████████████████████▍   | 165M/181M [00:09&lt;00:00, 20.5MB/s]
 
- 72%|████████████████████████████           | 130M/181M [00:09&lt;00:02, 17.5MB/s]
+ 93%|████████████████████████████████████▏  | 168M/181M [00:09&lt;00:00, 19.1MB/s]
 
- 73%|████████████████████████████▋          | 133M/181M [00:09&lt;00:02, 17.2MB/s]
+ 94%|████████████████████████████████████▊  | 171M/181M [00:09&lt;00:00, 18.9MB/s]
 
- 75%|█████████████████████████████▎         | 136M/181M [00:09&lt;00:02, 17.3MB/s]
+ 96%|█████████████████████████████████████▍ | 174M/181M [00:09&lt;00:00, 18.2MB/s]
 
- 77%|█████████████████████████████▉         | 139M/181M [00:09&lt;00:02, 17.3MB/s]
+ 98%|██████████████████████████████████████ | 177M/181M [00:09&lt;00:00, 18.2MB/s]
 
- 78%|██████████████████████████████▌        | 142M/181M [00:10&lt;00:02, 17.4MB/s]
-
- 80%|███████████████████████████████        | 144M/181M [00:10&lt;00:02, 17.3MB/s]
-
- 81%|███████████████████████████████▋       | 147M/181M [00:10&lt;00:01, 17.4MB/s]
-
- 83%|████████████████████████████████▎      | 150M/181M [00:10&lt;00:01, 17.4MB/s]
-
- 85%|████████████████████████████████▉      | 153M/181M [00:10&lt;00:01, 17.6MB/s]
-
- 86%|█████████████████████████████████▌     | 156M/181M [00:10&lt;00:01, 17.2MB/s]
-
- 88%|██████████████████████████████████▏    | 159M/181M [00:11&lt;00:01, 17.3MB/s]
-
- 89%|██████████████████████████████████▊    | 162M/181M [00:11&lt;00:01, 17.5MB/s]
-
- 91%|███████████████████████████████████▍   | 164M/181M [00:11&lt;00:00, 17.5MB/s]
-
- 92%|████████████████████████████████████   | 167M/181M [00:11&lt;00:00, 17.3MB/s]
-
- 94%|████████████████████████████████████▋  | 170M/181M [00:11&lt;00:00, 17.3MB/s]
-
- 96%|█████████████████████████████████████▎ | 173M/181M [00:11&lt;00:00, 17.4MB/s]
-
- 97%|█████████████████████████████████████▊ | 176M/181M [00:11&lt;00:00, 17.1MB/s]
-
- 99%|██████████████████████████████████████▍| 179M/181M [00:12&lt;00:00, 17.2MB/s]
+ 99%|██████████████████████████████████████▋| 179M/181M [00:10&lt;00:00, 17.6MB/s]
 
   0%|                                               | 0.00/181M [00:00&lt;?, ?B/s]
-100%|████████████████████████████████████████| 181M/181M [00:00&lt;00:00, 722GB/s]
+100%|████████████████████████████████████████| 181M/181M [00:00&lt;00:00, 752GB/s]
 /home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 298 events (all good), 0 – 0.5 s (baseline off), ~34.9 MB, data loaded,
  &#39;easy&#39;: 149
  &#39;diff&#39;: 149&gt;
@@ -1158,15 +1078,15 @@ Hinss2021-CrossSession:  50%|#####     | 1/2 [00:27&lt;00:27, 27.51s/it]/home/ru
  &#39;easy&#39;: 149
  &#39;diff&#39;: 149&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-2024-11-11 12:11:05,608 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 2 | 1: Score 0.712
-2024-11-11 12:11:06,118 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 2 | 2: Score 0.738
-2024-11-11 12:11:08,209 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 2 | 1: Score 0.773
-2024-11-11 12:11:10,136 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 2 | 2: Score 0.920
-2024-11-11 12:11:10,742 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 2 | 1: Score 0.783
-2024-11-11 12:11:11,351 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 2 | 2: Score 0.591
+2025-02-10 16:35:23,008 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 2 | 1: Score 0.712
+2025-02-10 16:35:23,482 INFO MainThread moabb.evaluations.base Xdawn+Cov+TS+LDA | Hinss2021 | 2 | 2: Score 0.738
+2025-02-10 16:35:25,535 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 2 | 1: Score 0.773
+2025-02-10 16:35:27,469 INFO MainThread moabb.evaluations.base Cov+ElSel+TS+LDA | Hinss2021 | 2 | 2: Score 0.920
+2025-02-10 16:35:28,046 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 2 | 1: Score 0.783
+2025-02-10 16:35:28,619 INFO MainThread moabb.evaluations.base ElSel+Cov+TS+LDA | Hinss2021 | 2 | 2: Score 0.591
 
-Hinss2021-CrossSession: 100%|##########| 2/2 [00:52&lt;00:00, 26.15s/it]
-Hinss2021-CrossSession: 100%|##########| 2/2 [00:52&lt;00:00, 26.35s/it]
+Hinss2021-CrossSession: 100%|##########| 2/2 [00:48&lt;00:00, 24.08s/it]
+Hinss2021-CrossSession: 100%|##########| 2/2 [00:48&lt;00:00, 24.11s/it]
 </pre></div>
 </div>
 <p>Here, with the ElSel+Cov+TS+LDA pipeline, we reduce the computation time
@@ -1178,9 +1098,9 @@ in approximately 8 times to the Cov+ElSel+TS+LDA pipeline.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Averaging the session performance:
                      score      time
 pipeline
-Cov+ElSel+TS+LDA  0.770303  1.760779
-ElSel+Cov+TS+LDA  0.736622  0.424790
-Xdawn+Cov+TS+LDA  0.658810  0.368298
+Cov+ElSel+TS+LDA  0.770303  1.780620
+ElSel+Cov+TS+LDA  0.736622  0.411602
+Xdawn+Cov+TS+LDA  0.658810  0.319506
 </pre></div>
 </div>
 </section>
@@ -1217,8 +1137,8 @@ Xdawn+Cov+TS+LDA  0.658810  0.368298
 <li><p>Electrode selection strategy based on covariance matrices demonstrates less variability and typically yields better performance.</p></li>
 <li><p>However, this strategy is more time-consuming compared to the simpler electrode selection based on time epoch data.</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  54.358 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  527 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  49.648 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  475 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-hinss2021-classification-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/63b412797a45350b72c090ea95e36ee8/plot_Hinss2021_classification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_Hinss2021_classification.py</span></code></a></p>
@@ -1311,7 +1231,7 @@ Xdawn+Cov+TS+LDA  0.658810  0.368298
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2018-2024 MOABB contributors.
+      © Copyright 2018-2025 MOABB contributors.
       <br/>
     
   </p>

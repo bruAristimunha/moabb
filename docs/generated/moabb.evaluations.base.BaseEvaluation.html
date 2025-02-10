@@ -551,7 +551,7 @@ containing the results of the evaluation.</p>
 <li><p><strong>pipelines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em> of </em><em>pipeline instance.</em>) – A dict containing the sklearn pipeline to evaluate.</p></li>
 <li><p><strong>param_grid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The key of the dictionary must be the same as the associated pipeline.</p></li>
 <li><p><strong>postprocess_pipeline</strong> (<em>Pipeline</em><em> | </em><em>None</em>) – Optional pipeline to apply to the data after the preprocessing.
-This pipeline will either receive <a class="reference external" href="https://mne.tools/stable/generated/mne.io.BaseRaw.html#mne.io.BaseRaw" title="(in MNE v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.io.BaseRaw</span></code></a>, <a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs" title="(in MNE v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a>
+This pipeline will either receive <a class="reference external" href="https://mne.tools/stable/generated/mne.io.BaseRaw.html#mne.io.BaseRaw" title="(in MNE v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.io.BaseRaw</span></code></a>, <a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs" title="(in MNE v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a>
 or <code class="xref py py-func docutils literal notranslate"><span class="pre">np.ndarray()</span></code> as input, depending on the values of <code class="docutils literal notranslate"><span class="pre">return_epochs</span></code>
 and <code class="docutils literal notranslate"><span class="pre">return_raws</span></code>.
 This pipeline must return an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>.
@@ -575,9 +575,6 @@ i.e. no call to <code class="docutils literal notranslate"><span class="pre">fit
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use the Hinss2021 dataset with the resting state paradigm."><img alt="Hinss2021 classification example" src="../_images/sphx_glr_plot_Hinss2021_classification_thumb.png" />
 <p><a class="reference internal" href="../auto_examples/plot_Hinss2021_classification.html#sphx-glr-auto-examples-plot-hinss2021-classification-py"><span class="std std-ref">Hinss2021 classification example</span></a></p>
   <div class="sphx-glr-thumbnail-title">Hinss2021 classification example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Cross-session motor imagery with deep learning EEGNet v4 model"><img alt="Cross-session motor imagery with deep learning EEGNet v4 model" src="../_images/sphx_glr_plot_braindecode_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_braindecode.html#sphx-glr-auto-examples-plot-braindecode-py"><span class="std std-ref">Cross-session motor imagery with deep learning EEGNet v4 model</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Cross-session motor imagery with deep learning EEGNet v4 model</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example show how to perform a cross session motor imagery analysis on the very popular dat..."><img alt="Cross-Session Motor Imagery" src="../_images/sphx_glr_plot_cross_session_motor_imagery_thumb.png" />
 <p><a class="reference internal" href="../auto_examples/plot_cross_session_motor_imagery.html#sphx-glr-auto-examples-plot-cross-session-motor-imagery-py"><span class="std std-ref">Cross-Session Motor Imagery</span></a></p>
   <div class="sphx-glr-thumbnail-title">Cross-Session Motor Imagery</div>
@@ -713,7 +710,7 @@ i.e. no call to <code class="docutils literal notranslate"><span class="pre">fit
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2018-2024 MOABB contributors.
+      © Copyright 2018-2025 MOABB contributors.
       <br/>
     
   </p>
