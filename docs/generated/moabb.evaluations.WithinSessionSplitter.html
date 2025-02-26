@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
     <link rel="moabb icon" sizes="180x180" href="../_static/moabb_logo.png" type="image/png">
-    <title>moabb.datasets.BNCI2014_001 &#8212; moabb 1.1.1-dev documentation</title>
+    <title>moabb.evaluations.WithinSessionSplitter &#8212; moabb 1.1.1-dev documentation</title>
   
   
   
@@ -59,13 +59,13 @@
                 gtag('js', new Date());
                 gtag('config', 'G-5WJBKDMSTE');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/moabb.datasets.BNCI2014_001';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/moabb.evaluations.WithinSessionSplitter';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="moabb.datasets.BNCI2014_002" href="moabb.datasets.BNCI2014_002.html" />
-    <link rel="prev" title="moabb.datasets.AlexMI" href="moabb.datasets.AlexMI.html" />
+    <link rel="next" title="moabb.evaluations.base.BaseEvaluation" href="moabb.evaluations.base.BaseEvaluation.html" />
+    <link rel="prev" title="moabb.evaluations.CrossSubjectEvaluation" href="moabb.evaluations.CrossSubjectEvaluation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -445,7 +445,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../api.html" class="nav-link">API Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">moabb.datasets.BNCI2014_001</li>
+    <li class="breadcrumb-item active" aria-current="page">moabb.evaluations.WithinSessionSplitter</li>
   </ul>
 </nav>
 </div>
@@ -462,141 +462,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="moabb-datasets-bnci2014-001">
-<h1>moabb.datasets.BNCI2014_001<a class="headerlink" href="#moabb-datasets-bnci2014-001" title="Permalink to this heading">#</a></h1>
+  <section id="moabb-evaluations-withinsessionsplitter">
+<h1>moabb.evaluations.WithinSessionSplitter<a class="headerlink" href="#moabb-evaluations-withinsessionsplitter" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="moabb.datasets.BNCI2014_001">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.datasets.</span></span><span class="sig-name descname"><span class="pre">BNCI2014_001</span></span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/datasets/bnci.py#L755-L807"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.datasets.BNCI2014_001" title="Permalink to this definition">#</a></dt>
-<dd><p>BNCI 2014-001 Motor Imagery dataset.</p>
-<p><strong>PapersWithCode leaderboard:</strong> <a class="reference external" href="https://paperswithcode.com/dataset/bnci2014-001-moabb-1">https://paperswithcode.com/dataset/bnci2014-001-moabb-1</a></p>
-<div class="admonition-dataset-summary admonition">
-<p class="admonition-title">Dataset summary</p>
-<table class="table">
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 10%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 15%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>#Subj</p></th>
-<th class="head"><p>#Chan</p></th>
-<th class="head"><p>#Classes</p></th>
-<th class="head"><p>#Trials / class</p></th>
-<th class="head"><p>Trial length(s)</p></th>
-<th class="head"><p>Freq(Hz)</p></th>
-<th class="head"><p>#Session</p></th>
-<th class="head"><p>#Runs</p></th>
-<th class="head"><p>Total_trials</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>9</p></td>
-<td><p>22</p></td>
-<td><p>4</p></td>
-<td><p>144</p></td>
-<td><p>4</p></td>
-<td><p>250</p></td>
-<td><p>2</p></td>
-<td><p>6</p></td>
-<td><p>62208</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Dataset IIa from BCI Competition 4 <a class="reference internal" href="#r55ebd47d0fe7-1" id="id1">[1]</a>.</p>
-<p><strong>Dataset Description</strong></p>
-<p>This data set consists of EEG data from 9 subjects.  The cue-based BCI
-paradigm consisted of four different motor imagery tasks, namely the imag-
-ination of movement of the left hand (class 1), right hand (class 2), both
-feet (class 3), and tongue (class 4).  Two sessions on different days were
-recorded for each subject.  Each session is comprised of 6 runs separated
-by short breaks.  One run consists of 48 trials (12 for each of the four
-possible classes), yielding a total of 288 trials per session.</p>
-<p>The subjects were sitting in a comfortable armchair in front of a computer
-screen.  At the beginning of a trial ( t = 0 s), a fixation cross appeared
-on the black screen.  In addition, a short acoustic warning tone was
-presented.  After two seconds ( t = 2 s), a cue in the form of an arrow
-pointing either to the left, right, down or up (corresponding to one of the
-four classes left hand, right hand, foot or tongue) appeared and stayed on
-the screen for 1.25 s.  This prompted the subjects to perform the desired
-motor imagery task.  No feedback was provided.  The subjects were ask to
-carry out the motor imagery task until the fixation cross disappeared from
-the screen at t = 6 s.</p>
-<p>Twenty-two Ag/AgCl electrodes (with inter-electrode distances of 3.5 cm)
-were used to record the EEG; the montage is shown in Figure 3 left.  All
-signals were recorded monopolarly with the left mastoid serving as
-reference and the right mastoid as ground. The signals were sampled with.
-250 Hz and bandpass-filtered between 0.5 Hz and 100 Hz. The sensitivity of
-the amplifier was set to 100 μV . An additional 50 Hz notch filter was
-enabled to suppress line noise</p>
-<p class="rubric">References</p>
-<dl class="citation">
-<dt class="label" id="r55ebd47d0fe7-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Tangermann, M., Müller, K.R., Aertsen, A., Birbaumer, N., Braun, C.,
-Brunner, C., Leeb, R., Mehring, C., Miller, K.J., Mueller-Putz, G.
-and Nolte, G., 2012. Review of the BCI competition IV.
-Frontiers in neuroscience, 6, p.55.</p>
+<dt class="sig sig-object py" id="moabb.evaluations.WithinSessionSplitter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.evaluations.</span></span><span class="sig-name descname"><span class="pre">WithinSessionSplitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_folds:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">~typing.Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_class:</span> <span class="pre">type[sklearn.model_selection._split.BaseCrossValidator]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'sklearn.model_selection._split.StratifiedKFold'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**cv_kwargs:</span> <span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L7-L103"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.WithinSessionSplitter" title="Permalink to this definition">#</a></dt>
+<dd><p>Data splitter for within session evaluation.</p>
+<p>Within-session evaluation uses k-fold cross_validation to determine train
+and test sets for each subject in each session. This splitter
+assumes that all data from all subjects is already known and loaded.</p>
+<img alt="The schematic diagram of the WithinSession split" class="align-center" src="generated/docs/source/images/withinsess.png" />
+<p>The inner cross-validation strategy can be changed by passing the
+<cite>cv_class</cite> and <cite>cv_kwargs</cite> arguments. By default, it uses StratifiedKFold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>default=5</em>) – Number of folds. Must be at least 2. If</p></li>
+<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=True</em>) – Whether to shuffle each class’s samples before splitting into batches.
+Note that the samples within each split will not be shuffled.</p></li>
+<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>RandomState instance</em><em> or </em><em>None</em><em>, </em><em>default=None</em>) – Controls the randomness of splits. Only used when <cite>shuffle</cite> is True.
+Pass an int for reproducible output across multiple function calls.</p></li>
+<li><p><strong>cv_class</strong> (<em>cros-validation class</em><em>, </em><em>default=StratifiedKFold</em>) – Inner cross-validation strategy for splitting the sessions.</p></li>
+<li><p><strong>cv_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Additional arguments to pass to the inner cross-validation strategy.</p></li>
+</ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">BNCI2014_001</span></code> was previously named <code class="docutils literal notranslate"><span class="pre">BNCI2014001</span></code>. <code class="docutils literal notranslate"><span class="pre">BNCI2014001</span></code> will be removed in  version 1.1.</p>
-</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="moabb.evaluations.WithinSessionSplitter.get_n_splits">
+<span class="sig-name descname"><span class="pre">get_n_splits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L69-L71"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.WithinSessionSplitter.get_n_splits" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of splitting iterations in the cross-validator.</p>
 </dd></dl>
 
-<section id="examples-using-moabb-datasets-bnci2014-001">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">moabb.datasets.BNCI2014_001</span></code><a class="headerlink" href="#examples-using-moabb-datasets-bnci2014-001" title="Permalink to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use MOABB to track the CO2 footprint using `CodeCarbon library &lt;https..."><img alt="Benchmarking with MOABB showing the CO2 footprint" src="../_images/sphx_glr_example_codecarbon_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/example_codecarbon.html#sphx-glr-auto-examples-example-codecarbon-py"><span class="std std-ref">Benchmarking with MOABB showing the CO2 footprint</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Benchmarking with MOABB showing the CO2 footprint</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Benchmarking on MOABB with Tensorflow deep net architectures"><img alt="Benchmarking on MOABB with Tensorflow deep net architectures" src="../_images/sphx_glr_plot_benchmark_DL_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_benchmark_DL.html#sphx-glr-auto-examples-plot-benchmark-dl-py"><span class="std std-ref">Benchmarking on MOABB with Tensorflow deep net architectures</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Benchmarking on MOABB with Tensorflow deep net architectures</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example show how to perform a cross session motor imagery analysis on the very popular dat..."><img alt="Cross-Session Motor Imagery" src="../_images/sphx_glr_plot_cross_session_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_cross_session_motor_imagery.html#sphx-glr-auto-examples-plot-cross-session-motor-imagery-py"><span class="std std-ref">Cross-Session Motor Imagery</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Cross-Session Motor Imagery</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a cross-session analysis on two MI datasets using a CSP+LDA p..."><img alt="Cross-Session on Multiple Datasets" src="../_images/sphx_glr_plot_cross_session_multiple_datasets_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_cross_session_multiple_datasets.html#sphx-glr-auto-examples-plot-cross-session-multiple-datasets-py"><span class="std std-ref">Cross-Session on Multiple Datasets</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Cross-Session on Multiple Datasets</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="A paradigm defines how the raw data will be converted to trials ready to be processed by a deco..."><img alt="Explore Paradigm Object" src="../_images/sphx_glr_plot_explore_paradigm_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_explore_paradigm.html#sphx-glr-auto-examples-plot-explore-paradigm-py"><span class="std std-ref">Explore Paradigm Object</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Explore Paradigm Object</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example show a comparison of CSP versus FilterBank CSP on the very popular dataset 2a from..."><img alt="FilterBank CSP versus CSP" src="../_images/sphx_glr_plot_filterbank_csp_vs_csp_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_filterbank_csp_vs_csp.html#sphx-glr-auto-examples-advanced-examples-plot-filterbank-csp-vs-csp-py"><span class="std std-ref">FilterBank CSP versus CSP</span></a></p>
-  <div class="sphx-glr-thumbnail-title">FilterBank CSP versus CSP</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to make a model selection in pipelines for finding the best model..."><img alt="GridSearch within a session" src="../_images/sphx_glr_plot_grid_search_withinsession_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_grid_search_withinsession.html#sphx-glr-auto-examples-advanced-examples-plot-grid-search-withinsession-py"><span class="std std-ref">GridSearch within a session</span></a></p>
-  <div class="sphx-glr-thumbnail-title">GridSearch within a session</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Within paradigm, it is possible to restrict analysis only to a subset of electrodes and to resa..."><img alt="Select Electrodes and Resampling" src="../_images/sphx_glr_plot_select_electrodes_resample_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_select_electrodes_resample.html#sphx-glr-auto-examples-advanced-examples-plot-select-electrodes-resample-py"><span class="std std-ref">Select Electrodes and Resampling</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Select Electrodes and Resampling</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The MOABB codebase comes with convenience plotting utilities and some statistical testing. This..."><img alt="Statistical Analysis" src="../_images/sphx_glr_plot_statistical_analysis_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_statistical_analysis.html#sphx-glr-auto-examples-advanced-examples-plot-statistical-analysis-py"><span class="std std-ref">Statistical Analysis</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Statistical Analysis</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a within session motor imagery analysis on the very popular d..."><img alt="Within Session Motor Imagery with Learning Curve" src="../_images/sphx_glr_plot_learning_curve_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/learning_curve/plot_learning_curve_motor_imagery.html#sphx-glr-auto-examples-learning-curve-plot-learning-curve-motor-imagery-py"><span class="std std-ref">Within Session Motor Imagery with Learning Curve</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Within Session Motor Imagery with Learning Curve</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This tutorial takes you through a basic working example of how to use this codebase, including ..."><img alt="Tutorial 0: Getting Started" src="../_images/sphx_glr_plot_Getting_Started_thumb.png" />
-<p><a class="reference internal" href="../auto_tutorials/plot_Getting_Started.html#sphx-glr-auto-tutorials-plot-getting-started-py"><span class="std std-ref">Tutorial 0: Getting Started</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 0: Getting Started</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will go through all the steps to make a simple BCI classification task, dow..."><img alt="Tutorial 1: Simple Motor Imagery" src="../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_tutorials/tutorial_1_simple_example_motor_imagery.html#sphx-glr-auto-tutorials-tutorial-1-simple-example-motor-imagery-py"><span class="std std-ref">Tutorial 1: Simple Motor Imagery</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 1: Simple Motor Imagery</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="We extend the previous example to a case where we want to analyze the score of a classifier wit..."><img alt="Tutorial 2: Using multiple datasets" src="../_images/sphx_glr_tutorial_2_using_mulitple_datasets_thumb.png" />
-<p><a class="reference internal" href="../auto_tutorials/tutorial_2_using_mulitple_datasets.html#sphx-glr-auto-tutorials-tutorial-2-using-mulitple-datasets-py"><span class="std std-ref">Tutorial 2: Using multiple datasets</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 2: Using multiple datasets</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this last part, we extend the previous example by assessing the classification score of not ..."><img alt="Tutorial 3: Benchmarking multiple pipelines" src="../_images/sphx_glr_tutorial_3_benchmarking_multiple_pipelines_thumb.png" />
-<p><a class="reference internal" href="../auto_tutorials/tutorial_3_benchmarking_multiple_pipelines.html#sphx-glr-auto-tutorials-tutorial-3-benchmarking-multiple-pipelines-py"><span class="std std-ref">Tutorial 3: Benchmarking multiple pipelines</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 3: Benchmarking multiple pipelines</div>
-</div></div><div style='clear:both'></div></section>
-</section>
+<dl class="py method">
+<dt class="sig sig-object py" id="moabb.evaluations.WithinSessionSplitter.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L73-L103"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.WithinSessionSplitter.split" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate indices to split data into training and test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training data, where <cite>n_samples</cite> is the number of samples
+and <cite>n_features</cite> is the number of features.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – The target variable for supervised learning problems.</p></li>
+<li><p><strong>groups</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em><em>, </em><em>default=None</em>) – Group labels for the samples used while splitting the dataset into
+train/test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>train</strong> (<em>ndarray</em>) – The training set indices for that split.</p></li>
+<li><p><strong>test</strong> (<em>ndarray</em>) – The testing set indices for that split.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></section>
 
 
                 </article>
@@ -610,20 +532,20 @@ Frontiers in neuroscience, 6, p.55.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="moabb.datasets.AlexMI.html"
+       href="moabb.evaluations.CrossSubjectEvaluation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">moabb.datasets.AlexMI</p>
+        <p class="prev-next-title">moabb.evaluations.CrossSubjectEvaluation</p>
       </div>
     </a>
     <a class="right-next"
-       href="moabb.datasets.BNCI2014_002.html"
+       href="moabb.evaluations.base.BaseEvaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">moabb.datasets.BNCI2014_002</p>
+        <p class="prev-next-title">moabb.evaluations.base.BaseEvaluation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -645,8 +567,11 @@ Frontiers in neuroscience, 6, p.55.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.datasets.BNCI2014_001"><code class="docutils literal notranslate"><span class="pre">BNCI2014_001</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-moabb-datasets-bnci2014-001">Examples using <code class="docutils literal notranslate"><span class="pre">moabb.datasets.BNCI2014_001</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.WithinSessionSplitter"><code class="docutils literal notranslate"><span class="pre">WithinSessionSplitter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.WithinSessionSplitter.get_n_splits"><code class="docutils literal notranslate"><span class="pre">WithinSessionSplitter.get_n_splits()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.WithinSessionSplitter.split"><code class="docutils literal notranslate"><span class="pre">WithinSessionSplitter.split()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
