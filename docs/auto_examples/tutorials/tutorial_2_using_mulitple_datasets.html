@@ -535,26 +535,144 @@ the evaluation from scratch if a problem occurs.</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../../api/generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">({</span><span class="s2">&quot;csp+lda&quot;</span><span class="p">:</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipeline</span></a><span class="p">})</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Zhou2016-WithinSession:   0%|          | 0/3 [00:00&lt;?, ?it/s]No hdf5_path provided, models will not be saved.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Zhou2016-WithinSession:   0%|          | 0/3 [00:00&lt;?, ?it/s]
+
+  0%|                                               | 0.00/156M [00:00&lt;?, ?B/s]
+
+  0%|                                       | 17.4k/156M [00:00&lt;20:09, 129kB/s]
+
+  0%|                                       | 71.7k/156M [00:00&lt;09:00, 289kB/s]
+
+  0%|                                        | 159k/156M [00:00&lt;05:47, 449kB/s]
+
+  0%|                                        | 368k/156M [00:00&lt;02:57, 880kB/s]
+
+  0%|▏                                      | 767k/156M [00:00&lt;01:35, 1.62MB/s]
+
+  1%|▎                                     | 1.45M/156M [00:00&lt;00:55, 2.77MB/s]
+
+  2%|▌                                     | 2.42M/156M [00:00&lt;00:36, 4.22MB/s]
+
+  3%|█                                     | 4.11M/156M [00:01&lt;00:22, 6.82MB/s]
+
+  4%|█▋                                    | 7.01M/156M [00:01&lt;00:13, 11.4MB/s]
+
+  6%|██▎                                   | 9.29M/156M [00:01&lt;00:11, 13.0MB/s]
+
+  8%|██▉                                   | 12.2M/156M [00:01&lt;00:09, 15.5MB/s]
+
+  9%|███▌                                  | 14.5M/156M [00:01&lt;00:08, 16.0MB/s]
+
+ 11%|████▏                                 | 17.4M/156M [00:01&lt;00:07, 17.6MB/s]
+
+ 13%|████▊                                 | 19.8M/156M [00:01&lt;00:07, 17.6MB/s]
+
+ 15%|█████▌                                | 22.7M/156M [00:02&lt;00:07, 18.8MB/s]
+
+ 17%|██████▌                               | 26.8M/156M [00:02&lt;00:05, 22.0MB/s]
+
+ 19%|███████▎                              | 29.9M/156M [00:02&lt;00:05, 22.1MB/s]
+
+ 21%|███████▉                              | 32.8M/156M [00:02&lt;00:05, 21.9MB/s]
+
+ 23%|████████▋                             | 35.8M/156M [00:02&lt;00:05, 21.9MB/s]
+
+ 25%|█████████▍                            | 38.6M/156M [00:02&lt;00:05, 21.7MB/s]
+
+ 27%|██████████▎                           | 42.3M/156M [00:02&lt;00:04, 23.2MB/s]
+
+ 29%|███████████▏                          | 46.1M/156M [00:02&lt;00:04, 26.6MB/s]
+
+ 31%|███████████▊                          | 48.8M/156M [00:03&lt;00:04, 26.6MB/s]
+
+ 33%|████████████▌                         | 51.5M/156M [00:03&lt;00:04, 24.4MB/s]
+
+ 35%|█████████████▏                        | 54.0M/156M [00:03&lt;00:04, 23.4MB/s]
+
+ 37%|██████████████                        | 57.7M/156M [00:03&lt;00:03, 24.7MB/s]
+
+ 39%|██████████████▊                       | 61.1M/156M [00:03&lt;00:03, 24.8MB/s]
+
+ 41%|███████████████▌                      | 64.2M/156M [00:03&lt;00:03, 24.3MB/s]
+
+ 43%|████████████████▍                     | 67.6M/156M [00:03&lt;00:03, 24.5MB/s]
+
+ 45%|█████████████████▏                    | 70.5M/156M [00:03&lt;00:03, 23.5MB/s]
+
+ 47%|██████████████████                    | 74.0M/156M [00:04&lt;00:03, 24.0MB/s]
+
+ 50%|██████████████████▉                   | 77.8M/156M [00:04&lt;00:03, 25.2MB/s]
+
+ 52%|███████████████████▋                  | 81.1M/156M [00:04&lt;00:02, 25.0MB/s]
+
+ 54%|████████████████████▍                 | 84.1M/156M [00:04&lt;00:02, 24.1MB/s]
+
+ 56%|█████████████████████▎                | 87.6M/156M [00:04&lt;00:02, 24.5MB/s]
+
+ 58%|██████████████████████                | 90.8M/156M [00:04&lt;00:02, 24.3MB/s]
+
+ 60%|██████████████████████▊               | 93.9M/156M [00:04&lt;00:02, 23.6MB/s]
+
+ 63%|███████████████████████▊              | 97.7M/156M [00:05&lt;00:02, 24.9MB/s]
+
+ 65%|█████████████████████████▎             | 101M/156M [00:05&lt;00:02, 25.6MB/s]
+
+ 67%|██████████████████████████             | 104M/156M [00:05&lt;00:02, 24.8MB/s]
+
+ 69%|██████████████████████████▊            | 107M/156M [00:05&lt;00:02, 23.8MB/s]
+
+ 71%|███████████████████████████▊           | 111M/156M [00:05&lt;00:01, 24.9MB/s]
+
+ 73%|████████████████████████████▌          | 114M/156M [00:05&lt;00:01, 24.5MB/s]
+
+ 75%|█████████████████████████████▍         | 118M/156M [00:05&lt;00:01, 27.1MB/s]
+
+ 77%|██████████████████████████████▏        | 121M/156M [00:05&lt;00:01, 26.6MB/s]
+
+ 79%|██████████████████████████████▊        | 123M/156M [00:06&lt;00:01, 24.9MB/s]
+
+ 81%|███████████████████████████████▍       | 126M/156M [00:06&lt;00:01, 23.4MB/s]
+
+ 83%|████████████████████████████████▏      | 129M/156M [00:06&lt;00:01, 23.5MB/s]
+
+ 84%|████████████████████████████████▉      | 132M/156M [00:06&lt;00:01, 22.6MB/s]
+
+ 87%|█████████████████████████████████▉     | 136M/156M [00:06&lt;00:00, 24.7MB/s]
+
+ 89%|██████████████████████████████████▊    | 139M/156M [00:06&lt;00:00, 27.0MB/s]
+
+ 91%|███████████████████████████████████▍   | 142M/156M [00:06&lt;00:00, 24.8MB/s]
+
+ 93%|████████████████████████████████████   | 145M/156M [00:07&lt;00:00, 23.3MB/s]
+
+ 95%|████████████████████████████████████▉  | 148M/156M [00:07&lt;00:00, 23.9MB/s]
+
+ 97%|█████████████████████████████████████▊ | 151M/156M [00:07&lt;00:00, 24.0MB/s]
+
+ 99%|██████████████████████████████████████▋| 155M/156M [00:07&lt;00:00, 24.8MB/s]
+
+  0%|                                               | 0.00/156M [00:00&lt;?, ?B/s]
+100%|████████████████████████████████████████| 156M/156M [00:00&lt;00:00, 611GB/s]
+No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-Zhou2016-WithinSession:  33%|███▎      | 1/3 [00:05&lt;00:10,  5.24s/it]No hdf5_path provided, models will not be saved.
+Zhou2016-WithinSession:  33%|███▎      | 1/3 [00:16&lt;00:33, 16.63s/it]No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-Zhou2016-WithinSession:  67%|██████▋   | 2/3 [00:09&lt;00:04,  4.81s/it]No hdf5_path provided, models will not be saved.
+Zhou2016-WithinSession:  67%|██████▋   | 2/3 [00:21&lt;00:09,  9.47s/it]No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-Zhou2016-WithinSession: 100%|██████████| 3/3 [00:14&lt;00:00,  4.77s/it]
-Zhou2016-WithinSession: 100%|██████████| 3/3 [00:14&lt;00:00,  4.82s/it]
+Zhou2016-WithinSession: 100%|██████████| 3/3 [00:25&lt;00:00,  7.14s/it]
+Zhou2016-WithinSession: 100%|██████████| 3/3 [00:25&lt;00:00,  8.48s/it]
 
 BNCI2014-001-WithinSession:   0%|          | 0/3 [00:00&lt;?, ?it/s]
-BNCI2014-001-WithinSession:  33%|███▎      | 1/3 [00:00&lt;00:00,  8.12it/s]
-BNCI2014-001-WithinSession:  67%|██████▋   | 2/3 [00:00&lt;00:00,  8.14it/s]
-BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:00&lt;00:00,  8.14it/s]
-BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:00&lt;00:00,  8.13it/s]
+BNCI2014-001-WithinSession:  33%|███▎      | 1/3 [00:00&lt;00:00,  8.04it/s]
+BNCI2014-001-WithinSession:  67%|██████▋   | 2/3 [00:00&lt;00:00,  7.97it/s]
+BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:00&lt;00:00,  7.98it/s]
+BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:00&lt;00:00,  7.98it/s]
 </pre></div>
 </div>
 </section>
@@ -575,8 +693,8 @@ is to plot the results from the three datasets with just one line.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_tutorial_2_using_mulitple_datasets_001.png" srcset="../../_images/sphx_glr_tutorial_2_using_mulitple_datasets_001.png" alt="dataset = Zhou2016, dataset = BNCI2014-001" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.928 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  470 MB</p>
+<img src="../../_images/sphx_glr_tutorial_2_using_mulitple_datasets_001.png" srcset="../../_images/sphx_glr_tutorial_2_using_mulitple_datasets_001.png" alt="dataset = Zhou2016, dataset = BNCI2014-001" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 26.832 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  592 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-2-using-mulitple-datasets-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/84cd0e0e206f46e9ff11a482df8a9b57/tutorial_2_using_mulitple_datasets.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tutorial_2_using_mulitple_datasets.ipynb</span></code></a></p>

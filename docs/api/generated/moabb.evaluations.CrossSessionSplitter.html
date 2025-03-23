@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="moabb icon" sizes="180x180" href="../../_static/moabb_logo.png" type="image/png">
-    <title>moabb.datasets.Dreyer2023C &#8212; moabb 1.2.0-dev documentation</title>
+    <title>moabb.evaluations.CrossSessionSplitter &#8212; moabb 1.2.0-dev documentation</title>
   
   
   
@@ -67,7 +67,7 @@
                 gtag('js', new Date());
                 gtag('config', 'G-5WJBKDMSTE');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/moabb.datasets.Dreyer2023C';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/moabb.evaluations.CrossSessionSplitter';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -400,7 +400,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">moabb.datasets.Dreyer2023C</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">moabb.evaluations.CrossSessionSplitter</span></li>
   </ul>
 </nav>
 </div>
@@ -417,133 +417,85 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="moabb-datasets-dreyer2023c">
-<h1>moabb.datasets.Dreyer2023C<a class="headerlink" href="#moabb-datasets-dreyer2023c" title="Link to this heading">#</a></h1>
+  <section id="moabb-evaluations-crosssessionsplitter">
+<h1>moabb.evaluations.CrossSessionSplitter<a class="headerlink" href="#moabb-evaluations-crosssessionsplitter" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="moabb.datasets.Dreyer2023C">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.datasets.</span></span><span class="sig-name descname"><span class="pre">Dreyer2023C</span></span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/datasets/dreyer2023.py#L391-L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.datasets.Dreyer2023C" title="Link to this definition">#</a></dt>
-<dd><p>Class for Dreyer2023C dataset management. MI dataset.</p>
-<div class="admonition-dataset-summary admonition">
-<p class="admonition-title">Dataset summary</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>#Subj</p></th>
-<th class="head"><p>#Chan</p></th>
-<th class="head"><p>#Classes</p></th>
-<th class="head"><p>#Trials / class</p></th>
-<th class="head"><p>Trial length(s)</p></th>
-<th class="head"><p>Freq(Hz)</p></th>
-<th class="head"><p>#Session</p></th>
-<th class="head"><p>#Runs</p></th>
-<th class="head"><p>Total_trials</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>6</p></td>
-<td><p>27</p></td>
-<td><p>2</p></td>
-<td><p>20</p></td>
-<td><p>5</p></td>
-<td><p>512</p></td>
-<td><p>1</p></td>
-<td><p>6</p></td>
-<td><p>1440</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><strong>Dataset description</strong></p>
-<p>“A large EEG database with users’ profile information for motor imagery
-Brain-Computer Interface research” <a class="reference internal" href="#r2f036ae01b71-1" id="id1">[1]</a> <a class="reference internal" href="#r2f036ae01b71-2" id="id2">[2]</a>.</p>
-<dl class="simple">
-<dt>Data collectors<span class="classifier">Appriou Aurélien; Caselli Damien; Benaroch Camille;</span></dt><dd><p>Yamamoto Sayu Maria; Roc Aline; Lotte Fabien;
-Dreyer Pauline; Pillette Léa</p>
-</dd>
-</dl>
-<p>Data manager    : Dreyer Pauline
-Project leader  : Lotte Fabien
-Project members : Rimbert Sébastien; Monseigne Thibaut</p>
-<p>Dataset Dreyer2023C contains EEG, EOG and EMG signals recorded on 6 healthy subjects
-performing Left-Right Motor Imagery experiments (4 women) who participated in datasets
-A or B.
-In addition, for each recording the following pieces of information are provided:
-subject’s demographic, personality and cognitive profiles, the OpenViBE experimental
-instructions and codes, and experimenter’s gender.</p>
-<p>A recording contains open and closed eyes baseline recordings and 6 runs of the MI
-experiments. First 2 runs (acquisition runs) were used to train system and
-the following 4 runs (training runs) to train the participant. Each run contained
-40 trials <a class="reference internal" href="#r2f036ae01b71-1" id="id3">[1]</a>.</p>
-<dl class="simple">
-<dt>Each trial was recorded as follows <a class="reference internal" href="#r2f036ae01b71-1" id="id4">[1]</a>:</dt><dd><ul class="simple">
-<li><p>t=0.00s  cross displayed on screen</p></li>
-<li><p>t=2.00s  acoustic signal announced appearance of a red arrow</p></li>
-<li><p>t=3.00s  a red arrow appears (subject starts to perform task)</p></li>
-<li><p>t=4.25s  the red arrow disappears</p></li>
-<li><dl class="simple">
-<dt>t=4.25s  the feedback on performance is given in form of a blue bar</dt><dd><p>with update frequency of 16 Hz</p>
-</dd>
-</dl>
-</li>
-<li><p>t=8.00s  cross turns off (subject stops to perform task)</p></li>
+<dt class="sig sig-object py" id="moabb.evaluations.CrossSessionSplitter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.evaluations.</span></span><span class="sig-name descname"><span class="pre">CrossSessionSplitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cv_class:</span> <span class="pre">type[~sklearn.model_selection._split.BaseCrossValidator]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'sklearn.model_selection._split.LeaveOneGroupOut'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**cv_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L115-L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.CrossSessionSplitter" title="Link to this definition">#</a></dt>
+<dd><p>Data splitter for cross session evaluation.</p>
+<p>This splitter enables cross-session evaluation by performing a Leave-One-Session-Out (LOSO)
+cross-validation on data from each subject.</p>
+<p>It assumes that the entire metainformation across all subjects is already loaded.</p>
+<p>Unlike the <cite>CrossSessionEvaluation</cite> class from <cite>moabb.evaluation</cite>, which manages
+the complete evaluation process end-to-end, this splitter is solely responsible
+for dividing the data into training and testing sets based on sessions.</p>
+<img alt="The schematic diagram of the CrossSession split" class="align-center" src="api/generated/images/crosssess.jpg" />
+<p>The inner cross-validation strategy can be changed by passing the
+<cite>cv_class</cite> and <cite>cv_kwargs</cite> arguments. By default, it uses LeaveOneGroupOut,
+which performs Leave-One-Session-Out cross-validation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cv_class</strong> (<em>cross-validation class</em><em>, </em><em>default=LeaveOneGroupOut</em>) – Inner cross-validation strategy for splitting the sessions of one subject.
+LeaveOneGroupOut is the most common default.</p></li>
+<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – Whether to shuffle the session order for each subject. It can only be
+used when changing the <cite>cv_class</cite> to a class compatible with <cite>shuffle</cite>.</p></li>
+<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>RandomState instance</em><em> or </em><em>None</em><em>, </em><em>default=None</em>) – Controls the randomness of the inner cross-validation when <cite>shuffle</cite> is True.
+Pass an int for reproducible output across multiple function calls.
+For <cite>cv_class</cite> accepting <cite>random_state</cite>, they are provided with a shared rng.</p></li>
+<li><p><strong>cv_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Additional arguments to pass to the inner cross-validation strategy.</p></li>
 </ul>
 </dd>
-<dt>EEG signals <a class="reference internal" href="#r2f036ae01b71-1" id="id5">[1]</a>:</dt><dd><ul class="simple">
-<li><p>recorded with 27 electrodes, namely:
-Fz, FCz, Cz, CPz, Pz, C1, C3, C5, C2, C4, C6, F4, FC2, FC4, FC6, CP2,
-CP4, CP6, P4, F3, FC1, FC3, FC5, CP1, CP3, CP5, P3 (10-20 system),
-referenced to the left earlobe.</p></li>
-</ul>
-</dd>
-<dt>EOG signals <a class="reference internal" href="#r2f036ae01b71-1" id="id6">[1]</a>:</dt><dd><ul class="simple">
-<li><p>recorded with 3 electrodes, namely: EOG1, EOG2, EOG3
-placed below, above and on the side of one eye.</p></li>
-</ul>
-</dd>
-<dt>EMG signals <a class="reference internal" href="#r2f036ae01b71-1" id="id7">[1]</a>:</dt><dd><ul class="simple">
-<li><p>recorded with 2 electrodes, namely: EMGg, EMGd
-placed 2.5cm below the skinfold on each wrist.</p></li>
-</ul>
-</dd>
-<dt>Demographic and biosocial information includes:</dt><dd><ul class="simple">
-<li><p>gender, birth year, laterality</p></li>
-<li><p>vision, vision assistance</p></li>
-<li><p>familiarity to cognitive science or neurology, level of education</p></li>
-<li><p>physical activity, meditation</p></li>
-<li><p>attentional, neurological, psychiatrics symptoms</p></li>
-</ul>
-</dd>
-<dt>Personality and the cognitive profile <a class="reference internal" href="#r2f036ae01b71-1" id="id8">[1]</a>:</dt><dd><ul class="simple">
-<li><p>evaluated via 5th edition of the 16 Personality Factors (16PF5) test</p></li>
-<li><p>and mental rotation test</p></li>
-<li><p>index of learning style</p></li>
-</ul>
-</dd>
-<dt>Pre and post-experiment questionnaires <a class="reference internal" href="#r2f036ae01b71-1" id="id9">[1]</a>:</dt><dd><ul class="simple">
-<li><p>evaluation of pre and post mood, mindfulness and motivational states</p></li>
-</ul>
-</dd>
-<dt>The online OpenViBE BCI classification performance <a class="reference internal" href="#r2f036ae01b71-1" id="id10">[1]</a>:</dt><dd><ul class="simple">
-<li><p>only performance measure used to give the feedback to the participants</p></li>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>train</strong> (<em>ndarray</em>) – The training set indices for that split.</p></li>
+<li><p><strong>test</strong> (<em>ndarray</em>) – The testing set indices for that split.</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="r2f036ae01b71-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>,<a role="doc-backlink" href="#id5">4</a>,<a role="doc-backlink" href="#id6">5</a>,<a role="doc-backlink" href="#id7">6</a>,<a role="doc-backlink" href="#id8">7</a>,<a role="doc-backlink" href="#id9">8</a>,<a role="doc-backlink" href="#id10">9</a>)</span>
-<p>Pillette, L., Roc, A., N’kaoua, B., &amp; Lotte, F. (2021).
-Experimenters’ influence on mental-imagery based brain-computer interface user training.
-International Journal of Human-Computer Studies, 149, 102603.</p>
-</div>
-<div class="citation" id="r2f036ae01b71-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Benaroch, C., Yamamoto, M. S., Roc, A., Dreyer, P., Jeunet, C., &amp; Lotte, F. (2022).
-When should MI-BCI feature optimization include prior knowledge, and which one?.
-Brain-Computer Interfaces, 9(2), 115-128.</p>
-</div>
-</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="moabb.evaluations.CrossSessionSplitter.get_n_splits">
+<span class="sig-name descname"><span class="pre">get_n_splits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L192-L224"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.CrossSessionSplitter.get_n_splits" title="Link to this definition">#</a></dt>
+<dd><p>Return the number of splits for the cross-validation.</p>
+<p>The number of splits is the number of subjects times the number of splits
+of the inner cross-validation strategy.</p>
+<p>We try to keep the same behaviour as the sklearn cross-validation classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>metadata</strong> (<em>pd.DataFrame</em>) – The metadata containing the subject and session information.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>n_splits</strong> – The number of splits for the cross-validation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moabb.evaluations.CrossSessionSplitter.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/splitters.py#L226-L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.CrossSessionSplitter.split" title="Link to this definition">#</a></dt>
+<dd><p>Generate indices to split data into training and test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training data, where <cite>n_samples</cite> is the number of samples
+and <cite>n_features</cite> is the number of features.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – The target variable for supervised learning problems.</p></li>
+<li><p><strong>groups</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em><em>, </em><em>default=None</em>) – Group labels for the samples used while splitting the dataset into
+train/test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>train</strong> (<em>ndarray</em>) – The training set indices for that split.</p></li>
+<li><p><strong>test</strong> (<em>ndarray</em>) – The testing set indices for that split.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <div style='clear:both'></div></section>
@@ -577,7 +529,11 @@ Brain-Computer Interfaces, 9(2), 115-128.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.datasets.Dreyer2023C"><code class="docutils literal notranslate"><span class="pre">Dreyer2023C</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.CrossSessionSplitter"><code class="docutils literal notranslate"><span class="pre">CrossSessionSplitter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.CrossSessionSplitter.get_n_splits"><code class="docutils literal notranslate"><span class="pre">CrossSessionSplitter.get_n_splits()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.evaluations.CrossSessionSplitter.split"><code class="docutils literal notranslate"><span class="pre">CrossSessionSplitter.split()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
