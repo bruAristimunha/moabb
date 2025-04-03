@@ -540,6 +540,9 @@ class CrossSessionEvaluation(BaseEvaluation):
                     )
 
                 for cv_ind, (train, test) in enumerate(cv.split(X, y, groups)):
+                    if np.unique(groups[test])[0] == "0train":
+                        # Skip the training set
+                        continue
                     model_list = []
                     if _carbonfootprint:
                         tracker.start()
