@@ -403,6 +403,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dataset_bubbles.html">Dataset bubble plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dreyer_clf_scores_vs_subj_info.html">Examples of analysis of a Dreyer2023 A dataset.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_filterbank_csp_vs_csp.html">FilterBank CSP versus CSP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
@@ -554,14 +555,14 @@ is the name of the pipeline and the value is the Pipeline object</p>
   set_config(key, temp_dir)
 /home/runner/work/moabb/moabb/moabb/datasets/fake.py:93: RuntimeWarning: Setting non-standard config type: &quot;MNE_DATASETS_FAKEVIRTUALREALITYDATASET-P300-21-1--60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60--120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120--TARGET-NONTARGET--C3-CZ-C4_PATH&quot;
   set_config(key, temp_dir)
-[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f252256b730&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f252256a500&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7f2522568ac0&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7f2522568d00&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f2522568d90&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f2522568f40&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f2522568f10&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f252256a080&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f252256b0d0&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f252256b8e0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f2522569ab0&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f252256b5b0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f252256abc0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f2522569300&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f252256bcd0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f2522569b70&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f252256bd90&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f2522569030&gt;]
+[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f607a5ef340&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f607a5edc60&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7f607a5ec0d0&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7f607a5efb20&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f607a5ee350&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f607a5ec040&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f607a5ef8e0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f607a5ed5a0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f607a5efca0&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f60823180a0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f607a9ee5f0&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f607a9edae0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f607a9ed2a0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f607a5b8430&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f607a5ef6a0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f607a5b8160&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f607a5b86a0&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f607a5b8550&gt;]
 </pre></div>
 </div>
 <p>Or you can run a search through the available datasets:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="../../api/generated/moabb.datasets.utils.dataset_search.html#moabb.datasets.utils.dataset_search" title="moabb.datasets.utils.dataset_search" class="sphx-glr-backref-module-moabb-datasets-utils sphx-glr-backref-type-py-function"><span class="n">utils</span><span class="o">.</span><span class="n">dataset_search</span></a><span class="p">(</span><a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">,</span> <span class="n">min_subjects</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7f2522568d00&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f2522569990&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7f252256b940&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f252256be20&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7f252256a7d0&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7f25225692a0&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f25225698a0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f25225682b0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f252256bbe0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f252256bee0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f25225698d0&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7f2522568d30&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f252256b670&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f2522569210&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f252256a5f0&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7f252256b970&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f252256b8e0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f2522569810&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f2522568df0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f252256b910&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f2522569d50&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7f607a5ee5c0&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f607a5ee290&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7f607a5efb50&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f607a5edb10&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7f607a5edd80&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7f607a5ed960&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f607a5ee080&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f607b0002b0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f607b000c70&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f607b000f70&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f607b003760&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7f607a5b8040&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f607a5bb460&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f607a5b8550&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f607a5b8160&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7f607a5b8ac0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f607a5b86a0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f607a5b86d0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f607a5b8430&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f607a5b8760&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f607a5b8190&gt;]
 </pre></div>
 </div>
 <p>Or you can simply make your own list (which we do here due to computational
@@ -598,120 +599,310 @@ subjects. This also is the correct place to specify multiple threads.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/analysis/results.py:93: RuntimeWarning: Setting non-standard config type: &quot;MOABB_RESULTS&quot;
   set_config(&quot;MOABB_RESULTS&quot;, osp.join(osp.expanduser(&quot;~&quot;), &quot;mne_data&quot;))
-2025-04-08 08:56:25,736 INFO MainThread moabb.evaluations.base Processing dataset: BNCI2014-001
+2025-04-18 09:40:29,580 INFO MainThread moabb.evaluations.base Processing dataset: BNCI2014-001
 
 BNCI2014-001-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]MNE_DATA is not already configured. It will be set to default location in the home directory - /home/runner/mne_data
 All datasets will be downloaded to this location, if anything is already downloaded, please move manually to this location
 /home/runner/work/moabb/moabb/moabb/datasets/download.py:57: RuntimeWarning: Setting non-standard config type: &quot;MNE_DATASETS_BNCI_PATH&quot;
   set_config(key, get_config(&quot;MNE_DATA&quot;))
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-2025-04-08 08:56:30,188 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 0train: Score 0.786
-2025-04-08 08:56:30,348 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 1test: Score 0.802
-2025-04-08 08:56:30,633 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 0train: Score 0.797
-2025-04-08 08:56:30,924 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 1test: Score 0.774
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
 
-BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:05&lt;00:05,  5.33s/it]/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
- &#39;left_hand&#39;: 12
- &#39;right_hand&#39;: 12&gt;
-  warn(f&quot;warnEpochs {epochs}&quot;)
-2025-04-08 08:56:35,408 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 0train: Score 0.577
-2025-04-08 08:56:35,567 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 1test: Score 0.499
-2025-04-08 08:56:35,960 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 0train: Score 0.551
-2025-04-08 08:56:36,285 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 1test: Score 0.471
 
-BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:10&lt;00:00,  5.35s/it]
-BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:10&lt;00:00,  5.35s/it]
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/42.8M [00:00&lt;09:12, 77.4kB/s]
+
+  0%|                                      | 39.9k/42.8M [00:00&lt;03:26, 207kB/s]
+
+  0%|                                      | 96.3k/42.8M [00:00&lt;02:00, 353kB/s]
+
+  0%|▏                                      | 176k/42.8M [00:00&lt;01:23, 510kB/s]
+
+  1%|▎                                     | 377k/42.8M [00:00&lt;00:42, 1.00MB/s]
+
+  2%|▋                                     | 768k/42.8M [00:00&lt;00:22, 1.91MB/s]
+
+  4%|█▎                                   | 1.56M/42.8M [00:00&lt;00:11, 3.71MB/s]
+
+  7%|██▋                                  | 3.14M/42.8M [00:00&lt;00:05, 7.26MB/s]
+
+ 15%|█████▍                               | 6.31M/42.8M [00:00&lt;00:02, 14.3MB/s]
+
+ 24%|████████▊                            | 10.3M/42.8M [00:01&lt;00:01, 21.3MB/s]
+
+ 30%|███████████                          | 12.8M/42.8M [00:01&lt;00:01, 22.0MB/s]
+
+ 37%|█████████████▋                       | 15.9M/42.8M [00:01&lt;00:01, 24.1MB/s]
+
+ 46%|████████████████▉                    | 19.6M/42.8M [00:01&lt;00:00, 27.5MB/s]
+
+ 52%|███████████████████▍                 | 22.4M/42.8M [00:01&lt;00:00, 27.1MB/s]
+
+ 59%|█████████████████████▉               | 25.4M/42.8M [00:01&lt;00:00, 27.2MB/s]
+
+ 68%|█████████████████████████            | 29.0M/42.8M [00:01&lt;00:00, 29.4MB/s]
+
+ 75%|███████████████████████████▋         | 32.0M/42.8M [00:01&lt;00:00, 28.8MB/s]
+
+ 81%|██████████████████████████████▏      | 34.9M/42.8M [00:01&lt;00:00, 28.4MB/s]
+
+ 90%|█████████████████████████████████▎   | 38.5M/42.8M [00:02&lt;00:00, 30.0MB/s]
+
+ 97%|███████████████████████████████████▉ | 41.6M/42.8M [00:02&lt;00:00, 29.7MB/s]
+
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.8M/42.8M [00:00&lt;00:00, 176GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/43.8M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/43.8M [00:00&lt;09:20, 78.1kB/s]
+
+  0%|                                      | 39.9k/43.8M [00:00&lt;03:29, 209kB/s]
+
+  0%|                                      | 96.3k/43.8M [00:00&lt;02:03, 355kB/s]
+
+  0%|▏                                      | 209k/43.8M [00:00&lt;01:08, 634kB/s]
+
+  1%|▍                                     | 432k/43.8M [00:00&lt;00:37, 1.16MB/s]
+
+  2%|▋                                     | 808k/43.8M [00:00&lt;00:21, 1.98MB/s]
+
+  4%|█▍                                   | 1.63M/43.8M [00:00&lt;00:10, 3.88MB/s]
+
+  7%|██▊                                  | 3.28M/43.8M [00:00&lt;00:05, 7.60MB/s]
+
+ 15%|█████▌                               | 6.58M/43.8M [00:00&lt;00:02, 15.0MB/s]
+
+ 23%|████████▋                            | 10.2M/43.8M [00:01&lt;00:01, 21.0MB/s]
+
+ 29%|██████████▉                          | 12.9M/43.8M [00:01&lt;00:01, 22.3MB/s]
+
+ 37%|█████████████▋                       | 16.2M/43.8M [00:01&lt;00:01, 24.9MB/s]
+
+ 45%|████████████████▊                    | 19.8M/43.8M [00:01&lt;00:00, 27.8MB/s]
+
+ 52%|███████████████████▏                 | 22.7M/43.8M [00:01&lt;00:00, 27.7MB/s]
+
+ 60%|██████████████████████▎              | 26.4M/43.8M [00:01&lt;00:00, 29.9MB/s]
+
+ 69%|█████████████████████████▎           | 30.0M/43.8M [00:01&lt;00:00, 31.1MB/s]
+
+ 76%|████████████████████████████         | 33.2M/43.8M [00:01&lt;00:00, 30.9MB/s]
+
+ 84%|██████████████████████████████▉      | 36.6M/43.8M [00:01&lt;00:00, 31.4MB/s]
+
+ 92%|██████████████████████████████████   | 40.3M/43.8M [00:02&lt;00:00, 32.3MB/s]
+
+100%|████████████████████████████████████▉| 43.7M/43.8M [00:02&lt;00:00, 32.3MB/s]
+
+  0%|                                              | 0.00/43.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 43.8M/43.8M [00:00&lt;00:00, 203GB/s]
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+2025-04-18 09:40:40,636 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 0train: Score 0.786
+2025-04-18 09:40:40,795 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 1test: Score 0.802
+2025-04-18 09:40:41,074 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 0train: Score 0.797
+2025-04-18 09:40:41,361 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 1test: Score 0.774
+
+BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:11&lt;00:11, 11.92s/it]/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/43.1M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/43.1M [00:00&lt;09:15, 77.5kB/s]
+
+  0%|                                      | 39.9k/43.1M [00:00&lt;03:27, 207kB/s]
+
+  0%|                                      | 96.3k/43.1M [00:00&lt;02:01, 354kB/s]
+
+  0%|▏                                      | 144k/43.1M [00:00&lt;01:49, 392kB/s]
+
+  1%|▎                                      | 312k/43.1M [00:00&lt;00:52, 818kB/s]
+
+  1%|▌                                     | 640k/43.1M [00:00&lt;00:26, 1.58MB/s]
+
+  3%|█                                    | 1.30M/43.1M [00:00&lt;00:13, 3.08MB/s]
+
+  6%|██▎                                  | 2.62M/43.1M [00:00&lt;00:06, 6.06MB/s]
+
+ 12%|████▍                                | 5.15M/43.1M [00:00&lt;00:03, 11.6MB/s]
+
+ 18%|██████▌                              | 7.66M/43.1M [00:01&lt;00:02, 15.2MB/s]
+
+ 24%|████████▊                            | 10.2M/43.1M [00:01&lt;00:01, 18.0MB/s]
+
+ 30%|██████████▉                          | 12.7M/43.1M [00:01&lt;00:01, 19.6MB/s]
+
+ 39%|██████████████▍                      | 16.8M/43.1M [00:01&lt;00:01, 25.3MB/s]
+
+ 46%|█████████████████                    | 19.9M/43.1M [00:01&lt;00:00, 26.3MB/s]
+
+ 53%|███████████████████▍                 | 22.7M/43.1M [00:01&lt;00:00, 26.2MB/s]
+
+ 61%|██████████████████████▋              | 26.4M/43.1M [00:01&lt;00:00, 28.7MB/s]
+
+ 69%|█████████████████████████▍           | 29.7M/43.1M [00:01&lt;00:00, 29.5MB/s]
+
+ 76%|████████████████████████████▏        | 32.8M/43.1M [00:01&lt;00:00, 29.3MB/s]
+
+ 84%|███████████████████████████████▏     | 36.3M/43.1M [00:02&lt;00:00, 30.4MB/s]
+
+ 92%|██████████████████████████████████▏  | 39.8M/43.1M [00:02&lt;00:00, 31.3MB/s]
+
+  0%|                                              | 0.00/43.1M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 43.1M/43.1M [00:00&lt;00:00, 181GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/44.2M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/44.2M [00:00&lt;09:28, 77.7kB/s]
+
+  0%|                                      | 39.9k/44.2M [00:00&lt;03:32, 208kB/s]
+
+  0%|                                      | 96.3k/44.2M [00:00&lt;02:04, 356kB/s]
+
+  0%|▏                                      | 209k/44.2M [00:00&lt;01:09, 635kB/s]
+
+  1%|▎                                     | 432k/44.2M [00:00&lt;00:37, 1.17MB/s]
+
+  2%|▊                                     | 889k/44.2M [00:00&lt;00:19, 2.24MB/s]
+
+  4%|█▌                                   | 1.80M/44.2M [00:00&lt;00:09, 4.32MB/s]
+
+  8%|███                                  | 3.62M/44.2M [00:00&lt;00:04, 8.44MB/s]
+
+ 16%|██████                               | 7.26M/44.2M [00:00&lt;00:02, 16.5MB/s]
+
+ 25%|█████████▏                           | 11.0M/44.2M [00:01&lt;00:01, 22.4MB/s]
+
+ 32%|███████████▉                         | 14.2M/44.2M [00:01&lt;00:01, 24.7MB/s]
+
+ 40%|██████████████▊                      | 17.7M/44.2M [00:01&lt;00:00, 27.3MB/s]
+
+ 48%|█████████████████▉                   | 21.4M/44.2M [00:01&lt;00:00, 29.5MB/s]
+
+ 56%|████████████████████▌                | 24.6M/44.2M [00:01&lt;00:00, 30.0MB/s]
+
+ 65%|████████████████████████             | 28.8M/44.2M [00:01&lt;00:00, 32.7MB/s]
+
+ 74%|███████████████████████████▍         | 32.8M/44.2M [00:01&lt;00:00, 34.3MB/s]
+
+ 83%|██████████████████████████████▌      | 36.5M/44.2M [00:01&lt;00:00, 34.6MB/s]
+
+ 91%|█████████████████████████████████▌   | 40.1M/44.2M [00:01&lt;00:00, 34.4MB/s]
+
+ 99%|████████████████████████████████████▌| 43.7M/44.2M [00:02&lt;00:00, 34.4MB/s]
+
+  0%|                                              | 0.00/44.2M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.2M/44.2M [00:00&lt;00:00, 215GB/s]
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:278: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 6 s (baseline off), ~4.1 MiB, data loaded,
+ &#39;left_hand&#39;: 12
+ &#39;right_hand&#39;: 12&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+2025-04-18 09:40:51,674 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 0train: Score 0.577
+2025-04-18 09:40:51,821 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 1test: Score 0.499
+2025-04-18 09:40:52,199 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 0train: Score 0.551
+2025-04-18 09:40:52,512 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 1test: Score 0.471
+
+BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:23&lt;00:00, 11.47s/it]
+BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:23&lt;00:00, 11.53s/it]
 </pre></div>
 </div>
 <p>Results are returned as a pandas DataFrame, and from here you can do as you
@@ -720,16 +911,16 @@ want with them</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      score      time  samples  ... n_sessions       dataset  pipeline
-0  0.786458  0.031209    144.0  ...          2  BNCI2014-001    AM+LDA
-1  0.801698  0.028781    144.0  ...          2  BNCI2014-001    AM+LDA
-2  0.576582  0.025306    144.0  ...          2  BNCI2014-001    AM+LDA
-3  0.498650  0.024987    144.0  ...          2  BNCI2014-001    AM+LDA
-4  0.797068  0.151845    144.0  ...          2  BNCI2014-001    AM+SVM
+0  0.786458  0.034294    144.0  ...          2  BNCI2014-001    AM+LDA
+1  0.801698  0.027208    144.0  ...          2  BNCI2014-001    AM+LDA
+2  0.576582  0.021667    144.0  ...          2  BNCI2014-001    AM+LDA
+3  0.498650  0.021425    144.0  ...          2  BNCI2014-001    AM+LDA
+4  0.797068  0.148528    144.0  ...          2  BNCI2014-001    AM+SVM
 
 [5 rows x 9 columns]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.145 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.376 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  689 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-0-plot-getting-started-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

@@ -403,6 +403,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dataset_bubbles.html">Dataset bubble plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dreyer_clf_scores_vs_subj_info.html">Examples of analysis of a Dreyer2023 A dataset.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_filterbank_csp_vs_csp.html">FilterBank CSP versus CSP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
@@ -568,22 +569,86 @@ be overwritten if necessary.</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../../api/generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-009-WithinSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]No hdf5_path provided, models will not be saved.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-009-WithinSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]
+
+  0%|                                              | 0.00/18.5M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/18.5M [00:00&lt;03:51, 79.9kB/s]
+
+  0%|                                      | 39.9k/18.5M [00:00&lt;01:26, 214kB/s]
+
+  1%|▏                                     | 96.3k/18.5M [00:00&lt;00:50, 363kB/s]
+
+  1%|▍                                      | 201k/18.5M [00:00&lt;00:29, 615kB/s]
+
+  2%|▊                                     | 424k/18.5M [00:00&lt;00:15, 1.17MB/s]
+
+  5%|█▋                                    | 849k/18.5M [00:00&lt;00:08, 2.16MB/s]
+
+  9%|███▍                                 | 1.73M/18.5M [00:00&lt;00:03, 4.23MB/s]
+
+ 19%|██████▉                              | 3.47M/18.5M [00:00&lt;00:01, 8.23MB/s]
+
+ 36%|█████████████▏                       | 6.60M/18.5M [00:00&lt;00:00, 15.1MB/s]
+
+ 47%|█████████████████▌                   | 8.77M/18.5M [00:01&lt;00:00, 16.9MB/s]
+
+ 64%|███████████████████████▋             | 11.8M/18.5M [00:01&lt;00:00, 20.8MB/s]
+
+ 76%|████████████████████████████▏        | 14.1M/18.5M [00:01&lt;00:00, 21.1MB/s]
+
+ 92%|██████████████████████████████████▏  | 17.1M/18.5M [00:01&lt;00:00, 23.5MB/s]
+
+  0%|                                              | 0.00/18.5M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 18.5M/18.5M [00:00&lt;00:00, 78.1GB/s]
+No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-BNCI2014-009-WithinSession:  50%|█████     | 1/2 [00:09&lt;00:09,  9.31s/it]No hdf5_path provided, models will not be saved.
+BNCI2014-009-WithinSession:  50%|█████     | 1/2 [00:11&lt;00:11, 11.47s/it]
+
+  0%|                                              | 0.00/18.5M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/18.5M [00:00&lt;03:52, 79.8kB/s]
+
+  0%|                                      | 39.9k/18.5M [00:00&lt;01:26, 214kB/s]
+
+  1%|▏                                     | 96.3k/18.5M [00:00&lt;00:50, 365kB/s]
+
+  1%|▍                                      | 209k/18.5M [00:00&lt;00:28, 650kB/s]
+
+  2%|▊                                     | 392k/18.5M [00:00&lt;00:17, 1.05MB/s]
+
+  4%|█▋                                    | 808k/18.5M [00:00&lt;00:08, 2.06MB/s]
+
+  8%|██▉                                  | 1.47M/18.5M [00:00&lt;00:04, 3.49MB/s]
+
+ 16%|█████▉                               | 2.97M/18.5M [00:00&lt;00:02, 6.97MB/s]
+
+ 28%|██████████▏                          | 5.10M/18.5M [00:00&lt;00:01, 11.2MB/s]
+
+ 44%|████████████████                     | 8.06M/18.5M [00:01&lt;00:00, 16.6MB/s]
+
+ 55%|████████████████████▍                | 10.3M/18.5M [00:01&lt;00:00, 18.0MB/s]
+
+ 71%|██████████████████████████▏          | 13.1M/18.5M [00:01&lt;00:00, 20.8MB/s]
+
+ 93%|██████████████████████████████████▎  | 17.2M/18.5M [00:01&lt;00:00, 26.4MB/s]
+
+  0%|                                              | 0.00/18.5M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 18.5M/18.5M [00:00&lt;00:00, 55.2GB/s]
+No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-BNCI2014-009-WithinSession: 100%|██████████| 2/2 [00:18&lt;00:00,  9.42s/it]
-BNCI2014-009-WithinSession: 100%|██████████| 2/2 [00:18&lt;00:00,  9.40s/it]
+BNCI2014-009-WithinSession: 100%|██████████| 2/2 [00:22&lt;00:00, 11.46s/it]
+BNCI2014-009-WithinSession: 100%|██████████| 2/2 [00:22&lt;00:00, 11.46s/it]
 </pre></div>
 </div>
 </section>
@@ -610,7 +675,7 @@ BNCI2014-009-WithinSession: 100%|██████████| 2/2 [00:18&lt;0
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_within_session_p300_001.png" srcset="../../_images/sphx_glr_plot_within_session_p300_001.png" alt="plot within session p300" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.136 seconds)</p>
+<img src="../../_images/sphx_glr_plot_within_session_p300_001.png" srcset="../../_images/sphx_glr_plot_within_session_p300_001.png" alt="plot within session p300" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.095 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  246 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-paradigm-examples-plot-within-session-p300-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

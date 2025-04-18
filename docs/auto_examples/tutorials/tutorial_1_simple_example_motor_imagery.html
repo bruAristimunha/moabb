@@ -403,6 +403,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dataset_bubbles.html">Dataset bubble plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_dreyer_clf_scores_vs_subj_info.html">Examples of analysis of a Dreyer2023 A dataset.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_filterbank_csp_vs_csp.html">FilterBank CSP versus CSP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
@@ -576,7 +577,7 @@ paradigm (note that BNCI2014_001 is in it)</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="https://neurotechx.github.io/moabb/generated/moabb.paradigms.motor_imagery.BaseMotorImagery.html#moabb.paradigms.motor_imagery.BaseMotorImagery.datasets" title="moabb.paradigms.motor_imagery.BaseMotorImagery.datasets" class="sphx-glr-backref-module-moabb-paradigms-motor_imagery sphx-glr-backref-type-py-property"><span class="n">paradigm</span><span class="o">.</span><span class="n">datasets</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f2523588220&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f252358a470&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7f252358b3d0&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7f25235884f0&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f2523588b80&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f2522c5b8b0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f252358bca0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f2522c59d80&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f2522c58520&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f2522c58880&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f2522c58760&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f2522c5a4a0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f2522c5b5e0&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f2522c58f70&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f2522c59720&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f2522c5a7d0&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f2522c59030&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f2522c587c0&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f607a42d870&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f607a42fa30&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7f607a42ed40&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7f607a42ce80&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f607a42e500&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f607a42da80&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f607a42e0e0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f607a2810f0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f607a2833a0&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f607a2800d0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f607a282170&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f607a2807c0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f607a281750&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f607a280bb0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f607a282a40&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f607a283520&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f607a280130&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f607a281360&gt;]
 </pre></div>
 </div>
 <p>The data from a list of subjects could be preprocessed and return as a 3D
@@ -625,14 +626,114 @@ partition and the remaining one as testing partition.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-001-WithinSession:   0%|          | 0/3 [00:00&lt;?, ?it/s]No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-BNCI2014-001-WithinSession:  33%|███▎      | 1/3 [00:06&lt;00:13,  6.81s/it]No hdf5_path provided, models will not be saved.
+BNCI2014-001-WithinSession:  33%|███▎      | 1/3 [00:06&lt;00:13,  6.65s/it]No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-BNCI2014-001-WithinSession:  67%|██████▋   | 2/3 [00:13&lt;00:06,  6.79s/it]No hdf5_path provided, models will not be saved.
+BNCI2014-001-WithinSession:  67%|██████▋   | 2/3 [00:13&lt;00:06,  6.64s/it]
+
+  0%|                                              | 0.00/44.1M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/44.1M [00:00&lt;09:27, 77.6kB/s]
+
+  0%|                                      | 39.9k/44.1M [00:00&lt;03:32, 207kB/s]
+
+  0%|                                      | 96.3k/44.1M [00:00&lt;02:04, 354kB/s]
+
+  0%|▏                                      | 209k/44.1M [00:00&lt;01:09, 631kB/s]
+
+  1%|▎                                     | 432k/44.1M [00:00&lt;00:37, 1.16MB/s]
+
+  2%|▊                                     | 889k/44.1M [00:00&lt;00:19, 2.22MB/s]
+
+  4%|█▌                                   | 1.80M/44.1M [00:00&lt;00:09, 4.29MB/s]
+
+  8%|███                                  | 3.60M/44.1M [00:00&lt;00:04, 8.29MB/s]
+
+ 15%|█████▍                               | 6.53M/44.1M [00:00&lt;00:02, 14.3MB/s]
+
+ 20%|███████▍                             | 8.79M/44.1M [00:01&lt;00:02, 16.4MB/s]
+
+ 26%|█████████▋                           | 11.6M/44.1M [00:01&lt;00:01, 19.5MB/s]
+
+ 32%|███████████▊                         | 14.0M/44.1M [00:01&lt;00:01, 20.3MB/s]
+
+ 38%|██████████████                       | 16.7M/44.1M [00:01&lt;00:01, 21.8MB/s]
+
+ 47%|█████████████████▍                   | 20.8M/44.1M [00:01&lt;00:00, 26.9MB/s]
+
+ 54%|███████████████████▉                 | 23.8M/44.1M [00:01&lt;00:00, 27.2MB/s]
+
+ 60%|██████████████████████▎              | 26.6M/44.1M [00:01&lt;00:00, 26.9MB/s]
+
+ 69%|█████████████████████████▌           | 30.4M/44.1M [00:01&lt;00:00, 29.6MB/s]
+
+ 76%|████████████████████████████▏        | 33.6M/44.1M [00:01&lt;00:00, 29.7MB/s]
+
+ 83%|██████████████████████████████▋      | 36.6M/44.1M [00:02&lt;00:00, 29.0MB/s]
+
+ 91%|█████████████████████████████████▋   | 40.1M/44.1M [00:02&lt;00:00, 30.3MB/s]
+
+ 98%|████████████████████████████████████▍| 43.3M/44.1M [00:02&lt;00:00, 30.3MB/s]
+
+  0%|                                              | 0.00/44.1M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.1M/44.1M [00:00&lt;00:00, 138GB/s]
+
+
+  0%|                                              | 0.00/42.3M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/42.3M [00:00&lt;09:01, 78.1kB/s]
+
+  0%|                                      | 39.9k/42.3M [00:00&lt;03:22, 209kB/s]
+
+  0%|                                      | 96.3k/42.3M [00:00&lt;01:58, 357kB/s]
+
+  0%|▏                                      | 201k/42.3M [00:00&lt;01:09, 605kB/s]
+
+  1%|▎                                      | 369k/42.3M [00:00&lt;00:43, 960kB/s]
+
+  2%|▌                                     | 648k/42.3M [00:00&lt;00:27, 1.53MB/s]
+
+  3%|█                                    | 1.22M/42.3M [00:00&lt;00:14, 2.79MB/s]
+
+  4%|█▋                                   | 1.88M/42.3M [00:00&lt;00:10, 3.89MB/s]
+
+  9%|███▏                                 | 3.70M/42.3M [00:00&lt;00:04, 8.05MB/s]
+
+ 15%|█████▌                               | 6.41M/42.3M [00:01&lt;00:02, 13.4MB/s]
+
+ 21%|███████▊                             | 8.97M/42.3M [00:01&lt;00:01, 16.7MB/s]
+
+ 28%|██████████▏                          | 11.6M/42.3M [00:01&lt;00:01, 19.3MB/s]
+
+ 34%|████████████▍                        | 14.3M/42.3M [00:01&lt;00:01, 21.1MB/s]
+
+ 40%|██████████████▊                      | 17.0M/42.3M [00:01&lt;00:01, 22.5MB/s]
+
+ 46%|█████████████████▏                   | 19.6M/42.3M [00:01&lt;00:00, 23.2MB/s]
+
+ 53%|███████████████████▌                 | 22.4M/42.3M [00:01&lt;00:00, 24.0MB/s]
+
+ 59%|█████████████████████▊               | 25.0M/42.3M [00:01&lt;00:00, 24.3MB/s]
+
+ 66%|████████████████████████▏            | 27.7M/42.3M [00:01&lt;00:00, 24.7MB/s]
+
+ 72%|██████████████████████████▌          | 30.3M/42.3M [00:02&lt;00:00, 24.7MB/s]
+
+ 78%|████████████████████████████▉        | 33.0M/42.3M [00:02&lt;00:00, 24.9MB/s]
+
+ 84%|███████████████████████████████▏     | 35.6M/42.3M [00:02&lt;00:00, 24.9MB/s]
+
+ 91%|█████████████████████████████████▌   | 38.3M/42.3M [00:02&lt;00:00, 25.1MB/s]
+
+ 97%|███████████████████████████████████▊ | 41.0M/42.3M [00:02&lt;00:00, 25.0MB/s]
+
+  0%|                                              | 0.00/42.3M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.3M/42.3M [00:00&lt;00:00, 147GB/s]
+No hdf5_path provided, models will not be saved.
 No hdf5_path provided, models will not be saved.
 
-BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:20&lt;00:00,  6.72s/it]
-BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:20&lt;00:00,  6.74s/it]
+BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:26&lt;00:00,  9.50s/it]
+BNCI2014-001-WithinSession: 100%|██████████| 3/3 [00:26&lt;00:00,  8.73s/it]
 </pre></div>
 </div>
 <p>The results are stored in locally, to avoid recomputing the results each time.
@@ -660,7 +761,7 @@ strings for its labeling. This is why we create the field ‘subj’.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_001.png" srcset="../../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_001.png" alt="tutorial 1 simple example motor imagery" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.654 seconds)</p>
+<img src="../../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_001.png" srcset="../../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_001.png" alt="tutorial 1 simple example motor imagery" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 35.214 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  1037 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-1-simple-example-motor-imagery-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
