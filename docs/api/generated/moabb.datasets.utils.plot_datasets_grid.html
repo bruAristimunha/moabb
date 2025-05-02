@@ -12,7 +12,7 @@
     <link rel="icon" sizes="144x144" href="../../_static/favicon-144.png" type="image/png">
     <link rel="mask-icon" href="../../_static/favicon_mask-icon.svg" color="#222832" type="image/svg+xml">
     <link rel="apple-touch-icon" sizes="500x500" href="../../_static/favicon-500.png" type="image/png">
-    <title>moabb.datasets.BI2012 &#8212; moabb 1.2.0-dev documentation</title>
+    <title>moabb.datasets.utils.plot_datasets_grid &#8212; moabb 1.2.0-dev documentation</title>
   
   
   
@@ -71,7 +71,7 @@
                 gtag('js', new Date());
                 gtag('config', 'G-5WJBKDMSTE');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/moabb.datasets.BI2012';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/moabb.datasets.utils.plot_datasets_grid';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -404,7 +404,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">moabb.datasets.BI2012</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">moabb.datasets.utils.plot_datasets_grid</span></li>
   </ul>
 </nav>
 </div>
@@ -421,111 +421,51 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="moabb-datasets-bi2012">
-<h1>moabb.datasets.BI2012<a class="headerlink" href="#moabb-datasets-bi2012" title="Link to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="moabb.datasets.BI2012">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.datasets.</span></span><span class="sig-name descname"><span class="pre">BI2012</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Online</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/datasets/braininvaders.py#L414-L471"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.datasets.BI2012" title="Link to this definition">#</a></dt>
-<dd><p>P300 dataset BI2012 from a “Brain Invaders” experiment.</p>
-<p><strong>PapersWithCode leaderboard:</strong> <a class="reference external" href="https://paperswithcode.com/dataset/braininvaders2012-moabb">https://paperswithcode.com/dataset/braininvaders2012-moabb</a></p>
-<div class="admonition-dataset-summary admonition">
-<p class="admonition-title">Dataset summary</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>#Subj</strong></p></td>
-<td><p>25</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>#Chan</strong></p></td>
-<td><p>16</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>#Trials / class</strong></p></td>
-<td><p>640 NT / 128 T</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Trials length</strong></p></td>
-<td><p>1 s</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Freq</strong></p></td>
-<td><p>128 Hz</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>#Sessions</strong></p></td>
-<td><p>2</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Dataset following the setup from <a class="reference internal" href="#rd420735ae6ab-1" id="id1">[1]</a> carried-out at University of
-Grenoble Alpes.</p>
-<p>This dataset contains electroencephalographic (EEG) recordings of 25 subjects testing
-the Brain Invaders, a visual P300 Brain-Computer Interface inspired by the famous vintage
-video game Space Invaders (Taito, Tokyo, Japan). The visual P300 is an event-related
-potential elicited by a visual stimulation, peaking 240-600 ms after stimulus onset. EEG
-data were recorded by 16 electrodes in an experiment that took place in the GIPSA-lab,
-Grenoble, France, in 2012). A full description of the experiment is available in <a class="reference internal" href="#rd420735ae6ab-1" id="id2">[1]</a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Principal Investigator<span class="colon">:</span></dt>
-<dd class="field-odd"><p>B.Sc. Gijsbrecht Franciscus Petrus Van Veen</p>
-</dd>
-<dt class="field-even">Technical Supervisors<span class="colon">:</span></dt>
-<dd class="field-even"><p>Ph.D. Alexandre Barachant, Eng. Anton Andreev, Eng. Grégoire Cattan,
-Eng. Pedro. L. C. Rodrigues</p>
-</dd>
-<dt class="field-odd">Scientific Supervisor<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Ph.D. Marco Congedo</p>
-</dd>
-<dt class="field-even">ID of the dataset<span class="colon">:</span></dt>
-<dd class="field-even"><p>BI.EEG.2012-GIPSA</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">BI2012</span></code> was previously named <code class="docutils literal notranslate"><span class="pre">bi2012</span></code>. <code class="docutils literal notranslate"><span class="pre">bi2012</span></code> will be removed in  version 1.1.</p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.4.6.</span></p>
-</div>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="rd420735ae6ab-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
-<p>Van Veen, G., Barachant, A., Andreev, A., Cattan, G., Rodrigues, P. C., &amp;
-Congedo, M. (2019). Building Brain Invaders: EEG data of an experimental validation.
-arXiv preprint arXiv:1905.05182.</p>
-</div>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="moabb.datasets.BI2012.data_path">
-<span class="sig-name descname"><span class="pre">data_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/datasets/braininvaders.py#L468-L471"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.datasets.BI2012.data_path" title="Link to this definition">#</a></dt>
-<dd><p>Get path to local copy of a subject data.</p>
+  <section id="moabb-datasets-utils-plot-datasets-grid">
+<h1>moabb.datasets.utils.plot_datasets_grid<a class="headerlink" href="#moabb-datasets-utils-plot-datasets-grid" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="moabb.datasets.utils.plot_datasets_grid">
+<span class="sig-prename descclassname"><span class="pre">moabb.datasets.utils.</span></span><span class="sig-name descname"><span class="pre">plot_datasets_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset"><span class="pre">BaseDataset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/datasets/utils.py#L474-L550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.datasets.utils.plot_datasets_grid" title="Link to this definition">#</a></dt>
+<dd><p>Plots all the MOABB datasets in one figure, distributed on a grid.</p>
+<p>This uses the <a class="reference internal" href="moabb.analysis.plotting.dataset_bubble_plot.html#moabb.analysis.plotting.dataset_bubble_plot" title="moabb.analysis.plotting.dataset_bubble_plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataset_bubble_plot()</span></code></a> function to
+plot the datasets.
+The datasets are sorted in alphabetical order and
+plotted in a grid with n_col columns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of subject to use</p></li>
-<li><p><strong>path</strong> (<em>None</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Location of where to look for the data storing location.
-If None, the environment variable or config parameter
-<code class="docutils literal notranslate"><span class="pre">MNE_DATASETS_(dataset)_PATH</span></code> is used. If it doesn’t exist, the
-“~/mne_data” directory is used. If the dataset
-is not found under the given path, the data
-will be automatically downloaded to the specified folder.</p></li>
-<li><p><strong>force_update</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Force update of the dataset even if a local copy exists.</p></li>
-<li><p><strong>update_path</strong> (bool | None <strong>Deprecated</strong>) – If True, set the MNE_DATASETS_(dataset)_PATH in mne-python
-config to the given path. If None, the user is prompted.</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, or </em><em>None</em>) – If not None, override default verbose level
-(see <a class="reference external" href="https://mne.tools/stable/generated/mne.verbose.html#mne.verbose" title="(in MNE v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mne.verbose()</span></code></a>).</p></li>
+<li><p><strong>datasets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference internal" href="moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset"><em>BaseDataset</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>] </em><em>| </em><em>None</em>) – <p>List of datasets to plot. If None, all datasets are plotted.
+If an element of the list is a dictionary, it is assumed to
+have the following keys:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>dataset_name: str</dt><dd><p>Name of the dataset.</p>
+</dd>
+<dt>paradigm: str</dt><dd><p>Paradigm of the dataset (e.g., ‘imagery’, ‘p300’).</p>
+</dd>
+<dt>n_subjects: int</dt><dd><p>Number of subjects in the dataset.</p>
+</dd>
+<dt>n_sessions: int</dt><dd><p>Number of sessions in the dataset.</p>
+</dd>
+<dt>n_trials: int</dt><dd><p>Number of trials in the dataset.</p>
+</dd>
+<dt>trial_len: float</dt><dd><p>Length of each trial in seconds.</p>
+</dd>
+</dl>
+</div></blockquote>
+</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Height of each subplot in inches.</p></li>
+<li><p><strong>n_col</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of columns in the figure.</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Additional arguments to pass to the dataset_bubble_plot function.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>path</strong> – Local path to the given data file. This path is contained inside a
-list of length one, for compatibility.</p>
+<dd class="field-even"><p><strong>fig</strong> – Pyplot handle</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+<dd class="field-odd"><p>Figure</p>
 </dd>
 </dl>
-</dd></dl>
-
 </dd></dl>
 
 <div style='clear:both'></div></section>
@@ -559,10 +499,7 @@ list of length one, for compatibility.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.datasets.BI2012"><code class="docutils literal notranslate"><span class="pre">BI2012</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.datasets.BI2012.data_path"><code class="docutils literal notranslate"><span class="pre">BI2012.data_path()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moabb.datasets.utils.plot_datasets_grid"><code class="docutils literal notranslate"><span class="pre">plot_datasets_grid()</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -534,6 +534,20 @@ people and one that can be downloaded quickly.</p>
 <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="../../api/generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset.get_data" title="moabb.datasets.base.BaseDataset.get_data" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-method"><span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span></a><span class="p">(</span><span class="n">cache_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_dir</span></a><span class="p">,</span> <span class="n">save_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|                                              | 0.00/17.3M [00:00&lt;?, ?B/s]
+  0%|                                      | 11.3k/17.3M [00:00&lt;02:51, 101kB/s]
+  1%|▏                                     | 96.3k/17.3M [00:00&lt;00:49, 351kB/s]
+  3%|▉                                     | 436k/17.3M [00:00&lt;00:15, 1.09MB/s]
+  9%|███▏                                 | 1.51M/17.3M [00:00&lt;00:04, 3.76MB/s]
+ 18%|██████▌                              | 3.10M/17.3M [00:00&lt;00:01, 7.21MB/s]
+ 32%|███████████▉                         | 5.62M/17.3M [00:00&lt;00:00, 12.4MB/s]
+ 53%|███████████████████▌                 | 9.19M/17.3M [00:00&lt;00:00, 16.0MB/s]
+ 75%|███████████████████████████▋         | 12.9M/17.3M [00:01&lt;00:00, 21.6MB/s]
+ 92%|██████████████████████████████████   | 15.9M/17.3M [00:01&lt;00:00, 23.9MB/s]
+  0%|                                              | 0.00/17.3M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 17.3M/17.3M [00:00&lt;00:00, 72.6GB/s]
+</pre></div>
+</div>
 </section>
 <section id="before-after-folder-structure">
 <h2>Before / after folder structure<a class="headerlink" href="#before-after-folder-structure" title="Link to this heading">#</a></h2>
@@ -585,20 +599,20 @@ standard and can vary from one dataset to another.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>After conversion:
 └──MNE-BIDS-alexandre-motor-imagery
+   ├──participants.json
    ├──sub-1
    │  ├──sub-1_desc-2f4a2e6207d30d406bb04b5b1aae5195_lockfile.json
    │  └──ses-0
-   │     ├──eeg
-   │     │  ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_events.json
-   │     │  ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_channels.tsv
-   │     │  ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_events.tsv
-   │     │  ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_eeg.json
-   │     │  └──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_eeg.edf
-   │     └──sub-1_ses-0_scans.tsv
-   ├──dataset_description.json
+   │     ├──sub-1_ses-0_scans.tsv
+   │     └──eeg
+   │        ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_channels.tsv
+   │        ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_events.json
+   │        ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_eeg.json
+   │        ├──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_eeg.edf
+   │        └──sub-1_ses-0_task-imagery_run-0_desc-2f4a2e6207d30d406bb04b5b1aae5195_events.tsv
    ├──participants.tsv
-   ├──README
-   └──participants.json
+   ├──dataset_description.json
+   └──README
 </pre></div>
 </div>
 <p>In the BIDS version of our dataset, the raw files are saved in EDF.
@@ -648,8 +662,8 @@ Université de Grenoble).
 <a class="reference external" href="https://tel.archives-ouvertes.fr/tel-01196752">https://tel.archives-ouvertes.fr/tel-01196752</a></p>
 </aside>
 </aside>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.353 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  411 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.194 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  245 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-management-and-configuration-plot-bids-conversion-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c3ebeb9988635652b155b2686d2f88b7/plot_bids_conversion.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_bids_conversion.ipynb</span></code></a></p>

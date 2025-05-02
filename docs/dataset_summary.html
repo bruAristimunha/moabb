@@ -445,6 +445,15 @@ Dataset, #Subj, #Chan, #Classes, #Trials, Trial length, Freq, #Session, #Runs, T
 </ul>
 </dd>
 </dl>
+<p><strong>Datasets overview:</strong></p>
+<p>A visual overview of all datasets can be generated using the functions <a class="reference internal" href="api/generated/moabb.datasets.utils.plot_datasets_grid.html#moabb.datasets.utils.plot_datasets_grid" title="moabb.datasets.utils.plot_datasets_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">moabb.datasets.utils.plot_datasets_grid()</span></code></a>
+or <a class="reference internal" href="api/generated/moabb.datasets.utils.plot_datasets_cluster.html#moabb.datasets.utils.plot_datasets_cluster" title="moabb.datasets.utils.plot_datasets_cluster"><code class="xref py py-func docutils literal notranslate"><span class="pre">moabb.datasets.utils.plot_datasets_cluster()</span></code></a>.
+This overview allows to quickly compare the number of subjects, trials, and sessions across different datasets.
+The function will generate a figure like this:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/datasets_overview.png"><img alt="Visual overview from the datasets used on the `The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark &lt;https://universite-paris-saclay.hal.science/hal-04537061v1/file/MOABB-arXiv.pdf&gt;`_" src="_images/datasets_overview.png" style="width: 100%;" />
+</a>
+</figure>
 </section>
 <section id="motor-imagery">
 <h1>Motor Imagery<a class="headerlink" href="#motor-imagery" title="Link to this heading">#</a></h1>
@@ -1130,7 +1139,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <th class="head"><p>#Epochs classes</p></th>
 <th class="head"><p>#Epochs / class</p></th>
 <th class="head"><p>Codes</p></th>
-<th class="head"><p>Presentation rate</p></th>
+<th class="head"><p>Presentation rate (Hz)</p></th>
 <th class="head"><p>PapersWithCode leaderboard</p></th>
 </tr>
 </thead>
@@ -1146,7 +1155,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>27216 NT / 27216 T</p></td>
 <td><p>Gold codes</p></td>
-<td><p>120Hz</p></td>
+<td><p>120</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/generated/moabb.datasets.Thielen2021.html#moabb.datasets.Thielen2021" title="moabb.datasets.Thielen2021"><code class="xref py py-class docutils literal notranslate"><span class="pre">Thielen2021</span></code></a></p></td>
@@ -1160,7 +1169,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>18900 NT / 18900 T</p></td>
 <td><p>Gold codes</p></td>
-<td><p>60Hz</p></td>
+<td><p>60</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/generated/moabb.datasets.CastillosCVEP100.html#moabb.datasets.CastillosCVEP100" title="moabb.datasets.CastillosCVEP100"><code class="xref py py-class docutils literal notranslate"><span class="pre">CastillosCVEP100</span></code></a></p></td>
@@ -1174,7 +1183,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>3525 NT / 3495 T</p></td>
 <td><p>m-sequence</p></td>
-<td><p>60Hz</p></td>
+<td><p>60</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/generated/moabb.datasets.CastillosCVEP40.html#moabb.datasets.CastillosCVEP40" title="moabb.datasets.CastillosCVEP40"><code class="xref py py-class docutils literal notranslate"><span class="pre">CastillosCVEP40</span></code></a></p></td>
@@ -1188,7 +1197,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>3525 NT / 3495 T</p></td>
 <td><p>m-sequence</p></td>
-<td><p>60Hz</p></td>
+<td><p>60</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/generated/moabb.datasets.CastillosBurstVEP40.html#moabb.datasets.CastillosBurstVEP40" title="moabb.datasets.CastillosBurstVEP40"><code class="xref py py-class docutils literal notranslate"><span class="pre">CastillosBurstVEP40</span></code></a></p></td>
@@ -1202,7 +1211,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>5820 NT / 1200 T</p></td>
 <td><p>Burst-CVEP</p></td>
-<td><p>60Hz</p></td>
+<td><p>60</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/generated/moabb.datasets.CastillosBurstVEP100.html#moabb.datasets.CastillosBurstVEP100" title="moabb.datasets.CastillosBurstVEP100"><code class="xref py py-class docutils literal notranslate"><span class="pre">CastillosBurstVEP100</span></code></a></p></td>
@@ -1216,7 +1225,7 @@ DOI: <a class="reference external" href="https://doi.org/10.1088/1741-2552/ac38c
 <td><p>2</p></td>
 <td><p>5820 NT / 1200 T</p></td>
 <td><p>Burst-CVEP</p></td>
-<td><p>60Hz</p></td>
+<td><p>60</p></td>
 <td><p>No</p></td>
 </tr>
 </tbody>
