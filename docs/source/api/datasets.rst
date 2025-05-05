@@ -120,6 +120,8 @@ Base & Utils
     :template: class.rst
 
     base.BaseDataset
+    base.BaseBIDSDataset
+    base.LocalBIDSDataset
     base.CacheConfig
     fake.FakeDataset
     fake.FakeVirtualRealityDataset
@@ -138,6 +140,8 @@ Base & Utils
     download.fs_get_file_name
     utils.dataset_search
     utils.find_intersecting_channels
+    utils.plot_datasets_grid
+    utils.plot_datasets_cluster
 
 
 ====================
