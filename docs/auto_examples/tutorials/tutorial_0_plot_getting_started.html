@@ -400,6 +400,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/tutorial_6_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -409,6 +410,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_hinss2021_classification.html">Hinss2021 classification example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_and_scikit_estimators.html">MNE Epochs-based pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_features_pipeline.html">Pipelines using the mne-features library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
@@ -556,14 +558,14 @@ is the name of the pipeline and the value is the Pipeline object</p>
   set_config(key, temp_dir)
 /home/runner/work/moabb/moabb/moabb/datasets/fake.py:93: RuntimeWarning: Setting non-standard config type: &quot;MNE_DATASETS_FAKEVIRTUALREALITYDATASET-P300-21-1--60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60-60--120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120-120--TARGET-NONTARGET--C3-CZ-C4_PATH&quot;
   set_config(key, temp_dir)
-[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f4b226fb8e0&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f4b226fb910&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7f4b226fb880&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7f4b226faa10&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f4b226fa4a0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f4b226f9750&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f4b2afd3970&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f4b226fbb50&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f4b226fb940&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f4b22765960&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f4b22764370&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f4b22724430&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f4b226fab90&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f4b2a8d40d0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f4b227642e0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f4b23783f10&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f4b226fadd0&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7f4b23783d00&gt;]
+[&lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7ff6926c9270&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7ff6926cab30&gt;, &lt;moabb.datasets.beetl.Beetl2021_A object at 0x7ff692fcd0f0&gt;, &lt;moabb.datasets.beetl.Beetl2021_B object at 0x7ff6926ca230&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7ff699f55e70&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7ff693010ee0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7ff6926c96c0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7ff693010310&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7ff693011d80&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7ff693011210&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7ff691da8bb0&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7ff691da8af0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7ff691da8c40&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7ff692790c10&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7ff693011fc0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7ff692790e80&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7ff692793670&gt;, &lt;moabb.datasets.Zhou2016.Zhou2016 object at 0x7ff692791060&gt;]
 </pre></div>
 </div>
 <p>Or you can run a search through the available datasets:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="../../api/generated/moabb.datasets.utils.dataset_search.html#moabb.datasets.utils.dataset_search" title="moabb.datasets.utils.dataset_search" class="sphx-glr-backref-module-moabb-datasets-utils sphx-glr-backref-type-py-function"><span class="n">utils</span><span class="o">.</span><span class="n">dataset_search</span></a><span class="p">(</span><a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">,</span> <span class="n">min_subjects</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7f4b226fb460&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7f4b226f81c0&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7f4b226fa9b0&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7f4b226f9ae0&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7f4b226fb970&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7f4b226f9c00&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7f4b226fa4a0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7f4b226f8130&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7f4b226f8370&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7f4b226f9cc0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7f4b226fa200&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7f4b226f8190&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7f4b237839d0&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7f4b23783040&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7f4b23781270&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7f4b226f9a80&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7f4b23783d00&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7f4b237829b0&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7f4b23783f10&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017B object at 0x7f4b23780df0&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7f4b23781330&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7f4b237815a0&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;moabb.datasets.alex_mi.AlexMI object at 0x7ff691da8bb0&gt;, &lt;moabb.datasets.bnci.BNCI2014_001 object at 0x7ff692bc3940&gt;, &lt;moabb.datasets.bnci.BNCI2014_002 object at 0x7ff692bc24a0&gt;, &lt;moabb.datasets.bnci.BNCI2014_004 object at 0x7ff693b58f40&gt;, &lt;moabb.datasets.bnci.BNCI2015_001 object at 0x7ff693b5a0b0&gt;, &lt;moabb.datasets.bnci.BNCI2015_004 object at 0x7ff693b5a2c0&gt;, &lt;moabb.datasets.gigadb.Cho2017 object at 0x7ff693b5b430&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023 object at 0x7ff693b5bc10&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023A object at 0x7ff693b597e0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023B object at 0x7ff693b5b5e0&gt;, &lt;moabb.datasets.dreyer2023.Dreyer2023C object at 0x7ff693b59e70&gt;, &lt;moabb.datasets.fake.FakeDataset object at 0x7ff6927900d0&gt;, &lt;moabb.datasets.mpi_mi.GrosseWentrup2009 object at 0x7ff692791a50&gt;, &lt;moabb.datasets.Lee2019.Lee2019_MI object at 0x7ff692791060&gt;, &lt;moabb.datasets.liu2024.Liu2024 object at 0x7ff692790e80&gt;, &lt;moabb.datasets.upper_limb.Ofner2017 object at 0x7ff6927916c0&gt;, &lt;moabb.datasets.physionet_mi.PhysionetMI object at 0x7ff692793670&gt;, &lt;moabb.datasets.schirrmeister2017.Schirrmeister2017 object at 0x7ff692790400&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017A object at 0x7ff692790c10&gt;, &lt;moabb.datasets.bbci_eeg_fnirs.Shin2017B object at 0x7ff692790460&gt;, &lt;moabb.datasets.stieger2021.Stieger2021 object at 0x7ff692790fa0&gt;, &lt;moabb.datasets.Weibo2014.Weibo2014 object at 0x7ff692790f70&gt;]
 </pre></div>
 </div>
 <p>Or you can simply make your own list (which we do here due to computational
@@ -600,24 +602,250 @@ subjects. This also is the correct place to specify multiple threads.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/analysis/results.py:93: RuntimeWarning: Setting non-standard config type: &quot;MOABB_RESULTS&quot;
   set_config(&quot;MOABB_RESULTS&quot;, osp.join(osp.expanduser(&quot;~&quot;), &quot;mne_data&quot;))
-2025-05-06 16:44:12,209 INFO MainThread moabb.evaluations.base Processing dataset: BNCI2014-001
+2025-05-20 21:35:15,265 INFO MainThread moabb.evaluations.base Processing dataset: BNCI2014-001
 
 BNCI2014-001-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]MNE_DATA is not already configured. It will be set to default location in the home directory - /home/runner/mne_data
 All datasets will be downloaded to this location, if anything is already downloaded, please move manually to this location
 /home/runner/work/moabb/moabb/moabb/datasets/download.py:57: RuntimeWarning: Setting non-standard config type: &quot;MNE_DATASETS_BNCI_PATH&quot;
   set_config(key, get_config(&quot;MNE_DATA&quot;))
-2025-05-06 16:44:16,561 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 0train: Score 0.786
-2025-05-06 16:44:16,706 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 1test: Score 0.802
-2025-05-06 16:44:16,973 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 0train: Score 0.797
-2025-05-06 16:44:17,251 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 1test: Score 0.774
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
 
-BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:05&lt;00:05,  5.17s/it]2025-05-06 16:44:21,645 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 0train: Score 0.577
-2025-05-06 16:44:21,786 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 1test: Score 0.499
-2025-05-06 16:44:22,158 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 0train: Score 0.551
-2025-05-06 16:44:22,459 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 1test: Score 0.471
 
-BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:10&lt;00:00,  5.20s/it]
-BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:10&lt;00:00,  5.19s/it]
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/42.8M [00:00&lt;09:01, 79.0kB/s]
+
+  0%|                                      | 56.3k/42.8M [00:00&lt;02:21, 303kB/s]
+
+  0%|▏                                      | 144k/42.8M [00:00&lt;01:18, 547kB/s]
+
+  1%|▎                                     | 329k/42.8M [00:00&lt;00:41, 1.02MB/s]
+
+  2%|▌                                     | 696k/42.8M [00:00&lt;00:22, 1.91MB/s]
+
+  3%|█▏                                   | 1.42M/42.8M [00:00&lt;00:11, 3.61MB/s]
+
+  7%|██▍                                  | 2.88M/42.8M [00:00&lt;00:05, 6.94MB/s]
+
+ 12%|████▎                                | 5.04M/42.8M [00:00&lt;00:03, 11.3MB/s]
+
+ 16%|█████▉                               | 6.93M/42.8M [00:00&lt;00:02, 13.3MB/s]
+
+ 21%|███████▊                             | 8.99M/42.8M [00:01&lt;00:02, 15.3MB/s]
+
+ 26%|█████████▍                           | 11.0M/42.8M [00:01&lt;00:01, 16.3MB/s]
+
+ 30%|███████████▏                         | 13.0M/42.8M [00:01&lt;00:01, 17.2MB/s]
+
+ 35%|█████████████                        | 15.0M/42.8M [00:01&lt;00:01, 17.9MB/s]
+
+ 40%|██████████████▊                      | 17.1M/42.8M [00:01&lt;00:01, 18.3MB/s]
+
+ 45%|████████████████▌                    | 19.1M/42.8M [00:01&lt;00:01, 18.6MB/s]
+
+ 49%|██████████████████▎                  | 21.2M/42.8M [00:01&lt;00:01, 18.9MB/s]
+
+ 54%|████████████████████                 | 23.2M/42.8M [00:01&lt;00:01, 19.0MB/s]
+
+ 61%|██████████████████████▌              | 26.0M/42.8M [00:01&lt;00:00, 21.3MB/s]
+
+ 66%|████████████████████████▌            | 28.4M/42.8M [00:02&lt;00:00, 21.6MB/s]
+
+ 72%|██████████████████████████▌          | 30.7M/42.8M [00:02&lt;00:00, 21.6MB/s]
+
+ 77%|████████████████████████████▋        | 33.1M/42.8M [00:02&lt;00:00, 22.2MB/s]
+
+ 83%|██████████████████████████████▊      | 35.6M/42.8M [00:02&lt;00:00, 22.5MB/s]
+
+ 89%|████████████████████████████████▊    | 37.9M/42.8M [00:02&lt;00:00, 22.4MB/s]
+
+ 94%|██████████████████████████████████▊  | 40.3M/42.8M [00:02&lt;00:00, 22.5MB/s]
+
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.8M/42.8M [00:00&lt;00:00, 128GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/43.8M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/43.8M [00:00&lt;09:15, 78.8kB/s]
+
+  0%|                                      | 56.3k/43.8M [00:00&lt;02:24, 302kB/s]
+
+  0%|▏                                      | 144k/43.8M [00:00&lt;01:19, 546kB/s]
+
+  1%|▎                                     | 329k/43.8M [00:00&lt;00:42, 1.02MB/s]
+
+  2%|▌                                     | 696k/43.8M [00:00&lt;00:22, 1.91MB/s]
+
+  3%|█▏                                   | 1.42M/43.8M [00:00&lt;00:11, 3.61MB/s]
+
+  7%|██▍                                  | 2.88M/43.8M [00:00&lt;00:05, 6.95MB/s]
+
+ 13%|████▊                                | 5.62M/43.8M [00:00&lt;00:02, 13.0MB/s]
+
+ 19%|██████▊                              | 8.13M/43.8M [00:00&lt;00:02, 16.4MB/s]
+
+ 24%|████████▋                            | 10.3M/43.8M [00:01&lt;00:01, 17.8MB/s]
+
+ 29%|██████████▋                          | 12.7M/43.8M [00:01&lt;00:01, 19.2MB/s]
+
+ 35%|████████████▊                        | 15.1M/43.8M [00:01&lt;00:01, 20.3MB/s]
+
+ 40%|██████████████▊                      | 17.5M/43.8M [00:01&lt;00:01, 20.9MB/s]
+
+ 45%|████████████████▊                    | 19.8M/43.8M [00:01&lt;00:01, 21.4MB/s]
+
+ 51%|██████████████████▊                  | 22.2M/43.8M [00:01&lt;00:00, 21.7MB/s]
+
+ 56%|████████████████████▋                | 24.5M/43.8M [00:01&lt;00:00, 21.9MB/s]
+
+ 61%|██████████████████████▋              | 26.9M/43.8M [00:01&lt;00:00, 22.1MB/s]
+
+ 67%|████████████████████████▊            | 29.3M/43.8M [00:01&lt;00:00, 22.2MB/s]
+
+ 72%|██████████████████████████▊          | 31.6M/43.8M [00:02&lt;00:00, 22.3MB/s]
+
+ 78%|████████████████████████████▊        | 34.0M/43.8M [00:02&lt;00:00, 22.4MB/s]
+
+ 83%|██████████████████████████████▊      | 36.4M/43.8M [00:02&lt;00:00, 22.4MB/s]
+
+ 89%|████████████████████████████████▊    | 38.8M/43.8M [00:02&lt;00:00, 22.5MB/s]
+
+ 94%|██████████████████████████████████▊  | 41.1M/43.8M [00:02&lt;00:00, 22.4MB/s]
+
+ 99%|████████████████████████████████████▋| 43.4M/43.8M [00:02&lt;00:00, 22.3MB/s]
+
+  0%|                                              | 0.00/43.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 43.8M/43.8M [00:00&lt;00:00, 211GB/s]
+2025-05-20 21:35:27,261 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 0train: Score 0.786
+2025-05-20 21:35:27,404 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 1 | 1test: Score 0.802
+2025-05-20 21:35:27,667 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 0train: Score 0.797
+2025-05-20 21:35:27,942 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 1 | 1test: Score 0.774
+
+BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:12&lt;00:12, 12.80s/it]/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/43.1M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/43.1M [00:00&lt;09:06, 78.8kB/s]
+
+  0%|                                      | 56.3k/43.1M [00:00&lt;02:22, 303kB/s]
+
+  0%|▏                                      | 161k/43.1M [00:00&lt;01:09, 618kB/s]
+
+  1%|▎                                     | 352k/43.1M [00:00&lt;00:39, 1.09MB/s]
+
+  2%|▋                                     | 736k/43.1M [00:00&lt;00:21, 2.01MB/s]
+
+  4%|█▎                                   | 1.51M/43.1M [00:00&lt;00:10, 3.84MB/s]
+
+  6%|██▎                                  | 2.70M/43.1M [00:00&lt;00:06, 6.26MB/s]
+
+ 12%|████▌                                | 5.38M/43.1M [00:00&lt;00:03, 12.4MB/s]
+
+ 18%|██████▊                              | 7.94M/43.1M [00:00&lt;00:02, 16.1MB/s]
+
+ 24%|████████▋                            | 10.2M/43.1M [00:01&lt;00:01, 17.6MB/s]
+
+ 29%|██████████▋                          | 12.4M/43.1M [00:01&lt;00:01, 18.7MB/s]
+
+ 35%|████████████▊                        | 14.9M/43.1M [00:01&lt;00:01, 20.3MB/s]
+
+ 40%|██████████████▊                      | 17.3M/43.1M [00:01&lt;00:01, 20.9MB/s]
+
+ 46%|████████████████▉                    | 19.7M/43.1M [00:01&lt;00:01, 21.4MB/s]
+
+ 51%|██████████████████▉                  | 22.1M/43.1M [00:01&lt;00:00, 21.8MB/s]
+
+ 57%|█████████████████████                | 24.5M/43.1M [00:01&lt;00:00, 22.3MB/s]
+
+ 63%|███████████████████████▏             | 27.0M/43.1M [00:01&lt;00:00, 22.6MB/s]
+
+ 68%|█████████████████████████▏           | 29.3M/43.1M [00:01&lt;00:00, 22.5MB/s]
+
+ 74%|███████████████████████████▎         | 31.8M/43.1M [00:02&lt;00:00, 22.7MB/s]
+
+ 79%|█████████████████████████████▍       | 34.2M/43.1M [00:02&lt;00:00, 22.8MB/s]
+
+ 85%|███████████████████████████████▍     | 36.6M/43.1M [00:02&lt;00:00, 22.9MB/s]
+
+ 91%|█████████████████████████████████▌   | 39.1M/43.1M [00:02&lt;00:00, 23.0MB/s]
+
+ 96%|███████████████████████████████████▋ | 41.5M/43.1M [00:02&lt;00:00, 23.0MB/s]
+
+  0%|                                              | 0.00/43.1M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 43.1M/43.1M [00:00&lt;00:00, 181GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;lampx.tugraz.at&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+
+  0%|                                              | 0.00/44.2M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/44.2M [00:00&lt;09:20, 78.9kB/s]
+
+  0%|                                      | 56.3k/44.2M [00:00&lt;02:26, 302kB/s]
+
+  0%|▏                                      | 153k/44.2M [00:00&lt;01:15, 582kB/s]
+
+  1%|▎                                     | 352k/44.2M [00:00&lt;00:39, 1.10MB/s]
+
+  2%|▋                                     | 736k/44.2M [00:00&lt;00:21, 2.02MB/s]
+
+  3%|█▎                                   | 1.51M/44.2M [00:00&lt;00:11, 3.84MB/s]
+
+  7%|██▌                                  | 3.06M/44.2M [00:00&lt;00:05, 7.40MB/s]
+
+ 12%|████▍                                | 5.24M/44.2M [00:00&lt;00:03, 11.6MB/s]
+
+ 16%|█████▉                               | 7.14M/44.2M [00:00&lt;00:02, 13.6MB/s]
+
+ 21%|███████▊                             | 9.26M/44.2M [00:01&lt;00:02, 15.6MB/s]
+
+ 25%|█████████▍                           | 11.3M/44.2M [00:01&lt;00:02, 16.4MB/s]
+
+ 30%|███████████▏                         | 13.3M/44.2M [00:01&lt;00:01, 17.4MB/s]
+
+ 34%|████████████▋                        | 15.1M/44.2M [00:01&lt;00:01, 17.3MB/s]
+
+ 39%|██████████████▍                      | 17.3M/44.2M [00:01&lt;00:01, 18.2MB/s]
+
+ 43%|████████████████                     | 19.2M/44.2M [00:01&lt;00:01, 18.3MB/s]
+
+ 48%|█████████████████▊                   | 21.3M/44.2M [00:01&lt;00:01, 18.7MB/s]
+
+ 53%|███████████████████▍                 | 23.3M/44.2M [00:01&lt;00:01, 18.7MB/s]
+
+ 57%|█████████████████████▏               | 25.3M/44.2M [00:01&lt;00:00, 18.9MB/s]
+
+ 62%|██████████████████████▊              | 27.3M/44.2M [00:02&lt;00:00, 18.9MB/s]
+
+ 66%|████████████████████████▌            | 29.4M/44.2M [00:02&lt;00:00, 19.1MB/s]
+
+ 71%|██████████████████████████▏          | 31.3M/44.2M [00:02&lt;00:00, 19.0MB/s]
+
+ 76%|███████████████████████████▉         | 33.5M/44.2M [00:02&lt;00:00, 19.3MB/s]
+
+ 80%|█████████████████████████████▋       | 35.5M/44.2M [00:02&lt;00:00, 19.3MB/s]
+
+ 85%|███████████████████████████████▍     | 37.6M/44.2M [00:02&lt;00:00, 19.5MB/s]
+
+ 90%|█████████████████████████████████▏   | 39.6M/44.2M [00:02&lt;00:00, 19.4MB/s]
+
+ 94%|██████████████████████████████████▊  | 41.7M/44.2M [00:02&lt;00:00, 19.4MB/s]
+
+  0%|                                              | 0.00/44.2M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.2M/44.2M [00:00&lt;00:00, 150GB/s]
+2025-05-20 21:35:39,320 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 0train: Score 0.577
+2025-05-20 21:35:39,459 INFO MainThread moabb.evaluations.base AM+LDA | BNCI2014-001 | 2 | 1test: Score 0.499
+2025-05-20 21:35:39,828 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 0train: Score 0.551
+2025-05-20 21:35:40,125 INFO MainThread moabb.evaluations.base AM+SVM | BNCI2014-001 | 2 | 1test: Score 0.471
+
+BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:24&lt;00:00, 12.44s/it]
+BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:24&lt;00:00, 12.49s/it]
 </pre></div>
 </div>
 <p>Results are returned as a pandas DataFrame, and from here you can do as you
@@ -626,17 +854,17 @@ want with them</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      score      time  samples  ... n_sessions       dataset  pipeline
-0  0.797068  0.149196    144.0  ...          2  BNCI2014-001    AM+SVM
-1  0.773920  0.142644    144.0  ...          2  BNCI2014-001    AM+SVM
-2  0.550733  0.252620    144.0  ...          2  BNCI2014-001    AM+SVM
-3  0.471451  0.166296    144.0  ...          2  BNCI2014-001    AM+SVM
-4  0.786458  0.027236    144.0  ...          2  BNCI2014-001    AM+LDA
+0  0.797068  0.149776    144.0  ...          2  BNCI2014-001    AM+SVM
+1  0.773920  0.143322    144.0  ...          2  BNCI2014-001    AM+SVM
+2  0.550733  0.254653    144.0  ...          2  BNCI2014-001    AM+SVM
+3  0.471451  0.167207    144.0  ...          2  BNCI2014-001    AM+SVM
+4  0.786458  0.029695    144.0  ...          2  BNCI2014-001    AM+LDA
 
 [5 rows x 9 columns]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.707 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  688 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 26.366 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  772 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-0-plot-getting-started-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/cc78b19f551dfa48627d09f644ea18ad/tutorial_0_plot_getting_started.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tutorial_0_plot_getting_started.ipynb</span></code></a></p>

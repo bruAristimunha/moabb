@@ -400,6 +400,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/tutorial_6_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Advanced examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -409,6 +410,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_grid_search_withinsession.html">GridSearch within a session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_hinss2021_classification.html">Hinss2021 classification example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_mne_and_scikit_estimators.html">MNE Epochs-based pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_mne_features_pipeline.html">Pipelines using the mne-features library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
@@ -570,11 +572,101 @@ be overwritten if necessary.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BNCI2014-001-CrossSession:   0%|          | 0/4 [00:00&lt;?, ?it/s]
-BNCI2014-001-CrossSession:  25%|██▌       | 1/4 [00:07&lt;00:22,  7.52s/it]
-BNCI2014-001-CrossSession:  50%|█████     | 2/4 [00:14&lt;00:14,  7.46s/it]
-BNCI2014-001-CrossSession:  75%|███████▌  | 3/4 [00:22&lt;00:07,  7.39s/it]
-BNCI2014-001-CrossSession: 100%|██████████| 4/4 [00:29&lt;00:00,  7.31s/it]
-BNCI2014-001-CrossSession: 100%|██████████| 4/4 [00:29&lt;00:00,  7.36s/it]
+BNCI2014-001-CrossSession:  25%|██▌       | 1/4 [00:07&lt;00:22,  7.43s/it]
+BNCI2014-001-CrossSession:  50%|█████     | 2/4 [00:14&lt;00:14,  7.34s/it]
+BNCI2014-001-CrossSession:  75%|███████▌  | 3/4 [00:21&lt;00:07,  7.30s/it]
+
+  0%|                                              | 0.00/37.2M [00:00&lt;?, ?B/s]
+
+  0%|                                      | 16.4k/37.2M [00:00&lt;03:56, 157kB/s]
+
+  0%|                                      | 56.3k/37.2M [00:00&lt;02:08, 289kB/s]
+
+  0%|▏                                      | 161k/37.2M [00:00&lt;01:00, 610kB/s]
+
+  1%|▎                                     | 344k/37.2M [00:00&lt;00:34, 1.06MB/s]
+
+  2%|▋                                     | 705k/37.2M [00:00&lt;00:19, 1.91MB/s]
+
+  4%|█▍                                   | 1.44M/37.2M [00:00&lt;00:09, 3.63MB/s]
+
+  8%|██▉                                  | 2.91M/37.2M [00:00&lt;00:04, 7.01MB/s]
+
+ 15%|█████▌                               | 5.54M/37.2M [00:00&lt;00:02, 12.7MB/s]
+
+ 22%|████████                             | 8.13M/37.2M [00:00&lt;00:01, 16.4MB/s]
+
+ 28%|██████████▎                          | 10.4M/37.2M [00:01&lt;00:01, 17.8MB/s]
+
+ 34%|████████████▌                        | 12.7M/37.2M [00:01&lt;00:01, 19.1MB/s]
+
+ 41%|██████████████▉                      | 15.0M/37.2M [00:01&lt;00:01, 20.1MB/s]
+
+ 47%|█████████████████▍                   | 17.5M/37.2M [00:01&lt;00:00, 21.0MB/s]
+
+ 53%|███████████████████▋                 | 19.8M/37.2M [00:01&lt;00:00, 21.2MB/s]
+
+ 60%|██████████████████████               | 22.1M/37.2M [00:01&lt;00:00, 21.5MB/s]
+
+ 66%|████████████████████████▎            | 24.5M/37.2M [00:01&lt;00:00, 21.7MB/s]
+
+ 73%|███████████████████████████▏         | 27.3M/37.2M [00:01&lt;00:00, 23.2MB/s]
+
+ 80%|█████████████████████████████▋       | 29.9M/37.2M [00:01&lt;00:00, 23.6MB/s]
+
+ 87%|████████████████████████████████▏    | 32.3M/37.2M [00:02&lt;00:00, 23.5MB/s]
+
+ 94%|██████████████████████████████████▋  | 34.8M/37.2M [00:02&lt;00:00, 23.5MB/s]
+
+  0%|                                              | 0.00/37.2M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 37.2M/37.2M [00:00&lt;00:00, 150GB/s]
+
+
+  0%|                                              | 0.00/41.7M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 8.19k/41.7M [00:00&lt;08:48, 78.9kB/s]
+
+  0%|                                      | 48.1k/41.7M [00:00&lt;02:42, 257kB/s]
+
+  0%|                                       | 128k/41.7M [00:00&lt;01:25, 486kB/s]
+
+  1%|▎                                      | 289k/41.7M [00:00&lt;00:46, 897kB/s]
+
+  1%|▌                                     | 608k/41.7M [00:00&lt;00:24, 1.67MB/s]
+
+  3%|█                                    | 1.24M/41.7M [00:00&lt;00:12, 3.14MB/s]
+
+  6%|██                                   | 2.39M/41.7M [00:00&lt;00:06, 5.69MB/s]
+
+ 11%|████▏                                | 4.68M/41.7M [00:00&lt;00:03, 10.8MB/s]
+
+ 18%|██████▌                              | 7.44M/41.7M [00:00&lt;00:02, 15.6MB/s]
+
+ 24%|████████▋                            | 9.85M/41.7M [00:01&lt;00:01, 17.8MB/s]
+
+ 30%|███████████▏                         | 12.6M/41.7M [00:01&lt;00:01, 20.3MB/s]
+
+ 36%|█████████████▎                       | 15.0M/41.7M [00:01&lt;00:01, 21.1MB/s]
+
+ 46%|█████████████████▏                   | 19.4M/41.7M [00:01&lt;00:00, 27.3MB/s]
+
+ 54%|███████████████████▉                 | 22.5M/41.7M [00:01&lt;00:00, 28.1MB/s]
+
+ 63%|███████████████████████▎             | 26.3M/41.7M [00:01&lt;00:00, 30.3MB/s]
+
+ 71%|██████████████████████████▎          | 29.7M/41.7M [00:01&lt;00:00, 31.1MB/s]
+
+ 81%|█████████████████████████████▉       | 33.7M/41.7M [00:01&lt;00:00, 33.1MB/s]
+
+ 90%|█████████████████████████████████▍   | 37.7M/41.7M [00:01&lt;00:00, 35.2MB/s]
+
+ 99%|████████████████████████████████████▌| 41.3M/41.7M [00:01&lt;00:00, 34.9MB/s]
+
+  0%|                                              | 0.00/41.7M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 41.7M/41.7M [00:00&lt;00:00, 182GB/s]
+
+BNCI2014-001-CrossSession: 100%|██████████| 4/4 [00:34&lt;00:00,  9.51s/it]
+BNCI2014-001-CrossSession: 100%|██████████| 4/4 [00:34&lt;00:00,  8.71s/it]
 </pre></div>
 </div>
 </section>
@@ -621,8 +713,8 @@ the x-axis over all datasets</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_statistical_analysis_004.png" srcset="../../_images/sphx_glr_plot_statistical_analysis_004.png" alt="Algorithm comparison" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.316 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  636 MB</p>
+<img src="../../_images/sphx_glr_plot_statistical_analysis_004.png" srcset="../../_images/sphx_glr_plot_statistical_analysis_004.png" alt="Algorithm comparison" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 37.660 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  683 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-advanced-examples-plot-statistical-analysis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/33bee7d7204a7cb56293bd1d838b63f8/plot_statistical_analysis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_statistical_analysis.ipynb</span></code></a></p>

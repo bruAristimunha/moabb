@@ -400,6 +400,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/tutorial_6_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -409,6 +410,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_hinss2021_classification.html">Hinss2021 classification example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_and_scikit_estimators.html">MNE Epochs-based pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_features_pipeline.html">Pipelines using the mne-features library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
@@ -577,13 +579,51 @@ each subject and pipeline.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Kalunga2016-WithinSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]No hdf5_path provided, models will not be saved.
 
-Kalunga2016-WithinSession:  50%|█████     | 1/2 [00:00&lt;00:00,  1.89it/s]No hdf5_path provided, models will not be saved.
+Kalunga2016-WithinSession:  50%|█████     | 1/2 [00:00&lt;00:00,  1.94it/s]
 
-Kalunga2016-WithinSession: 100%|██████████| 2/2 [00:01&lt;00:00,  1.97it/s]
-Kalunga2016-WithinSession: 100%|██████████| 2/2 [00:01&lt;00:00,  1.95it/s]
+  0%|                                              | 0.00/2.27M [00:00&lt;?, ?B/s]
+
+  1%|▏                                    | 12.3k/2.27M [00:00&lt;00:24, 93.1kB/s]
+
+  3%|█▎                                    | 78.8k/2.27M [00:00&lt;00:06, 324kB/s]
+
+  9%|███▌                                   | 208k/2.27M [00:00&lt;00:03, 570kB/s]
+
+ 22%|████████▍                             | 506k/2.27M [00:00&lt;00:01, 1.32MB/s]
+
+ 48%|█████████████████▋                   | 1.09M/2.27M [00:00&lt;00:00, 2.69MB/s]
+
+ 94%|██████████████████████████████████▌  | 2.12M/2.27M [00:00&lt;00:00, 5.04MB/s]
+
+  0%|                                              | 0.00/2.27M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.27M/2.27M [00:00&lt;00:00, 11.0GB/s]
+
+
+  0%|                                              | 0.00/2.13M [00:00&lt;?, ?B/s]
+
+  0%|                                     | 1.02k/2.13M [00:00&lt;04:53, 7.23kB/s]
+
+  2%|▌                                     | 32.8k/2.13M [00:00&lt;00:12, 163kB/s]
+
+  5%|█▋                                    | 96.3k/2.13M [00:00&lt;00:05, 359kB/s]
+
+ 10%|███▊                                   | 208k/2.13M [00:00&lt;00:02, 641kB/s]
+
+ 20%|███████▋                              | 429k/2.13M [00:00&lt;00:01, 1.19MB/s]
+
+ 41%|███████████████▌                      | 870k/2.13M [00:00&lt;00:00, 2.25MB/s]
+
+ 83%|██████████████████████████████▊      | 1.77M/2.13M [00:00&lt;00:00, 4.41MB/s]
+
+  0%|                                              | 0.00/2.13M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.13M/2.13M [00:00&lt;00:00, 9.58GB/s]
+No hdf5_path provided, models will not be saved.
+
+Kalunga2016-WithinSession: 100%|██████████| 2/2 [00:03&lt;00:00,  1.94s/it]
+Kalunga2016-WithinSession: 100%|██████████| 2/2 [00:03&lt;00:00,  1.73s/it]
       score      time  samples  ... n_sessions      dataset  pipeline
-0  0.248889  0.041578     48.0  ...          1  Kalunga2016       CCA
-1  0.335556  0.040420     48.0  ...          1  Kalunga2016       CCA
+0  0.255556  0.041229     48.0  ...          1  Kalunga2016       CCA
+1  0.333333  0.039878     48.0  ...          1  Kalunga2016       CCA
 
 [2 rows x 9 columns]
 </pre></div>
@@ -606,8 +646,8 @@ Kalunga2016-WithinSession: 100%|██████████| 2/2 [00:01&lt;00
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_within_session_ssvep_002.png" srcset="../../_images/sphx_glr_plot_within_session_ssvep_002.png" alt="plot within session ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.536 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  246 MB</p>
+<img src="../../_images/sphx_glr_plot_within_session_ssvep_002.png" srcset="../../_images/sphx_glr_plot_within_session_ssvep_002.png" alt="plot within session ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.959 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  294 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-paradigm-examples-plot-within-session-ssvep-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ddb95468daccb0c135f3c3e8fc36749c/plot_within_session_ssvep.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_within_session_ssvep.ipynb</span></code></a></p>

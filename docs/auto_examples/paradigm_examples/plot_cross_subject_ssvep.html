@@ -400,6 +400,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/tutorial_6_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_examples/index.html">Advanced examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -409,6 +410,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_grid_search_withinsession.html">GridSearch within a session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_hinss2021_classification.html">Hinss2021 classification example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_and_scikit_estimators.html">MNE Epochs-based pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_mne_features_pipeline.html">Pipelines using the mne-features library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
@@ -609,10 +611,51 @@ be overwritten if necessary.</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../../api/generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  2.38it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.38it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.38it/s]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|                                              | 0.00/2.06M [00:00&lt;?, ?B/s]
+  1%|▏                                    | 12.3k/2.06M [00:00&lt;00:21, 95.9kB/s]
+  2%|▊                                     | 41.0k/2.06M [00:00&lt;00:10, 196kB/s]
+  5%|█▊                                    | 98.3k/2.06M [00:00&lt;00:05, 357kB/s]
+  9%|███▎                                   | 176k/2.06M [00:00&lt;00:03, 516kB/s]
+ 17%|██████▋                                | 352k/2.06M [00:00&lt;00:01, 952kB/s]
+ 30%|███████████▎                          | 614k/2.06M [00:00&lt;00:00, 1.51MB/s]
+ 61%|██████████████████████▌              | 1.25M/2.06M [00:00&lt;00:00, 3.08MB/s]
+  0%|                                              | 0.00/2.06M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.06M/2.06M [00:00&lt;00:00, 9.05GB/s]
+
+  0%|                                              | 0.00/2.82M [00:00&lt;?, ?B/s]
+  0%|▏                                    | 12.3k/2.82M [00:00&lt;00:28, 96.9kB/s]
+  3%|█▎                                    | 97.3k/2.82M [00:00&lt;00:08, 327kB/s]
+ 11%|████▎                                  | 309k/2.82M [00:00&lt;00:02, 924kB/s]
+ 25%|█████████▍                            | 695k/2.82M [00:00&lt;00:01, 1.87MB/s]
+ 44%|████████████████▎                    | 1.24M/2.82M [00:00&lt;00:00, 2.99MB/s]
+ 80%|█████████████████████████████▍       | 2.24M/2.82M [00:00&lt;00:00, 5.19MB/s]
+  0%|                                              | 0.00/2.82M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.82M/2.82M [00:00&lt;00:00, 16.9GB/s]
+
+  0%|                                              | 0.00/2.58M [00:00&lt;?, ?B/s]
+  0%|▏                                     | 12.3k/2.58M [00:00&lt;00:24, 105kB/s]
+  2%|▉                                     | 62.5k/2.58M [00:00&lt;00:07, 322kB/s]
+  8%|██▉                                    | 197k/2.58M [00:00&lt;00:04, 541kB/s]
+ 19%|███████▏                              | 485k/2.58M [00:00&lt;00:01, 1.26MB/s]
+ 39%|██████████████▍                      | 1.01M/2.58M [00:00&lt;00:00, 2.47MB/s]
+ 78%|████████████████████████████▊        | 2.01M/2.58M [00:00&lt;00:00, 4.74MB/s]
+  0%|                                              | 0.00/2.58M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.58M/2.58M [00:00&lt;00:00, 14.6GB/s]
+
+  0%|                                              | 0.00/2.14M [00:00&lt;?, ?B/s]
+  1%|▏                                    | 12.3k/2.14M [00:00&lt;00:22, 93.2kB/s]
+  4%|█▌                                    | 87.0k/2.14M [00:00&lt;00:05, 363kB/s]
+ 10%|███▊                                   | 207k/2.14M [00:00&lt;00:03, 558kB/s]
+ 23%|████████▌                             | 484k/2.14M [00:00&lt;00:01, 1.24MB/s]
+ 50%|██████████████████▎                  | 1.06M/2.14M [00:00&lt;00:00, 2.63MB/s]
+ 98%|████████████████████████████████████▎| 2.10M/2.14M [00:00&lt;00:00, 5.00MB/s]
+  0%|                                              | 0.00/2.14M [00:00&lt;?, ?B/s]
+100%|█████████████████████████████████████| 2.14M/2.14M [00:00&lt;00:00, 13.8GB/s]
+
+Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
+Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  2.44it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.45it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.44it/s]
 </pre></div>
 </div>
 <p>Filter bank processing, determine the filter automatically from the
@@ -624,9 +667,9 @@ stimulation frequency values of events.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  2.82it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.86it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  2.85it/s]
+Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  3.34it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  3.07it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:00,  3.10it/s]
 </pre></div>
 </div>
 <p>TRCA processing also relies on filter bank that is automatically designed.</p>
@@ -637,9 +680,9 @@ Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:00&lt;00:
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  1.43it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.44it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.44it/s]
+Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  1.48it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.49it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.49it/s]
 </pre></div>
 </div>
 <p>MsetCCA processing</p>
@@ -650,9 +693,9 @@ Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  1.79it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.67it/s]
-Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.68it/s]
+Kalunga2016-CrossSubject:  50%|█████     | 1/2 [00:00&lt;00:00,  1.88it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.92it/s]
+Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:00,  1.91it/s]
 </pre></div>
 </div>
 <p>After processing the four, we simply concatenate the results.</p>
@@ -680,8 +723,8 @@ Kalunga2016-CrossSubject: 100%|██████████| 2/2 [00:01&lt;00:
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_cross_subject_ssvep_001.png" srcset="../../_images/sphx_glr_plot_cross_subject_ssvep_001.png" alt="plot cross subject ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.590 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  247 MB</p>
+<img src="../../_images/sphx_glr_plot_cross_subject_ssvep_001.png" srcset="../../_images/sphx_glr_plot_cross_subject_ssvep_001.png" alt="plot cross subject ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.974 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  294 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-paradigm-examples-plot-cross-subject-ssvep-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a4e70780cba83241d5102b821a19c363/plot_cross_subject_ssvep.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cross_subject_ssvep.ipynb</span></code></a></p>
