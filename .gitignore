@@ -121,6 +121,10 @@ res_test/
 docs/source/auto_*/
 docs/source/generated/
 docs/source/api/
+docs/source/results/
+docs/source/README.md
+docs/source/CONTRIBUTING.md
+docs/source/sg_execution_times.rst
 
 examples/advanced_examples/Results/
 examples/benchmark/
