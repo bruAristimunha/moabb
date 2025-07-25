@@ -33,6 +33,7 @@ Enhancements
 - Adding tutorial on using mne-features (:gh:`762` by `Alexander de Ranitz`_, `Luuk Neervens`_, `Charlynn van Osch`_ and `Bruno Aristimunha`_)
 - Creating tutorial to expose the pre-processing steps (:gh:`771` by `Bruno Aristimunha`_)
 - Add function to auto-generate tables for the paper results documentation page (:gh:`785` by `Lucas Heck`_)
+- Increase the version of MNE to 1.11.0 (:gh:`XXX` by `Bruno Aristimunha`_)
 
 Bugs
 ~~~~
