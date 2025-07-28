@@ -397,8 +397,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../how_to_benchmark/index.html">Benchmarking and Pipeline Evaluation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/example_codecarbon.html">Benchmarking with MOABB showing the CO2 footprint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Benchmarking with MOABB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/tutorial_6_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
 </ul>
@@ -415,6 +414,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_use_an_X_y_dataset.html">Tutorial 6: Using X y data (epoched data) instead of continuous signal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../learning_curve/index.html">Evaluation with learning curve</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -505,9 +505,9 @@ to download the full example code.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">download</span> <span class="k">as</span> <span class="n">dl</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets.base</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">BaseDataset</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.evaluations</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">WithinSessionEvaluation</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.paradigms</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets.base</span><span class="w"> </span><span class="kn">import</span> <a href="../../generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">BaseDataset</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.evaluations</span><span class="w"> </span><span class="kn">import</span> <a href="../../generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">WithinSessionEvaluation</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.paradigms</span><span class="w"> </span><span class="kn">import</span> <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a>
 </pre></div>
 </div>
 <section id="creating-some-data">
@@ -578,7 +578,7 @@ repository where all the files are stored.</p>
 have been downloaded</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data_path</span></code> to define how the data are downloaded.</p></li>
 </ul>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleDataset</span><span class="p">(</span><a href="../../api/generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">BaseDataset</span></a><span class="p">):</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleDataset</span><span class="p">(</span><a href="../../generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">BaseDataset</span></a><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dataset used to exemplify the creation of a dataset class in MOABB.</span>
 
 <span class="sd">    The data samples have been simulated and has no physiological</span>
@@ -592,7 +592,7 @@ have been downloaded</p></li>
             <span class="n">events</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
             <span class="n">code</span><span class="o">=</span><span class="s2">&quot;ExampleDataset&quot;</span><span class="p">,</span>
             <span class="n">interval</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span>
-            <a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">,</span>
+            <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">,</span>
             <span class="n">doi</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 
@@ -621,7 +621,7 @@ have been downloaded</p></li>
             <span class="k">raise</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid subject number&quot;</span><span class="p">))</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">subject_0</span><span class="si">{:d}</span><span class="s2">.mat&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ExampleDataset_URL</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="p">)</span>
-        <span class="n">path</span> <span class="o">=</span> <a href="../../api/generated/moabb.datasets.download.data_dl.html#moabb.datasets.download.data_dl" title="moabb.datasets.download.data_dl" class="sphx-glr-backref-module-moabb-datasets-download sphx-glr-backref-type-py-function"><span class="n">dl</span><span class="o">.</span><span class="n">data_dl</span></a><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;ExampleDataset&quot;</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <a href="../../generated/moabb.datasets.download.data_dl.html#moabb.datasets.download.data_dl" title="moabb.datasets.download.data_dl" class="sphx-glr-backref-module-moabb-datasets-download sphx-glr-backref-type-py-function"><span class="n">dl</span><span class="o">.</span><span class="n">data_dl</span></a><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;ExampleDataset&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>  <span class="c1"># it has to return a list</span>
 </pre></div>
 </div>
@@ -630,79 +630,128 @@ have been downloaded</p></li>
 <h2>Using the ExampleDataset<a class="headerlink" href="#using-the-exampledataset" title="Link to this heading">#</a></h2>
 <p>Now that the <cite>ExampleDataset</cite> is defined, it could be instantiated directly.
 The rest of the code follows the steps described in the previous tutorials.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <a href="../../api/generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">ExampleDataset</span></a><span class="p">()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <a href="../../generated/moabb.datasets.base.BaseDataset.html#moabb.datasets.base.BaseDataset" title="moabb.datasets.base.BaseDataset" class="sphx-glr-backref-module-moabb-datasets-base sphx-glr-backref-type-py-class"><span class="n">ExampleDataset</span></a><span class="p">()</span>
 
-<a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a> <span class="o">=</span> <a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a><span class="p">()</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <a href="https://neurotechx.github.io/moabb/generated/moabb.paradigms.base.BaseProcessing.html#moabb.paradigms.base.BaseProcessing.get_data" title="moabb.paradigms.base.BaseProcessing.get_data" class="sphx-glr-backref-module-moabb-paradigms-base sphx-glr-backref-type-py-method"><span class="n">paradigm</span><span class="o">.</span><span class="n">get_data</span></a><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a> <span class="o">=</span> <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a><span class="p">()</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-<a href="../../api/generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">evaluation</span></a> <span class="o">=</span> <a href="../../api/generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">WithinSessionEvaluation</span></a><span class="p">(</span>
-    <a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><a href="../../api/generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;newdataset&quot;</span>
+<a href="../../generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">evaluation</span></a> <span class="o">=</span> <a href="../../generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation" title="moabb.evaluations.WithinSessionEvaluation" class="sphx-glr-backref-module-moabb-evaluations sphx-glr-backref-type-py-class"><span class="n">WithinSessionEvaluation</span></a><span class="p">(</span>
+    <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="o">=</span><a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;newdataset&quot;</span>
 <span class="p">)</span>
 <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a> <span class="o">=</span> <span class="p">{}</span>
 <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">[</span><span class="s2">&quot;MDM&quot;</span><span class="p">]</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">Covariances</span></a><span class="p">(</span><span class="s2">&quot;oas&quot;</span><span class="p">),</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="sklearn.base.BaseEstimator" class="sphx-glr-backref-module-sklearn-base sphx-glr-backref-type-py-class"><span class="n">MDM</span></a><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;riemann&quot;</span><span class="p">))</span>
-<span class="n">scores</span> <span class="o">=</span> <a href="../../api/generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <a href="../../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
-  1%|▏                                     | 15.4k/2.77M [00:00&lt;00:23, 117kB/s]
-  3%|█▏                                    | 90.1k/2.77M [00:00&lt;00:06, 437kB/s]
-  8%|███▏                                   | 222k/2.77M [00:00&lt;00:04, 582kB/s]
- 20%|███████▊                              | 564k/2.77M [00:00&lt;00:01, 1.44MB/s]
- 43%|████████████████                     | 1.20M/2.77M [00:00&lt;00:00, 2.91MB/s]
- 82%|██████████████████████████████▍      | 2.27M/2.77M [00:00&lt;00:00, 5.28MB/s]
+  0%|▏                                     | 12.3k/2.77M [00:00&lt;00:26, 104kB/s]
+  3%|█▏                                    | 82.9k/2.77M [00:00&lt;00:09, 285kB/s]
+  8%|███                                    | 221k/2.77M [00:00&lt;00:05, 496kB/s]
+ 15%|█████▋                                 | 408k/2.77M [00:00&lt;00:03, 685kB/s]
+ 18%|███████▏                               | 506k/2.77M [00:00&lt;00:02, 754kB/s]
+ 24%|█████████▍                             | 670k/2.77M [00:01&lt;00:02, 785kB/s]
+ 31%|███████████▉                           | 849k/2.77M [00:01&lt;00:02, 831kB/s]
+ 37%|█████████████▉                        | 1.01M/2.77M [00:01&lt;00:02, 818kB/s]
+ 43%|████████████████▍                     | 1.19M/2.77M [00:01&lt;00:01, 846kB/s]
+ 49%|██████████████████▋                   | 1.36M/2.77M [00:01&lt;00:01, 994kB/s]
+ 53%|████████████████████▏                 | 1.47M/2.77M [00:01&lt;00:01, 853kB/s]
+ 61%|██████████████████████▋              | 1.69M/2.77M [00:02&lt;00:00, 1.13MB/s]
+ 66%|█████████████████████████▏            | 1.83M/2.77M [00:02&lt;00:00, 970kB/s]
+ 73%|███████████████████████████▊          | 2.03M/2.77M [00:02&lt;00:00, 983kB/s]
+ 82%|██████████████████████████████▏      | 2.26M/2.77M [00:02&lt;00:00, 1.04MB/s]
+ 89%|█████████████████████████████████    | 2.47M/2.77M [00:02&lt;00:00, 1.05MB/s]
+ 96%|███████████████████████████████████▋ | 2.66M/2.77M [00:02&lt;00:00, 1.04MB/s]
   0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 15.6GB/s]
+100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 14.5GB/s]
 
 ExampleDataset-WithinSession:   0%|          | 0/3 [00:00&lt;?, ?it/s]No hdf5_path provided, models will not be saved.
 
-ExampleDataset-WithinSession:  33%|███▎      | 1/3 [00:00&lt;00:00,  2.84it/s]
+ExampleDataset-WithinSession:  33%|███▎      | 1/3 [00:00&lt;00:00,  2.77it/s]
 
   0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
 
-  1%|▏                                     | 14.3k/2.77M [00:00&lt;00:25, 107kB/s]
+  0%|▏                                     | 12.3k/2.77M [00:00&lt;00:26, 102kB/s]
 
-  3%|█▎                                    | 95.2k/2.77M [00:00&lt;00:07, 379kB/s]
+  3%|█▏                                    | 82.9k/2.77M [00:00&lt;00:09, 284kB/s]
 
-  8%|███▏                                   | 222k/2.77M [00:00&lt;00:03, 678kB/s]
+ 10%|███▋                                   | 265k/2.77M [00:00&lt;00:04, 608kB/s]
 
- 19%|███████                               | 514k/2.77M [00:00&lt;00:01, 1.28MB/s]
+ 15%|█████▉                                 | 419k/2.77M [00:00&lt;00:02, 856kB/s]
 
- 42%|███████████████▍                     | 1.15M/2.77M [00:00&lt;00:00, 2.82MB/s]
+ 20%|███████▉                               | 566k/2.77M [00:00&lt;00:02, 813kB/s]
 
- 86%|███████████████████████████████▉     | 2.39M/2.77M [00:00&lt;00:00, 5.69MB/s]
+ 29%|███████████▍                           | 812k/2.77M [00:01&lt;00:01, 980kB/s]
+
+ 36%|█████████████▉                         | 991k/2.77M [00:01&lt;00:01, 956kB/s]
+
+ 45%|████████████████▊                    | 1.25M/2.77M [00:01&lt;00:01, 1.08MB/s]
+
+ 53%|███████████████████▌                 | 1.47M/2.77M [00:01&lt;00:01, 1.08MB/s]
+
+ 60%|██████████████████████▏              | 1.66M/2.77M [00:01&lt;00:01, 1.06MB/s]
+
+ 70%|█████████████████████████▊           | 1.93M/2.77M [00:01&lt;00:00, 1.36MB/s]
+
+ 76%|███████████████████████████▉         | 2.09M/2.77M [00:01&lt;00:00, 1.40MB/s]
+
+ 81%|██████████████████████████████       | 2.24M/2.77M [00:02&lt;00:00, 1.18MB/s]
+
+ 88%|████████████████████████████████▌    | 2.43M/2.77M [00:02&lt;00:00, 1.10MB/s]
+
+ 94%|██████████████████████████████████▉  | 2.61M/2.77M [00:02&lt;00:00, 1.04MB/s]
 
   0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 13.7GB/s]
+100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 8.67GB/s]
 No hdf5_path provided, models will not be saved.
 
-ExampleDataset-WithinSession:  67%|██████▋   | 2/3 [00:01&lt;00:00,  1.01it/s]
+ExampleDataset-WithinSession:  67%|██████▋   | 2/3 [00:03&lt;00:02,  2.17s/it]
 
   0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
 
-  1%|▏                                     | 15.4k/2.77M [00:00&lt;00:22, 120kB/s]
+  1%|▏                                     | 14.3k/2.77M [00:00&lt;00:26, 104kB/s]
 
-  3%|█▎                                    | 94.2k/2.77M [00:00&lt;00:07, 371kB/s]
+  3%|█                                     | 77.8k/2.77M [00:00&lt;00:07, 370kB/s]
 
-  8%|███▎                                   | 232k/2.77M [00:00&lt;00:03, 711kB/s]
+  5%|██                                     | 147k/2.77M [00:00&lt;00:06, 417kB/s]
 
- 19%|███████▏                              | 527k/2.77M [00:00&lt;00:01, 1.33MB/s]
+ 11%|████▎                                  | 306k/2.77M [00:00&lt;00:04, 610kB/s]
 
- 42%|███████████████▌                     | 1.16M/2.77M [00:00&lt;00:00, 2.87MB/s]
+ 17%|██████▋                                | 476k/2.77M [00:00&lt;00:03, 716kB/s]
 
- 84%|███████████████████████████████▏     | 2.33M/2.77M [00:00&lt;00:00, 5.53MB/s]
+ 23%|█████████                              | 646k/2.77M [00:00&lt;00:02, 943kB/s]
+
+ 27%|██████████▌                            | 750k/2.77M [00:01&lt;00:02, 759kB/s]
+
+ 36%|█████████████▊                         | 983k/2.77M [00:01&lt;00:01, 912kB/s]
+
+ 42%|███████████████▉                      | 1.16M/2.77M [00:01&lt;00:01, 914kB/s]
+
+ 50%|██████████████████▌                  | 1.39M/2.77M [00:01&lt;00:01, 1.17MB/s]
+
+ 58%|█████████████████████▍               | 1.60M/2.77M [00:01&lt;00:01, 1.15MB/s]
+
+ 67%|████████████████████████▊            | 1.85M/2.77M [00:01&lt;00:00, 1.18MB/s]
+
+ 75%|███████████████████████████▌         | 2.06M/2.77M [00:02&lt;00:00, 1.15MB/s]
+
+ 82%|██████████████████████████████▏      | 2.26M/2.77M [00:02&lt;00:00, 1.10MB/s]
+
+ 90%|█████████████████████████████████▎   | 2.49M/2.77M [00:02&lt;00:00, 1.12MB/s]
+
+ 97%|███████████████████████████████████▉ | 2.68M/2.77M [00:02&lt;00:00, 1.09MB/s]
 
   0%|                                              | 0.00/2.77M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 13.1GB/s]
+100%|█████████████████████████████████████| 2.77M/2.77M [00:00&lt;00:00, 13.8GB/s]
 No hdf5_path provided, models will not be saved.
 
-ExampleDataset-WithinSession: 100%|██████████| 3/3 [00:03&lt;00:00,  1.19s/it]
-ExampleDataset-WithinSession: 100%|██████████| 3/3 [00:03&lt;00:00,  1.08s/it]
+ExampleDataset-WithinSession: 100%|██████████| 3/3 [00:07&lt;00:00,  2.79s/it]
+ExampleDataset-WithinSession: 100%|██████████| 3/3 [00:07&lt;00:00,  2.44s/it]
    score      time  samples  ... n_sessions         dataset  pipeline
-0    1.0  0.021806     40.0  ...          1  ExampleDataset       MDM
-1    1.0  0.021693     40.0  ...          1  ExampleDataset       MDM
-2    1.0  0.021509     40.0  ...          1  ExampleDataset       MDM
+0    1.0  0.021768     40.0  ...          1  ExampleDataset       MDM
+1    1.0  0.021726     40.0  ...          1  ExampleDataset       MDM
+2    1.0  0.021930     40.0  ...          1  ExampleDataset       MDM
 
 [3 rows x 9 columns]
 </pre></div>
@@ -714,7 +763,7 @@ ExampleDataset-WithinSession: 100%|██████████| 3/3 [00:03&lt
 your data on public server (like Zenodo or Figshare) and signal that you
 want to add your dataset to MOABB in the  <a class="reference external" href="https://github.com/NeuroTechX/moabb/issues/1">dedicated issue</a>.  # noqa: E501
 You could then follow the instructions on <a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/master/CONTRIBUTING.md">how to contribute</a>  # noqa: E501</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.221 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.163 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  294 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-4-adding-a-dataset-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
