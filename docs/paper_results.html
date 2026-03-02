@@ -8,12 +8,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="true" name="hide_sidebar" />
-    <link rel="moabb icon" sizes="180x180" href="_static/moabb_logo.png" type="image/png">
+    <link rel="moabb icon" sizes="180x180" href="_static/_static/moabb_logo.png" type="image/png">
     <link rel="icon" href="_static/favicon.svg" type="image/svg+xml">
     <link rel="icon" sizes="144x144" href="_static/favicon-144.png" type="image/png">
     <link rel="mask-icon" href="_static/favicon_mask-icon.svg" color="#222832" type="image/svg+xml">
     <link rel="apple-touch-icon" sizes="500x500" href="_static/favicon-500.png" type="image/png">
-    <title>The largest EEG-based Benchmark for Open Science &#8212; moabb 1.3.0-dev documentation</title>
+    <title>The largest EEG-based Benchmark for Open Science &#8212; moabb 1.4.3-dev documentation</title>
   
   
   
@@ -42,7 +42,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/neurotechx/moabb/refs/heads/develop/docs/source/_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=2bd6ce74" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- So that users can add custom icons -->
@@ -53,7 +53,7 @@
 
     <script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=cba09fd8"></script>
+    <script src="_static/documentation_options.js?v=1c0077db"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,13 +75,18 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'paper_results';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
+    <script src="_static/js/section-nav-hierarchy.js?v=c53969c2"></script>
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/paper_results.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Data Summary" href="dataset_summary.html" />
-    <link rel="prev" title="Disclaimer" href="index.html" />
+    <link rel="prev" title="MOABB Homepage" href="index.html" />
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/paper_results.html" />
+    
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.3.0" />
+  <meta name="docsearch:version" content="1.4.3" />
+
   </head>
   
   
@@ -118,8 +123,10 @@
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/neurotechx/moabb/develop/docs/source/_templates/custom-template.html"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content"><strong>Using MOABB in academic work?</strong> <a class='moabb-announcement-cta' href='cite.html'>Cite MOABB</a> <span class='moabb-announcement-secondary'>DOI: <a href='https://doi.org/10.5281/zenodo.10034223'>10.5281/zenodo.10034223</a> · Explore <a href='paper_results.html'>benchmark results</a></span></div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -146,8 +153,8 @@
     
     
     
-    <img src="_static/moabb_light.svg" class="logo__image only-light" alt="moabb 1.3.0-dev documentation - Home"/>
-    <img src="_static/moabb_dark.svg" class="logo__image only-dark pst-js-only" alt="moabb 1.3.0-dev documentation - Home"/>
+    <img src="_static/moabb_light.svg" class="logo__image only-light" alt="moabb 1.4.3-dev documentation - Home"/>
+    <img src="_static/moabb_dark.svg" class="logo__image only-dark pst-js-only" alt="moabb 1.4.3-dev documentation - Home"/>
   
   
 </a></div>
@@ -246,6 +253,34 @@
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -355,6 +390,34 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
@@ -406,11 +469,9 @@
 </div>
               
               
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+<div>
+  
+  
   <!-- Must import jquery before the datatables css and js files. -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
@@ -418,6 +479,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/5.0.4/css/fixedColumns.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedcolumns/5.0.4/js/dataTables.fixedColumns.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedcolumns/5.0.4/js/fixedColumns.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.js"></script>
 
 <style>
  table.dataTable {
@@ -435,6 +499,55 @@
    background-color: #1e1e1e !important;
    color: #ffffff !important;
  }
+
+ /* DataTables button styling */
+ .dt-buttons .dt-button {
+   display: inline-flex !important;
+   align-items: center;
+   gap: 6px;
+   padding: 6px 16px !important;
+   border-radius: 999px !important;
+   border: 1px solid var(--pst-color-border, #ccc) !important;
+   background: transparent !important;
+   color: var(--pst-color-text-base, #333) !important;
+   font-size: 0.875rem !important;
+   font-weight: 500 !important;
+   cursor: pointer;
+   transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s !important;
+   line-height: 1.4 !important;
+ }
+ .dt-buttons .dt-button:hover {
+   border-color: #007CBA !important;
+   color: #007CBA !important;
+   transform: translateY(-1px);
+   box-shadow: 0 2px 6px rgba(0, 124, 186, 0.15);
+   background: transparent !important;
+ }
+ .dt-buttons .dt-button:active {
+   transform: scale(0.96) !important;
+   box-shadow: none !important;
+ }
+ .dt-buttons .dt-button:focus {
+   outline: 2px solid #007CBA !important;
+   outline-offset: 2px !important;
+ }
+ .dt-buttons .dt-button svg {
+   width: 16px;
+   height: 16px;
+   flex-shrink: 0;
+   fill: currentColor;
+ }
+
+ /* Dark mode overrides */
+ html[data-theme="dark"] .dt-buttons .dt-button {
+   border-color: rgba(255, 255, 255, 0.2) !important;
+   color: #e0e0e0 !important;
+ }
+ html[data-theme="dark"] .dt-buttons .dt-button:hover {
+   border-color: #3db5e6 !important;
+   color: #3db5e6 !important;
+   box-shadow: 0 2px 6px rgba(61, 181, 230, 0.2);
+ }
 </style><section id="the-largest-eeg-based-benchmark-for-open-science">
 <h1>The largest EEG-based Benchmark for Open Science<a class="headerlink" href="#the-largest-eeg-based-benchmark-for-open-science" title="Link to this heading">#</a></h1>
 <p>We report the results of the benchmark study performed in:
@@ -446,7 +559,7 @@
 </figcaption>
 </figure>
 <p>This study conducts an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets,
-aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. Please note that the results are obtained using <a class="reference external" href="http://moabb.neurotechx.com/docs/api/generated/moabb.evaluations.WithinSessionEvaluation.html">Within-Session evaluation</a>.
+aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. Please note that the results are obtained using <a class="reference external" href="https://moabb.neurotechx.com/docs/generated/moabb.evaluations.WithinSessionEvaluation.html">Within-Session evaluation</a>.
 The results are reported regarding mean accuracy and standard deviation across all folds for all sessions and subjects.</p>
 <p>If you use the same evaluation procedure, you should expect similar results if you use the same pipelines and datasets, with some minor variations due to the randomness of the cross-validation procedure.</p>
 <p><strong>You can copy and use the table in your work</strong>, but please <a class="reference external" href="http://moabb.neurotechx.com/docs/cite.html">**cite the paper**</a> if you do so.</p>
@@ -1308,6 +1421,10 @@ We use all the classes available in the dataset.</p>
 
 <script type="text/javascript">
    $(document).ready(function() {
+     var copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+     var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+     var csvIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>';
+
      $(".sortable").each(function() {
        const $table = $(this);
 
@@ -1320,6 +1437,31 @@ We use all the classes available in the dataset.</p>
          scrollCollapse: true,
          info: false,
          searching: false,
+         layout: {
+           topStart: {
+             buttons: [
+               {
+                 extend: 'copy',
+                 text: copyIcon + ' Copy Table',
+                 action: function(e, dt, node, config) {
+                   var self = this;
+                   $.fn.dataTable.ext.buttons.copyHtml5.action.call(self, e, dt, node, config);
+                   var $btn = $(node);
+                   var originalText = $btn.html();
+                   $btn.html(checkIcon + ' Copied!');
+                   setTimeout(function() {
+                     $btn.html(originalText);
+                   }, 2000);
+                 }
+               },
+               {
+                 extend: 'csv',
+                 text: csvIcon + ' Export CSV',
+                 title: 'moabb_benchmark'
+               }
+             ],
+           },
+         },
        });
      });
    });
@@ -1328,8 +1470,8 @@ We use all the classes available in the dataset.</p>
 </section>
 
 
-                </article>
-              
+</div>
+
               
               
               
@@ -1343,7 +1485,7 @@ We use all the classes available in the dataset.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Disclaimer</p>
+        <p class="prev-next-title">MOABB Homepage</p>
       </div>
     </a>
     <a class="right-next"
@@ -1385,7 +1527,7 @@ We use all the classes available in the dataset.</p>
 
   <p class="copyright">
     
-      © Copyright 2018-2025 MOABB contributors.
+      © Copyright 2018-2026 MOABB contributors.
       <br/>
     
   </p>

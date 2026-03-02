@@ -7,12 +7,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="moabb icon" sizes="180x180" href="../_static/moabb_logo.png" type="image/png">
+    <link rel="moabb icon" sizes="180x180" href="../_static/_static/moabb_logo.png" type="image/png">
     <link rel="icon" href="../_static/favicon.svg" type="image/svg+xml">
     <link rel="icon" sizes="144x144" href="../_static/favicon-144.png" type="image/png">
     <link rel="mask-icon" href="../_static/favicon_mask-icon.svg" color="#222832" type="image/svg+xml">
     <link rel="apple-touch-icon" sizes="500x500" href="../_static/favicon-500.png" type="image/png">
-    <title>moabb.evaluations.base.BaseEvaluation &#8212; moabb 1.3.0-dev documentation</title>
+    <title>moabb.evaluations.base.BaseEvaluation &#8212; moabb 1.4.3-dev documentation</title>
   
   
   
@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/neurotechx/moabb/refs/heads/develop/docs/source/_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bd6ce74" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- So that users can add custom icons -->
@@ -52,7 +52,7 @@
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=cba09fd8"></script>
+    <script src="../_static/documentation_options.js?v=1c0077db"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,13 +74,18 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/moabb.evaluations.base.BaseEvaluation';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
+    <script src="../_static/js/section-nav-hierarchy.js?v=c53969c2"></script>
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/generated/moabb.evaluations.base.BaseEvaluation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="moabb.pipelines.features.LogVariance" href="moabb.pipelines.features.LogVariance.html" />
     <link rel="prev" title="moabb.evaluations.CrossSubjectSplitter" href="moabb.evaluations.CrossSubjectSplitter.html" />
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/generated/moabb.evaluations.base.BaseEvaluation.html" />
+    
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.3.0" />
+  <meta name="docsearch:version" content="1.4.3" />
+
   </head>
   
   
@@ -117,8 +122,10 @@
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/neurotechx/moabb/develop/docs/source/_templates/custom-template.html"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content"><strong>Using MOABB in academic work?</strong> <a class='moabb-announcement-cta' href='cite.html'>Cite MOABB</a> <span class='moabb-announcement-secondary'>DOI: <a href='https://doi.org/10.5281/zenodo.10034223'>10.5281/zenodo.10034223</a> · Explore <a href='paper_results.html'>benchmark results</a></span></div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -145,8 +152,8 @@
     
     
     
-    <img src="../_static/moabb_light.svg" class="logo__image only-light" alt="moabb 1.3.0-dev documentation - Home"/>
-    <img src="../_static/moabb_dark.svg" class="logo__image only-dark pst-js-only" alt="moabb 1.3.0-dev documentation - Home"/>
+    <img src="../_static/moabb_light.svg" class="logo__image only-light" alt="moabb 1.4.3-dev documentation - Home"/>
+    <img src="../_static/moabb_dark.svg" class="logo__image only-dark pst-js-only" alt="moabb 1.4.3-dev documentation - Home"/>
   
   
 </a></div>
@@ -245,6 +252,34 @@
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -358,6 +393,34 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
@@ -369,11 +432,18 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.AlexMI.html">moabb.datasets.AlexMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2003_004.html">moabb.datasets.BNCI2003_004</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2014_001.html">moabb.datasets.BNCI2014_001</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2014_002.html">moabb.datasets.BNCI2014_002</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2014_004.html">moabb.datasets.BNCI2014_004</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_001.html">moabb.datasets.BNCI2015_001</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_004.html">moabb.datasets.BNCI2015_004</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2019_001.html">moabb.datasets.BNCI2019_001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2020_001.html">moabb.datasets.BNCI2020_001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2022_001.html">moabb.datasets.BNCI2022_001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2024_001.html">moabb.datasets.BNCI2024_001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2025_001.html">moabb.datasets.BNCI2025_001</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2025_002.html">moabb.datasets.BNCI2025_002</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Cho2017.html">moabb.datasets.Cho2017</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Dreyer2023.html">moabb.datasets.Dreyer2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Dreyer2023A.html">moabb.datasets.Dreyer2023A</a></li>
@@ -404,7 +474,15 @@
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2014_008.html">moabb.datasets.BNCI2014_008</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2014_009.html">moabb.datasets.BNCI2014_009</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_003.html">moabb.datasets.BNCI2015_003</a></li>
-<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.DemonsP300.html">moabb.datasets.DemonsP300</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_006.html">moabb.datasets.BNCI2015_006</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_007.html">moabb.datasets.BNCI2015_007</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_008.html">moabb.datasets.BNCI2015_008</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_009.html">moabb.datasets.BNCI2015_009</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_010.html">moabb.datasets.BNCI2015_010</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_012.html">moabb.datasets.BNCI2015_012</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2015_013.html">moabb.datasets.BNCI2015_013</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2016_002.html">moabb.datasets.BNCI2016_002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.BNCI2020_002.html">moabb.datasets.BNCI2020_002</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.EPFLP300.html">moabb.datasets.EPFLP300</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Huebner2017.html">moabb.datasets.Huebner2017</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Huebner2018.html">moabb.datasets.Huebner2018</a></li>
@@ -417,6 +495,9 @@
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.ErpCore2021_N170.html">moabb.datasets.ErpCore2021_N170</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.ErpCore2021_N400.html">moabb.datasets.ErpCore2021_N400</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.ErpCore2021_P3.html">moabb.datasets.ErpCore2021_P3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.RomaniBF2025ERP.html">moabb.datasets.RomaniBF2025ERP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Kojima2024A.html">moabb.datasets.Kojima2024A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Kojima2024B.html">moabb.datasets.Kojima2024B</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Kalunga2016.html">moabb.datasets.Kalunga2016</a></li>
@@ -434,6 +515,8 @@
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.CastillosBurstVEP100.html">moabb.datasets.CastillosBurstVEP100</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.CastillosCVEP40.html">moabb.datasets.CastillosCVEP40</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.CastillosCVEP100.html">moabb.datasets.CastillosCVEP100</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.MartinezCagigal2023Checker.html">moabb.datasets.MartinezCagigal2023Checker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.datasets.MartinezCagigal2023Pary.html">moabb.datasets.MartinezCagigal2023Pary</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.datasets.Cattan2019_PHMD.html">moabb.datasets.Cattan2019_PHMD</a></li>
@@ -476,7 +559,6 @@
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.FilterBankMotorImagery.html">moabb.paradigms.FilterBankMotorImagery</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.SinglePass.html">moabb.paradigms.SinglePass</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.P300.html">moabb.paradigms.P300</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -496,8 +578,6 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.motor_imagery.BaseMotorImagery.html">moabb.paradigms.motor_imagery.BaseMotorImagery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.motor_imagery.SinglePass.html">moabb.paradigms.motor_imagery.SinglePass</a></li>
-<li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.motor_imagery.FilterBank.html">moabb.paradigms.motor_imagery.FilterBank</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.p300.BaseP300.html">moabb.paradigms.p300.BaseP300</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.ssvep.BaseSSVEP.html">moabb.paradigms.ssvep.BaseSSVEP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.paradigms.BaseFixedIntervalWindowsProcessing.html">moabb.paradigms.BaseFixedIntervalWindowsProcessing</a></li>
@@ -511,6 +591,7 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.evaluations.WithinSessionSplitter.html">moabb.evaluations.WithinSessionSplitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.evaluations.WithinSubjectSplitter.html">moabb.evaluations.WithinSubjectSplitter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.evaluations.CrossSessionSplitter.html">moabb.evaluations.CrossSessionSplitter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.evaluations.CrossSubjectSplitter.html">moabb.evaluations.CrossSubjectSplitter</a></li>
 </ul>
@@ -527,6 +608,11 @@
 <li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_CCA.html">moabb.pipelines.classification.SSVEP_CCA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_TRCA.html">moabb.pipelines.classification.SSVEP_TRCA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_MsetCCA.html">moabb.pipelines.classification.SSVEP_MsetCCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_itCCA.html">moabb.pipelines.classification.SSVEP_itCCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_eCCA.html">moabb.pipelines.classification.SSVEP_eCCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_TRCA_R.html">moabb.pipelines.classification.SSVEP_TRCA_R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_SSCOR.html">moabb.pipelines.classification.SSVEP_SSCOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moabb.pipelines.classification.SSVEP_TDCA.html">moabb.pipelines.classification.SSVEP_TDCA</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="moabb.analysis.plotting.score_plot.html">moabb.analysis.plotting.score_plot</a></li>
@@ -605,16 +691,14 @@
 </div>
               
               
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+<div>
+  
+  
   <section id="moabb-evaluations-base-baseevaluation">
 <h1>moabb.evaluations.base.BaseEvaluation<a class="headerlink" href="#moabb-evaluations-base-baseevaluation" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="moabb.evaluations.base.BaseEvaluation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.evaluations.base.</span></span><span class="sig-name descname"><span class="pre">BaseEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paradigm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdf5_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mne_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optuna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">900</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L25-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moabb.evaluations.base.</span></span><span class="sig-name descname"><span class="pre">BaseEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paradigm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdf5_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mne_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optuna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codecarbon_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L38-L597"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation" title="Link to this definition">#</a></dt>
 <dd><p>Base class that defines necessary operations for an evaluation.
 Evaluations determine what the train and test sets are and can implement
 additional data preprocessing steps for more complicated algorithms.</p>
@@ -624,25 +708,34 @@ additional data preprocessing steps for more complicated algorithms.</p>
 <li><p><strong>paradigm</strong> (<em>Paradigm instance</em>) – The paradigm to use.</p></li>
 <li><p><strong>datasets</strong> (<em>List</em><em> of </em><em>Dataset instance</em>) – The list of dataset to run the evaluation. If none, the list of
 compatible dataset will be retrieved from the paradigm instance.</p></li>
-<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>RandomState instance</em><em>, </em><em>default=None</em>) – If not None, can guarantee same seed for shuffling examples.</p></li>
-<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>default=1</em>) – Number of jobs for fitting of pipeline.</p></li>
-<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – If true, overwrite the results.</p></li>
+<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>RandomState instance</em><em>, </em><em>default=None</em>) – If not None, can guarantee same seed for shuffling examples.</p></li>
+<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>default=1</em>) – Number of jobs for fitting of pipeline.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – If true, overwrite the results.</p></li>
 <li><p><strong>error_score</strong> (<em>&quot;raise&quot;</em><em> or </em><em>numeric</em><em>, </em><em>default=&quot;raise&quot;</em>) – Value to assign to the score if an error occurs in estimator fitting. If set to
 ‘raise’, the error is raised.</p></li>
-<li><p><strong>suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Suffix for the results file.</p></li>
-<li><p><strong>hdf5_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Specific path for storing the results.</p></li>
+<li><p><strong>suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Suffix for the results file.</p></li>
+<li><p><strong>hdf5_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Specific path for storing the results.</p></li>
 <li><p><strong>additional_columns</strong> (<em>None</em>) – Adding information to results.</p></li>
-<li><p><strong>return_epochs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – use MNE epoch to train pipelines.</p></li>
-<li><p><strong>return_raws</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – use MNE raw to train pipelines.</p></li>
-<li><p><strong>mne_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – if returning MNE epoch, use original dataset label if True</p></li>
-<li><p><strong>n_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>default=None</em>) – Number of splits for cross-validation. If None, the number of splits
+<li><p><strong>return_epochs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – use MNE epoch to train pipelines.</p></li>
+<li><p><strong>return_raws</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – use MNE raw to train pipelines.</p></li>
+<li><p><strong>mne_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – if returning MNE epoch, use original dataset label if True</p></li>
+<li><p><strong>n_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>default=None</em>) – Number of splits for cross-validation. If None, the number of splits
 is equal to the number of subjects.</p></li>
-<li><p><strong>save_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – Save model after training, for each fold of cross-validation if needed</p></li>
-<li><p><strong>cache_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=None</em>) – Configuration for caching of datasets. See <a class="reference internal" href="moabb.datasets.base.CacheConfig.html#moabb.datasets.base.CacheConfig" title="moabb.datasets.base.CacheConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">moabb.datasets.base.CacheConfig</span></code></a> for details.</p></li>
-<li><p><strong>optuna</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>default=False</em>) – If optuna is enable it will change the GridSearch to a RandomizedGridSearch with 15 minutes of cut off time.
+<li><p><strong>cv_class</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)"><em>type</em></a><em>, </em><em>default=None</em>) – Optional cross-validation class to override the evaluation’s default
+splitter behavior.</p></li>
+<li><p><strong>cv_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>, </em><em>default=None</em>) – Keyword arguments passed to cv_class when constructing the splitter.</p></li>
+<li><p><strong>save_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – Save model after training, for each fold of cross-validation if needed</p></li>
+<li><p><strong>cache_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=None</em>) – Configuration for caching of datasets. See <a class="reference internal" href="moabb.datasets.base.CacheConfig.html#moabb.datasets.base.CacheConfig" title="moabb.datasets.base.CacheConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">moabb.datasets.base.CacheConfig</span></code></a> for details.</p></li>
+<li><p><strong>optuna</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>default=False</em>) – If optuna is enable it will change the GridSearch to a RandomizedGridSearch with 15 minutes of cut off time.
 This option is compatible with list of entries of type None, bool, int, float and string</p></li>
 <li><p><strong>time_out</strong> (<em>default=60*15</em>) – Cut off time for the optuna search expressed in seconds, the default value is 15 minutes.
 Only used with optuna equal to True.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>default=None</em>) – If not None, override the default MOABB logging level used by this evaluation
+(see <code class="xref py py-func docutils literal notranslate"><span class="pre">moabb.utils.verbose()</span></code> for more information on how this is handled).
+If used, it should be passed as a keyword-argument only.</p></li>
+<li><p><strong>codecarbon_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> of </em><em>CodeCarbon parameters</em><em>, </em><em>default=dict</em><em>(</em><em>save_to_file=False</em><em>, </em><em>log_level=&quot;error&quot;</em><em>)</em>) – Allow CodeCarbon script level configurations.
+Can use combination of CodeCarbon environment variable and configuration files.
+See CodeCarbon developer documentation for more information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -653,9 +746,12 @@ Only used with optuna equal to True.</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 1.1.1: </span>optuna, time_out parameters.</p>
 </div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.5: </span>verbose parameter.</p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="moabb.evaluations.base.BaseEvaluation.evaluate">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocess_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L274-L292"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.evaluate" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocess_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L506-L524"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.evaluate" title="Link to this definition">#</a></dt>
 <dd><p>Evaluate results on a single dataset.</p>
 <p>This method return a generator. each results item is a dict with
 the following conversion:</p>
@@ -673,7 +769,7 @@ the following conversion:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="moabb.evaluations.base.BaseEvaluation.is_valid">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L294-L309"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.is_valid" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L526-L541"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.is_valid" title="Link to this definition">#</a></dt>
 <dd><p>Verify the dataset is compatible with evaluation.</p>
 <p>This method is called to verify dataset given in the constructor
 are compatible with the evaluation context.</p>
@@ -689,17 +785,17 @@ contain enough session for a cross-session eval.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="moabb.evaluations.base.BaseEvaluation.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipelines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocess_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L179-L258"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.process" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipelines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocess_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/NeuroTechX/moabb/blob/develop/moabb/evaluations/base.py#L411-L490"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moabb.evaluations.base.BaseEvaluation.process" title="Link to this definition">#</a></dt>
 <dd><p>Runs all pipelines on all datasets.</p>
 <p>This function will apply all provided pipelines and return a dataframe
 containing the results of the evaluation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pipelines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em> of </em><em>pipeline instance.</em>) – A dict containing the sklearn pipeline to evaluate.</p></li>
-<li><p><strong>param_grid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The key of the dictionary must be the same as the associated pipeline.</p></li>
+<li><p><strong>pipelines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> of </em><em>pipeline instance.</em>) – A dict containing the sklearn pipeline to evaluate.</p></li>
+<li><p><strong>param_grid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The key of the dictionary must be the same as the associated pipeline.</p></li>
 <li><p><strong>postprocess_pipeline</strong> (<em>Pipeline</em><em> | </em><em>None</em>) – Optional pipeline to apply to the data after the preprocessing.
-This pipeline will either receive <a class="reference external" href="https://mne.tools/stable/generated/mne.io.BaseRaw.html#mne.io.BaseRaw" title="(in MNE v1.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.io.BaseRaw</span></code></a>, <a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs" title="(in MNE v1.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a>
+This pipeline will either receive <a class="reference external" href="https://mne.tools/stable/generated/mne.io.BaseRaw.html#mne.io.BaseRaw" title="(in MNE v1.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.io.BaseRaw</span></code></a>, <a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs" title="(in MNE v1.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a>
 or <code class="xref py py-func docutils literal notranslate"><span class="pre">np.ndarray()</span></code> as input, depending on the values of <code class="docutils literal notranslate"><span class="pre">return_epochs</span></code>
 and <code class="docutils literal notranslate"><span class="pre">return_raws</span></code>.
 This pipeline must return an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>.
@@ -721,80 +817,83 @@ i.e. no call to <code class="docutils literal notranslate"><span class="pre">fit
 <section id="examples-using-moabb-evaluations-base-baseevaluation">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">moabb.evaluations.base.BaseEvaluation</span></code><a class="headerlink" href="#examples-using-moabb-evaluations-base-baseevaluation" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This tutorial takes you through a basic working example of how to use this codebase, including all the different components, up to the results generation. If you&#x27;d like to know about the statistics and plotting, see the next tutorial."><img alt="" src="../_images/sphx_glr_tutorial_0_plot_getting_started_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_0_plot_getting_started.html#sphx-glr-auto-examples-tutorials-tutorial-0-plot-getting-started-py"><span class="std std-ref">Tutorial 0: Getting Started</span></a></p>
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_0_plot_getting_started.html"><span class="doc">Tutorial 0: Getting Started</span></a></p>
   <div class="sphx-glr-thumbnail-title">Tutorial 0: Getting Started</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will go through all the steps to make a simple BCI classification task, downloading a dataset and using a standard classifier. We choose the dataset 2a from BCI Competition IV, a motor imagery task. We will use a CSP to enhance the signal-to-noise ratio of the EEG epochs and a LDA to classify these signals."><img alt="" src="../_images/sphx_glr_tutorial_1_simple_example_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_1_simple_example_motor_imagery.html#sphx-glr-auto-examples-tutorials-tutorial-1-simple-example-motor-imagery-py"><span class="std std-ref">Tutorial 1: Simple Motor Imagery</span></a></p>
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_1_simple_example_motor_imagery.html"><span class="doc">Tutorial 1: Simple Motor Imagery</span></a></p>
   <div class="sphx-glr-thumbnail-title">Tutorial 1: Simple Motor Imagery</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="We extend the previous example to a case where we want to analyze the score of a classifier with three different MI datasets instead of just one. As before, we begin by importing all relevant libraries."><img alt="" src="../_images/sphx_glr_tutorial_2_using_mulitple_datasets_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_2_using_mulitple_datasets.html#sphx-glr-auto-examples-tutorials-tutorial-2-using-mulitple-datasets-py"><span class="std std-ref">Tutorial 2: Using multiple datasets</span></a></p>
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_2_using_mulitple_datasets.html"><span class="doc">Tutorial 2: Using multiple datasets</span></a></p>
   <div class="sphx-glr-thumbnail-title">Tutorial 2: Using multiple datasets</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this last part, we extend the previous example by assessing the classification score of not one but three classification pipelines."><img alt="" src="../_images/sphx_glr_tutorial_3_benchmarking_multiple_pipelines_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_3_benchmarking_multiple_pipelines.html#sphx-glr-auto-examples-tutorials-tutorial-3-benchmarking-multiple-pipelines-py"><span class="std std-ref">Tutorial 3: Benchmarking multiple pipelines</span></a></p>
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_3_benchmarking_multiple_pipelines.html"><span class="doc">Tutorial 3: Benchmarking multiple pipelines</span></a></p>
   <div class="sphx-glr-thumbnail-title">Tutorial 3: Benchmarking multiple pipelines</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Tutorial 4: Creating a dataset class"><img alt="" src="../_images/sphx_glr_tutorial_4_adding_a_dataset_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_4_adding_a_dataset.html#sphx-glr-auto-examples-tutorials-tutorial-4-adding-a-dataset-py"><span class="std std-ref">Tutorial 4: Creating a dataset class</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 4: Creating a dataset class</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Tutorial 5: Creating a dataset class"><img alt="" src="../_images/sphx_glr_tutorial_5_build_a_custom_dataset_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_5_build_a_custom_dataset.html#sphx-glr-auto-examples-tutorials-tutorial-5-build-a-custom-dataset-py"><span class="std std-ref">Tutorial 5: Creating a dataset class</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 5: Creating a dataset class</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="MOABB provides several ways to integrate a custom dataset, depending on the format of your data:"><img alt="" src="../_images/sphx_glr_tutorial_4_adding_a_dataset_thumb.png" />
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_4_adding_a_dataset.html"><span class="doc">Tutorial 4: Creating custom datasets</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tutorial 4: Creating custom datasets</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Tutorial 5: Combining Multiple Datasets into a Single Dataset"><img alt="" src="../_images/sphx_glr_tutorial_5_combining_datasets_thumb.png" />
+<p><a class="reference internal" href="../auto_examples/tutorials/tutorial_5_combining_datasets.html"><span class="doc">Tutorial 5: Combining Multiple Datasets into a Single Dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tutorial 5: Combining Multiple Datasets into a Single Dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example show how to perform a cross session motor imagery analysis on the very popular dataset 2a from the BCI competition IV."><img alt="" src="../_images/sphx_glr_plot_cross_session_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_session_motor_imagery.html#sphx-glr-auto-examples-paradigm-examples-plot-cross-session-motor-imagery-py"><span class="std std-ref">Cross-Session Motor Imagery</span></a></p>
+<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_session_motor_imagery.html"><span class="doc">Cross-Session Motor Imagery</span></a></p>
   <div class="sphx-glr-thumbnail-title">Cross-Session Motor Imagery</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a cross-session analysis on two MI datasets using a CSP+LDA pipeline"><img alt="" src="../_images/sphx_glr_plot_cross_session_multiple_datasets_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_session_multiple_datasets.html#sphx-glr-auto-examples-paradigm-examples-plot-cross-session-multiple-datasets-py"><span class="std std-ref">Cross-Session on Multiple Datasets</span></a></p>
+<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_session_multiple_datasets.html"><span class="doc">Cross-Session on Multiple Datasets</span></a></p>
   <div class="sphx-glr-thumbnail-title">Cross-Session on Multiple Datasets</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="- Riemannian Geometry - CCA - TRCA - MsetCCA"><img alt="" src="../_images/sphx_glr_plot_cross_subject_ssvep_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_subject_ssvep.html#sphx-glr-auto-examples-paradigm-examples-plot-cross-subject-ssvep-py"><span class="std std-ref">Cross-Subject SSVEP</span></a></p>
+<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_cross_subject_ssvep.html"><span class="doc">Cross-Subject SSVEP</span></a></p>
   <div class="sphx-glr-thumbnail-title">Cross-Subject SSVEP</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a within session analysis on three different P300 datasets."><img alt="" src="../_images/sphx_glr_plot_within_session_p300_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_within_session_p300.html#sphx-glr-auto-examples-paradigm-examples-plot-within-session-p300-py"><span class="std std-ref">Within Session P300</span></a></p>
+<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_within_session_p300.html"><span class="doc">Within Session P300</span></a></p>
   <div class="sphx-glr-thumbnail-title">Within Session P300</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This Example shows how to perform a within-session SSVEP analysis on the MAMEM dataset 3, using a CCA pipeline."><img alt="" src="../_images/sphx_glr_plot_within_session_ssvep_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_within_session_ssvep.html#sphx-glr-auto-examples-paradigm-examples-plot-within-session-ssvep-py"><span class="std std-ref">Within Session SSVEP</span></a></p>
+<p><a class="reference internal" href="../auto_examples/paradigm_examples/plot_within_session_ssvep.html"><span class="doc">Within Session SSVEP</span></a></p>
   <div class="sphx-glr-thumbnail-title">Within Session SSVEP</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to plot Dreyer2023A Left-Right Imagery ROC AUC scores obtained with CSP+LDA pipeline versus demographic information of the examined subjects (gender and age) and experimenters (gender)."><img alt="" src="../_images/sphx_glr_plot_dreyer_clf_scores_vs_subj_info_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_dreyer_clf_scores_vs_subj_info.html#sphx-glr-auto-examples-advanced-examples-plot-dreyer-clf-scores-vs-subj-info-py"><span class="std std-ref">Examples of analysis of a Dreyer2023 A dataset.</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_dreyer_clf_scores_vs_subj_info.html"><span class="doc">Examples of analysis of a Dreyer2023 A dataset.</span></a></p>
   <div class="sphx-glr-thumbnail-title">Examples of analysis of a Dreyer2023 A dataset.</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example show a comparison of CSP versus FilterBank CSP on the very popular dataset 2a from the BCI competition IV."><img alt="" src="../_images/sphx_glr_plot_filterbank_csp_vs_csp_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_filterbank_csp_vs_csp.html#sphx-glr-auto-examples-advanced-examples-plot-filterbank-csp-vs-csp-py"><span class="std std-ref">FilterBank CSP versus CSP</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_filterbank_csp_vs_csp.html"><span class="doc">FilterBank CSP versus CSP</span></a></p>
   <div class="sphx-glr-thumbnail-title">FilterBank CSP versus CSP</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to make a model selection in pipelines for finding the best model parameter, using grid search. Two models are compared, one &quot;vanilla&quot; model with model tuned via grid search."><img alt="" src="../_images/sphx_glr_plot_grid_search_withinsession_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_grid_search_withinsession.html#sphx-glr-auto-examples-advanced-examples-plot-grid-search-withinsession-py"><span class="std std-ref">GridSearch within a session</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_grid_search_withinsession.html"><span class="doc">GridSearch within a session</span></a></p>
   <div class="sphx-glr-thumbnail-title">GridSearch within a session</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use the Hinss2021 dataset with the resting state paradigm."><img alt="" src="../_images/sphx_glr_plot_hinss2021_classification_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_hinss2021_classification.html#sphx-glr-auto-examples-advanced-examples-plot-hinss2021-classification-py"><span class="std std-ref">Hinss2021 classification example</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_hinss2021_classification.html"><span class="doc">Hinss2021 classification example</span></a></p>
   <div class="sphx-glr-thumbnail-title">Hinss2021 classification example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use machine learning pipeline based on MNE Epochs instead of Numpy arrays. This is useful to make the most of the MNE code base and to embed EEG specific code inside sklearn pipelines."><img alt="" src="../_images/sphx_glr_plot_mne_and_scikit_estimators_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_mne_and_scikit_estimators.html#sphx-glr-auto-examples-advanced-examples-plot-mne-and-scikit-estimators-py"><span class="std std-ref">MNE Epochs-based pipelines</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_mne_and_scikit_estimators.html"><span class="doc">MNE Epochs-based pipelines</span></a></p>
   <div class="sphx-glr-thumbnail-title">MNE Epochs-based pipelines</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to evaluate a pipeline constructed using the mne-features library [1]_. This library provides sklearn compatible feature extractors for M/EEG data. These features can be used directly in your pipelines."><img alt="" src="../_images/sphx_glr_plot_mne_features_pipeline_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_mne_features_pipeline.html#sphx-glr-auto-examples-advanced-examples-plot-mne-features-pipeline-py"><span class="std std-ref">Pipelines using the mne-features library</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Pipelines using the mne-features library</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Behind the curtains, these steps are defined in a scikit-learn Pipeline. This pipeline receives raw signals and applies various signal processing steps to construct the final array object and class labels, which will be used to train and evaluate the classifiers."><img alt="" src="../_images/sphx_glr_plot_pre_processing_steps_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_pre_processing_steps.html#sphx-glr-auto-examples-advanced-examples-plot-pre-processing-steps-py"><span class="std std-ref">Playing with the pre-processing steps</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_pre_processing_steps.html"><span class="doc">Playing with the pre-processing steps</span></a></p>
   <div class="sphx-glr-thumbnail-title">Playing with the pre-processing steps</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a pseudo-online motor imagery evaluation using sliding window overlap. The overlap parameter in the paradigm generates overlapping epochs from the original trials, simulating an online BCI scenario."><img alt="" src="../_images/sphx_glr_plot_pseudoonline_thumb.png" />
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_pseudoonline.html"><span class="doc">Pseudo-Online Motor Imagery with Sliding Window</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pseudo-Online Motor Imagery with Sliding Window</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Electroencephalography (EEG) signal cleaning has long been a critical challenge in the research community. The presence of artifacts can significantly degrade EEG data quality, complicating analysis and potentially leading to erroneous interpretations. These artifacts are broadly categorized as either endogenous (biological: ocular, myogenic, cardiac) or exogenous (environmental, instrumental). As noted in [3]_, manual annotation of artifacts is time-consuming, subjective, and impractical for large-scale EEG studies."><img alt="" src="../_images/sphx_glr_plot_riemannian_artifact_rejection_thumb.png" />
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_riemannian_artifact_rejection.html"><span class="doc">Riemannian Artifact Rejection as a Pre-processing Step</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Riemannian Artifact Rejection as a Pre-processing Step</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Within paradigm, it is possible to restrict analysis only to a subset of electrodes and to resample to a specific sampling rate. There is also a utility function to select common electrodes shared between datasets. This tutorial demonstrates how to use this functionality."><img alt="" src="../_images/sphx_glr_plot_select_electrodes_resample_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_select_electrodes_resample.html#sphx-glr-auto-examples-advanced-examples-plot-select-electrodes-resample-py"><span class="std std-ref">Select Electrodes and Resampling</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_select_electrodes_resample.html"><span class="doc">Select Electrodes and Resampling</span></a></p>
   <div class="sphx-glr-thumbnail-title">Select Electrodes and Resampling</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The MOABB codebase comes with convenience plotting utilities and some statistical testing. This tutorial focuses on what those exactly are and how they can be used."><img alt="" src="../_images/sphx_glr_plot_statistical_analysis_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_statistical_analysis.html#sphx-glr-auto-examples-advanced-examples-plot-statistical-analysis-py"><span class="std std-ref">Statistical Analysis</span></a></p>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_statistical_analysis.html"><span class="doc">Statistical Analysis</span></a></p>
   <div class="sphx-glr-thumbnail-title">Statistical Analysis</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The following tutorial creates a dataset that contains data in the form of epochs. A special paradigm is provided, which calls an additional method on the dataset so that MOABB can process it correctly. After this, a standard classification is performed."><img alt="" src="../_images/sphx_glr_plot_use_an_X_y_dataset_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_use_an_X_y_dataset.html#sphx-glr-auto-examples-advanced-examples-plot-use-an-x-y-dataset-py"><span class="std std-ref">Tutorial 6: Using X y data (epoched data) instead of continuous signal</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Tutorial 6: Using X y data (epoched data) instead of continuous signal</div>
+<p><a class="reference internal" href="../auto_examples/advanced_examples/plot_use_an_X_y_dataset.html"><span class="doc">Using X y data (epoched data) instead of continuous signal</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Using X y data (epoched data) instead of continuous signal</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a within session motor imagery analysis on the very popular dataset 2a from the BCI competition IV."><img alt="" src="../_images/sphx_glr_plot_learning_curve_motor_imagery_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/learning_curve/plot_learning_curve_motor_imagery.html#sphx-glr-auto-examples-learning-curve-plot-learning-curve-motor-imagery-py"><span class="std std-ref">Within Session Motor Imagery with Learning Curve</span></a></p>
+<p><a class="reference internal" href="../auto_examples/learning_curve/plot_learning_curve_motor_imagery.html"><span class="doc">Within Session Motor Imagery with Learning Curve</span></a></p>
   <div class="sphx-glr-thumbnail-title">Within Session Motor Imagery with Learning Curve</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform a within session analysis while also creating learning curves for a P300 dataset."><img alt="" src="../_images/sphx_glr_plot_learning_curve_p300_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/learning_curve/plot_learning_curve_p300.html#sphx-glr-auto-examples-learning-curve-plot-learning-curve-p300-py"><span class="std std-ref">Within Session P300 with Learning Curve</span></a></p>
+<p><a class="reference internal" href="../auto_examples/learning_curve/plot_learning_curve_p300.html"><span class="doc">Within Session P300 with Learning Curve</span></a></p>
   <div class="sphx-glr-thumbnail-title">Within Session P300 with Learning Curve</div>
 </div></div><div style='clear:both'></div></section>
 </section>
 
 
-                </article>
-              
+</div>
+
               
               
               
@@ -874,7 +973,7 @@ i.e. no call to <code class="docutils literal notranslate"><span class="pre">fit
 
   <p class="copyright">
     
-      © Copyright 2018-2025 MOABB contributors.
+      © Copyright 2018-2026 MOABB contributors.
       <br/>
     
   </p>

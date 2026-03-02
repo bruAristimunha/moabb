@@ -1,0 +1,1247 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="moabb icon" sizes="180x180" href="../../_static/_static/moabb_logo.png" type="image/png">
+    <link rel="icon" href="../../_static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" sizes="144x144" href="../../_static/favicon-144.png" type="image/png">
+    <link rel="mask-icon" href="../../_static/favicon_mask-icon.svg" color="#222832" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="500x500" href="../../_static/favicon-500.png" type="image/png">
+    <title>Time-Resolved Decoding with SlidingEstimator &#8212; moabb 1.4.3-dev documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bd6ce74" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=1c0077db"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-5WJBKDMSTE"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-5WJBKDMSTE');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-5WJBKDMSTE');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/advanced_examples/plot_sliding_estimator';</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
+    <script src="../../_static/js/section-nav-hierarchy.js?v=c53969c2"></script>
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/auto_examples/advanced_examples/plot_sliding_estimator.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Statistical Analysis" href="plot_statistical_analysis.html" />
+    <link rel="prev" title="Select Electrodes and Resampling" href="plot_select_electrodes_resample.html" />
+    <link rel="canonical" href="https://moabb.neurotechx.com/docs/auto_examples/advanced_examples/plot_sliding_estimator.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.4.3" />
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content"><strong>Using MOABB in academic work?</strong> <a class='moabb-announcement-cta' href='cite.html'>Cite MOABB</a> <span class='moabb-announcement-secondary'>DOI: <a href='https://doi.org/10.5281/zenodo.10034223'>10.5281/zenodo.10034223</a> · Explore <a href='paper_results.html'>benchmark results</a></span></div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/moabb_light.svg" class="logo__image only-light" alt="moabb 1.4.3-dev documentation - Home"/>
+    <img src="../../_static/moabb_dark.svg" class="logo__image only-dark pst-js-only" alt="moabb 1.4.3-dev documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../paper_results.html">
+    The largest EEG benchmark
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dataset_summary.html">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install/install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../cite.html">
+    Citation
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new.html">
+    Release notes
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../paper_results.html">
+    The largest EEG benchmark
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dataset_summary.html">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install/install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../cite.html">
+    Citation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="External Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NeuroTechX/moabb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/moabb/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Getting Started!</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_0_plot_getting_started.html">Tutorial 0: Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_1_simple_example_motor_imagery.html">Tutorial 1: Simple Motor Imagery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_2_using_mulitple_datasets.html">Tutorial 2: Using multiple datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_3_benchmarking_multiple_pipelines.html">Tutorial 3: Benchmarking multiple pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_4_adding_a_dataset.html">Tutorial 4: Creating custom datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_5_combining_datasets.html">Tutorial 5: Combining Multiple Datasets into a Single Dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../paradigm_examples/index.html">Paradigm-Specific Evaluation Examples (Within- &amp; Cross-Session)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_cross_session_motor_imagery.html">Cross-Session Motor Imagery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_cross_session_multiple_datasets.html">Cross-Session on Multiple Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_cross_subject_ssvep.html">Cross-Subject SSVEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_vr_pc_p300_different_epoch_size.html">Changing epoch size in P300 VR dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_within_session_p300.html">Within Session P300</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../paradigm_examples/plot_within_session_ssvep.html">Within Session SSVEP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_management_and_configuration/index.html">Data Management and Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/noplot_load_model.html">Load Model (Scikit) with MOABB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/plot_bids_conversion.html">Convert a MOABB dataset to BIDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/plot_changing_download_directory.html">Change Download Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/plot_disk_cache.html">Cache on disk intermediate data processing states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/plot_explore_paradigm.html">Explore Paradigm Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_management_and_configuration/plot_fixed_interval_windows.html">Fixed interval windows processing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../how_to_benchmark/index.html">Benchmarking and Pipeline Evaluation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/noplot_example_codecarbon.html">Benchmarking with MOABB showing the CO2 footprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark.html">Benchmarking with MOABB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_benchmark_grid_search.html">Benchmarking with MOABB with Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_benchmark/plot_within_session_splitter.html">Tutorial: Within-Session Splitting on Real MI Dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Advanced examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="noplot_mne_features_pipeline.html">Pipelines using the mne-features library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_dataset_bubbles.html">Dataset bubble plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_dreyer_clf_scores_vs_subj_info.html">Examples of analysis of a Dreyer2023 A dataset.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_filterbank_csp_vs_csp.html">FilterBank CSP versus CSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_grid_search_withinsession.html">GridSearch within a session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_hinss2021_classification.html">Hinss2021 classification example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_mne_and_scikit_estimators.html">MNE Epochs-based pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pre_processing_steps.html">Playing with the pre-processing steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pseudoonline.html">Pseudo-Online Motor Imagery with Sliding Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_riemannian_artifact_rejection.html">Riemannian Artifact Rejection as a Pre-processing Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Time-Resolved Decoding with SlidingEstimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_use_an_X_y_dataset.html">Using X y data (epoched data) instead of continuous signal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../learning_curve/index.html">Evaluation with learning curve</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../learning_curve/noplot_learning_curve_p300_external.html">Within Session P300 with Learning Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../learning_curve/plot_learning_curve_motor_imagery.html">Within Session Motor Imagery with Learning Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../learning_curve/plot_learning_curve_p300.html">Within Session P300 with Learning Curve</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">MOABB Examples</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Advanced examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Time-Resolved Decoding with SlidingEstimator</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+<div>
+  
+  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-advanced-examples-plot-sliding-estimator-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="time-resolved-decoding-with-slidingestimator">
+<span id="sphx-glr-auto-examples-advanced-examples-plot-sliding-estimator-py"></span><h1>Time-Resolved Decoding with SlidingEstimator<a class="headerlink" href="#time-resolved-decoding-with-slidingestimator" title="Link to this heading">#</a></h1>
+<p>This example shows how to perform time-resolved decoding of EEG signals using
+<a class="reference external" href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="(in MNE v1.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.decoding.SlidingEstimator</span></code></a>. Instead of reducing the entire trial to
+a single score, a SlidingEstimator fits an independent classifier at each time
+point, revealing <em>when</em> during a trial the neural signal carries information
+about the mental state.</p>
+<p>This approach is a natural alternative to pseudo-online evaluation (using
+overlapping windows): rather than simulating an online scenario by slicing
+the raw signal with a sliding window, we directly assess decoding accuracy
+at each sample of the already-epoched trial.</p>
+<p>We use the BNCI2014-001 motor-imagery dataset (left- vs right-hand) and apply
+a logistic-regression classifier wrapped in a SlidingEstimator. For each
+subject the score is evaluated via stratified 5-fold cross-validation using
+<a class="reference external" href="https://mne.tools/stable/generated/mne.decoding.cross_val_multiscore.html#mne.decoding.cross_val_multiscore" title="(in MNE v1.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mne.decoding.cross_val_multiscore()</span></code></a>, and the results are averaged across
+subjects and visualised as a time course.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: MOABB contributors</span>
+<span class="c1">#</span>
+<span class="c1"># License: BSD (3-clause)</span>
+<span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mne.decoding</span><span class="w"> </span><span class="kn">import</span> <a href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="mne.decoding.SlidingEstimator" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-class"><span class="n">SlidingEstimator</span></a><span class="p">,</span> <a href="https://mne.tools/stable/generated/mne.decoding.cross_val_multiscore.html#mne.decoding.cross_val_multiscore" title="mne.decoding.cross_val_multiscore" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-function"><span class="n">cross_val_multiscore</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html#scipy.stats.ttest_1samp" title="scipy.stats.ttest_1samp" class="sphx-glr-backref-module-scipy-stats sphx-glr-backref-type-py-function"><span class="n">ttest_1samp</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">moabb</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="../../generated/moabb.datasets.BNCI2014_001.html#moabb.datasets.BNCI2014_001" title="moabb.datasets.BNCI2014_001" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class"><span class="n">BNCI2014_001</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.paradigms</span><span class="w"> </span><span class="kn">import</span> <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a>
+
+
+<a href="../../generated/moabb.set_log_level.html#moabb.set_log_level" title="moabb.set_log_level" class="sphx-glr-backref-module-moabb sphx-glr-backref-type-py-function"><span class="n">moabb</span><span class="o">.</span><span class="n">set_log_level</span></a><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="warnings.filterwarnings" class="sphx-glr-backref-module-warnings sphx-glr-backref-type-py-function"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span></a><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="loading-the-dataset">
+<h2>Loading the Dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
+<p>We instantiate the BNCI2014-001 dataset and use all 9 subjects.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../generated/moabb.datasets.BNCI2014_001.html#moabb.datasets.BNCI2014_001" title="moabb.datasets.BNCI2014_001" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a> <span class="o">=</span> <a href="../../generated/moabb.datasets.BNCI2014_001.html#moabb.datasets.BNCI2014_001" title="moabb.datasets.BNCI2014_001" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class"><span class="n">BNCI2014_001</span></a><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="choosing-a-paradigm">
+<h2>Choosing a Paradigm<a class="headerlink" href="#choosing-a-paradigm" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery"><code class="xref py py-class docutils literal notranslate"><span class="pre">LeftRightImagery</span></code></a> paradigm extracts
+left-hand and right-hand motor-imagery epochs, applies a band-pass filter
+(8–32 Hz by default), and returns the data as a 3-D NumPy array of shape
+<code class="docutils literal notranslate"><span class="pre">(n_trials,</span> <span class="pre">n_channels,</span> <span class="pre">n_times)</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">paradigm</span></a> <span class="o">=</span> <a href="../../generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery" title="moabb.paradigms.LeftRightImagery" class="sphx-glr-backref-module-moabb-paradigms sphx-glr-backref-type-py-class"><span class="n">LeftRightImagery</span></a><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="building-a-time-resolved-pipeline">
+<h2>Building a Time-Resolved Pipeline<a class="headerlink" href="#building-a-time-resolved-pipeline" title="Link to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="(in MNE v1.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SlidingEstimator</span></code></a> wraps any scikit-learn compatible
+estimator and fits/scores it independently at every time point.
+Here we use a simple logistic-regression classifier with Z-score
+normalisation.  The <code class="docutils literal notranslate"><span class="pre">scoring='roc_auc'</span></code> argument tells the estimator to
+use AUC as the evaluation metric.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clf</span></a> <span class="o">=</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<a href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="mne.decoding.SlidingEstimator" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sliding</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="mne.decoding.SlidingEstimator" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-class"><span class="n">SlidingEstimator</span></a><span class="p">(</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clf</span></a><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluating-each-subject">
+<h2>Evaluating Each Subject<a class="headerlink" href="#evaluating-each-subject" title="Link to this heading">#</a></h2>
+<p>For each subject we:</p>
+<ol class="arabic simple">
+<li><p>Retrieve the preprocessed epochs via the paradigm using
+<code class="docutils literal notranslate"><span class="pre">return_epochs=True</span></code> so we can extract the correct time vector and
+sampling frequency from the <a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs" title="(in MNE v1.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a> metadata.</p></li>
+<li><p>Run stratified 5-fold cross-validation with
+<a class="reference external" href="https://mne.tools/stable/generated/mne.decoding.cross_val_multiscore.html#mne.decoding.cross_val_multiscore" title="(in MNE v1.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_multiscore()</span></code></a>, which returns an array of
+shape <code class="docutils literal notranslate"><span class="pre">(n_folds,</span> <span class="pre">n_times)</span></code>.</p></li>
+<li><p>Average over folds to obtain a single time course per subject.</p></li>
+</ol>
+<p>All per-subject time courses are collected for later aggregation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span><span class="o">.</span><span class="n">subject_list</span></a><span class="p">:</span>
+    <a href="https://mne.tools/stable/generated/mne.EpochsArray.html#mne.EpochsArray" title="mne.EpochsArray" class="sphx-glr-backref-module-mne sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">epochs</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <a href="../../generated/moabb.paradigms.base.BaseProcessing.html#moabb.paradigms.base.BaseProcessing.get_data" title="moabb.paradigms.base.BaseProcessing.get_data" class="sphx-glr-backref-module-moabb-paradigms-base sphx-glr-backref-type-py-method"><span class="n">paradigm</span><span class="o">.</span><span class="n">get_data</span></a><span class="p">(</span>
+        <a href="../../generated/moabb.datasets.BNCI2014_001.html#moabb.datasets.BNCI2014_001" title="moabb.datasets.BNCI2014_001" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a><span class="o">=</span><a href="../../generated/moabb.datasets.BNCI2014_001.html#moabb.datasets.BNCI2014_001" title="moabb.datasets.BNCI2014_001" class="sphx-glr-backref-module-moabb-datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="p">],</span> <span class="n">return_epochs</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.EpochsArray.html#mne.EpochsArray.get_data" title="mne.EpochsArray.get_data" class="sphx-glr-backref-module-mne sphx-glr-backref-type-py-method"><span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span></a><span class="p">()</span>
+
+    <span class="c1"># cross_val_multiscore returns (n_folds, n_times)</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scores</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.decoding.cross_val_multiscore.html#mne.decoding.cross_val_multiscore" title="mne.decoding.cross_val_multiscore" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-function"><span class="n">cross_val_multiscore</span></a><span class="p">(</span><a href="https://mne.tools/stable/generated/mne.decoding.SlidingEstimator.html#mne.decoding.SlidingEstimator" title="mne.decoding.SlidingEstimator" class="sphx-glr-backref-module-mne-decoding sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sliding</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span><span class="o">.</span><span class="n">append</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scores</span></a><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># average over folds</span>
+
+<span class="c1"># Stack into (n_subjects, n_times)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|                                              | 0.00/37.2M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/37.2M [00:00&lt;09:41, 63.9kB/s]
+  0%|                                      | 39.9k/37.2M [00:00&lt;03:37, 171kB/s]
+  0%|                                       | 113k/37.2M [00:00&lt;01:46, 348kB/s]
+  1%|▏                                      | 209k/37.2M [00:00&lt;01:13, 504kB/s]
+  1%|▍                                      | 449k/37.2M [00:00&lt;00:37, 988kB/s]
+  2%|▉                                     | 896k/37.2M [00:00&lt;00:19, 1.82MB/s]
+  5%|█▊                                   | 1.82M/37.2M [00:00&lt;00:09, 3.54MB/s]
+ 10%|███▋                                 | 3.66M/37.2M [00:01&lt;00:04, 6.92MB/s]
+ 17%|██████▍                              | 6.41M/37.2M [00:01&lt;00:02, 11.4MB/s]
+ 23%|████████▍                            | 8.52M/37.2M [00:01&lt;00:02, 12.9MB/s]
+ 34%|████████████▌                        | 12.6M/37.2M [00:01&lt;00:01, 18.5MB/s]
+ 42%|███████████████▌                     | 15.6M/37.2M [00:01&lt;00:01, 20.0MB/s]
+ 48%|█████████████████▊                   | 17.9M/37.2M [00:01&lt;00:00, 19.3MB/s]
+ 58%|█████████████████████▌               | 21.7M/37.2M [00:01&lt;00:00, 22.2MB/s]
+ 67%|████████████████████████▋            | 24.7M/37.2M [00:01&lt;00:00, 22.6MB/s]
+ 73%|███████████████████████████          | 27.1M/37.2M [00:02&lt;00:00, 21.3MB/s]
+ 83%|██████████████████████████████▌      | 30.7M/37.2M [00:02&lt;00:00, 23.1MB/s]
+ 91%|█████████████████████████████████▋   | 33.9M/37.2M [00:02&lt;00:00, 23.6MB/s]
+100%|████████████████████████████████████▊| 37.0M/37.2M [00:02&lt;00:00, 25.5MB/s]
+  0%|                                              | 0.00/37.2M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 37.2M/37.2M [00:00&lt;00:00, 213GB/s]
+
+  0%|                                              | 0.00/41.7M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/41.7M [00:00&lt;11:28, 60.6kB/s]
+  0%|                                      | 48.1k/41.7M [00:00&lt;03:30, 198kB/s]
+  0%|                                       | 128k/41.7M [00:00&lt;01:50, 375kB/s]
+  1%|▎                                      | 289k/41.7M [00:00&lt;00:59, 692kB/s]
+  1%|▌                                     | 608k/41.7M [00:00&lt;00:31, 1.29MB/s]
+  3%|█                                    | 1.24M/41.7M [00:00&lt;00:16, 2.42MB/s]
+  6%|██▏                                  | 2.52M/41.7M [00:00&lt;00:08, 4.70MB/s]
+ 12%|████▍                                | 5.06M/41.7M [00:01&lt;00:04, 9.14MB/s]
+ 19%|███████▏                             | 8.04M/41.7M [00:01&lt;00:02, 13.1MB/s]
+ 25%|█████████▏                           | 10.3M/41.7M [00:01&lt;00:02, 14.3MB/s]
+ 31%|███████████▎                         | 12.8M/41.7M [00:01&lt;00:01, 15.4MB/s]
+ 37%|█████████████▊                       | 15.5M/41.7M [00:01&lt;00:01, 16.8MB/s]
+ 45%|████████████████▊                    | 18.9M/41.7M [00:01&lt;00:01, 19.1MB/s]
+ 52%|███████████████████▏                 | 21.7M/41.7M [00:01&lt;00:01, 19.6MB/s]
+ 58%|█████████████████████▌               | 24.3M/41.7M [00:02&lt;00:00, 19.5MB/s]
+ 65%|███████████████████████▉             | 26.9M/41.7M [00:02&lt;00:00, 19.4MB/s]
+ 72%|██████████████████████████▍          | 29.9M/41.7M [00:02&lt;00:00, 20.0MB/s]
+ 79%|█████████████████████████████        | 32.8M/41.7M [00:02&lt;00:00, 20.8MB/s]
+ 85%|███████████████████████████████▎     | 35.3M/41.7M [00:02&lt;00:00, 21.8MB/s]
+ 90%|█████████████████████████████████▎   | 37.6M/41.7M [00:02&lt;00:00, 20.6MB/s]
+ 98%|████████████████████████████████████▏| 40.8M/41.7M [00:02&lt;00:00, 21.4MB/s]
+  0%|                                              | 0.00/41.7M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 41.7M/41.7M [00:00&lt;00:00, 230GB/s]
+
+  0%|                                              | 0.00/42.5M [00:00&lt;?, ?B/s]
+  0%|                                      | 16.4k/42.5M [00:00&lt;05:34, 127kB/s]
+  0%|                                      | 64.5k/42.5M [00:00&lt;02:36, 271kB/s]
+  0%|▏                                      | 161k/42.5M [00:00&lt;01:26, 486kB/s]
+  1%|▎                                      | 352k/42.5M [00:00&lt;00:48, 877kB/s]
+  2%|▋                                     | 736k/42.5M [00:00&lt;00:25, 1.63MB/s]
+  4%|█▎                                   | 1.51M/42.5M [00:00&lt;00:13, 3.10MB/s]
+  7%|██▋                                  | 3.06M/42.5M [00:00&lt;00:06, 5.97MB/s]
+ 14%|█████▎                               | 6.15M/42.5M [00:01&lt;00:03, 11.7MB/s]
+ 21%|███████▉                             | 9.05M/42.5M [00:01&lt;00:02, 15.0MB/s]
+ 27%|█████████▊                           | 11.3M/42.5M [00:01&lt;00:01, 15.6MB/s]
+ 34%|████████████▋                        | 14.6M/42.5M [00:01&lt;00:01, 18.7MB/s]
+ 41%|███████████████▏                     | 17.5M/42.5M [00:01&lt;00:01, 19.7MB/s]
+ 48%|█████████████████▊                   | 20.4M/42.5M [00:01&lt;00:01, 20.5MB/s]
+ 54%|████████████████████                 | 23.0M/42.5M [00:01&lt;00:00, 20.3MB/s]
+ 61%|██████████████████████▌              | 25.9M/42.5M [00:01&lt;00:00, 20.9MB/s]
+ 68%|█████████████████████████            | 28.8M/42.5M [00:02&lt;00:00, 21.5MB/s]
+ 75%|███████████████████████████▋         | 31.7M/42.5M [00:02&lt;00:00, 21.8MB/s]
+ 81%|██████████████████████████████       | 34.5M/42.5M [00:02&lt;00:00, 21.7MB/s]
+ 88%|████████████████████████████████▌    | 37.4M/42.5M [00:02&lt;00:00, 21.8MB/s]
+ 95%|███████████████████████████████████▏ | 40.4M/42.5M [00:02&lt;00:00, 22.1MB/s]
+  0%|                                              | 0.00/42.5M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.5M/42.5M [00:00&lt;00:00, 163GB/s]
+
+  0%|                                              | 0.00/44.4M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/44.4M [00:00&lt;12:12, 60.6kB/s]
+  0%|                                      | 56.3k/44.4M [00:00&lt;03:10, 233kB/s]
+  0%|                                       | 128k/44.4M [00:00&lt;02:00, 367kB/s]
+  1%|▎                                      | 296k/44.4M [00:00&lt;01:02, 708kB/s]
+  1%|▌                                     | 633k/44.4M [00:00&lt;00:32, 1.34MB/s]
+  3%|█                                    | 1.30M/44.4M [00:00&lt;00:16, 2.54MB/s]
+  6%|██▏                                  | 2.62M/44.4M [00:00&lt;00:08, 4.89MB/s]
+ 12%|████▍                                | 5.29M/44.4M [00:01&lt;00:04, 9.55MB/s]
+ 21%|███████▊                             | 9.31M/44.4M [00:01&lt;00:02, 15.8MB/s]
+ 27%|█████████▉                           | 11.9M/44.4M [00:01&lt;00:01, 16.8MB/s]
+ 33%|████████████▏                        | 14.6M/44.4M [00:01&lt;00:01, 17.6MB/s]
+ 41%|███████████████▎                     | 18.3M/44.4M [00:01&lt;00:01, 20.7MB/s]
+ 48%|█████████████████▋                   | 21.2M/44.4M [00:01&lt;00:01, 20.7MB/s]
+ 54%|███████████████████▉                 | 23.9M/44.4M [00:01&lt;00:00, 20.5MB/s]
+ 62%|██████████████████████▉              | 27.5M/44.4M [00:02&lt;00:00, 22.2MB/s]
+ 69%|█████████████████████████▍           | 30.5M/44.4M [00:02&lt;00:00, 22.1MB/s]
+ 75%|███████████████████████████▋         | 33.2M/44.4M [00:02&lt;00:00, 21.5MB/s]
+ 83%|██████████████████████████████▌      | 36.7M/44.4M [00:02&lt;00:00, 22.7MB/s]
+ 90%|█████████████████████████████████▏   | 39.8M/44.4M [00:02&lt;00:00, 22.6MB/s]
+ 96%|███████████████████████████████████▍ | 42.6M/44.4M [00:02&lt;00:00, 21.9MB/s]
+  0%|                                              | 0.00/44.4M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.4M/44.4M [00:00&lt;00:00, 251GB/s]
+
+  0%|                                              | 0.00/44.6M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/44.6M [00:00&lt;11:39, 63.7kB/s]
+  0%|                                      | 39.9k/44.6M [00:00&lt;04:21, 170kB/s]
+  0%|                                       | 113k/44.6M [00:00&lt;02:07, 348kB/s]
+  0%|▏                                      | 184k/44.6M [00:00&lt;01:43, 429kB/s]
+  1%|▎                                      | 392k/44.6M [00:00&lt;00:51, 851kB/s]
+  2%|▋                                     | 808k/44.6M [00:00&lt;00:26, 1.65MB/s]
+  4%|█▎                                   | 1.64M/44.6M [00:00&lt;00:13, 3.20MB/s]
+  7%|██▋                                  | 3.30M/44.6M [00:01&lt;00:06, 6.24MB/s]
+ 14%|█████▎                               | 6.42M/44.6M [00:01&lt;00:03, 11.8MB/s]
+ 21%|███████▋                             | 9.26M/44.6M [00:01&lt;00:02, 14.9MB/s]
+ 26%|█████████▌                           | 11.6M/44.6M [00:01&lt;00:02, 15.8MB/s]
+ 32%|███████████▊                         | 14.3M/44.6M [00:01&lt;00:01, 17.3MB/s]
+ 38%|██████████████▏                      | 17.1M/44.6M [00:01&lt;00:01, 18.6MB/s]
+ 44%|████████████████▎                    | 19.6M/44.6M [00:01&lt;00:01, 18.9MB/s]
+ 50%|██████████████████▍                  | 22.2M/44.6M [00:01&lt;00:01, 19.3MB/s]
+ 56%|████████████████████▊                | 25.0M/44.6M [00:02&lt;00:00, 19.9MB/s]
+ 62%|██████████████████████▉              | 27.6M/44.6M [00:02&lt;00:00, 20.0MB/s]
+ 68%|█████████████████████████▏           | 30.3M/44.6M [00:02&lt;00:00, 20.2MB/s]
+ 74%|███████████████████████████▍         | 33.1M/44.6M [00:02&lt;00:00, 20.5MB/s]
+ 80%|█████████████████████████████▋       | 35.8M/44.6M [00:02&lt;00:00, 20.5MB/s]
+ 86%|███████████████████████████████▉     | 38.5M/44.6M [00:02&lt;00:00, 20.6MB/s]
+ 92%|██████████████████████████████████▏  | 41.2M/44.6M [00:02&lt;00:00, 20.7MB/s]
+ 98%|████████████████████████████████████▍| 43.9M/44.6M [00:02&lt;00:00, 20.7MB/s]
+  0%|                                              | 0.00/44.6M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.6M/44.6M [00:00&lt;00:00, 273GB/s]
+
+  0%|                                              | 0.00/43.4M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/43.4M [00:00&lt;11:55, 60.6kB/s]
+  0%|                                      | 56.3k/43.4M [00:00&lt;03:05, 233kB/s]
+  0%|▏                                      | 144k/43.4M [00:00&lt;01:42, 421kB/s]
+  1%|▎                                      | 321k/43.4M [00:00&lt;00:56, 765kB/s]
+  2%|▌                                     | 680k/43.4M [00:00&lt;00:29, 1.44MB/s]
+  3%|█                                    | 1.30M/43.4M [00:00&lt;00:16, 2.50MB/s]
+  6%|██▏                                  | 2.62M/43.4M [00:00&lt;00:08, 4.84MB/s]
+ 11%|████                                 | 4.79M/43.4M [00:01&lt;00:04, 8.36MB/s]
+ 15%|█████▋                               | 6.68M/43.4M [00:01&lt;00:03, 10.1MB/s]
+ 20%|███████▌                             | 8.85M/43.4M [00:01&lt;00:02, 11.9MB/s]
+ 25%|█████████▎                           | 11.0M/43.4M [00:01&lt;00:02, 13.0MB/s]
+ 30%|███████████▏                         | 13.1M/43.4M [00:01&lt;00:02, 13.8MB/s]
+ 35%|█████████████                        | 15.3M/43.4M [00:01&lt;00:01, 14.4MB/s]
+ 40%|██████████████▊                      | 17.4M/43.4M [00:01&lt;00:01, 14.8MB/s]
+ 45%|████████████████▋                    | 19.5M/43.4M [00:02&lt;00:01, 14.9MB/s]
+ 53%|███████████████████▍                 | 22.9M/43.4M [00:02&lt;00:01, 17.8MB/s]
+ 59%|█████████████████████▋               | 25.4M/43.4M [00:02&lt;00:00, 18.0MB/s]
+ 64%|███████████████████████▌             | 27.7M/43.4M [00:02&lt;00:00, 17.7MB/s]
+ 70%|██████████████████████████           | 30.6M/43.4M [00:02&lt;00:00, 18.7MB/s]
+ 77%|████████████████████████████▎        | 33.3M/43.4M [00:02&lt;00:00, 19.0MB/s]
+ 82%|██████████████████████████████▌      | 35.8M/43.4M [00:02&lt;00:00, 18.8MB/s]
+ 89%|████████████████████████████████▊    | 38.5M/43.4M [00:03&lt;00:00, 19.0MB/s]
+ 95%|███████████████████████████████████  | 41.2M/43.4M [00:03&lt;00:00, 19.3MB/s]
+  0%|                                              | 0.00/43.4M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 43.4M/43.4M [00:00&lt;00:00, 152GB/s]
+
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/42.8M [00:00&lt;11:11, 63.7kB/s]
+  0%|                                      | 56.3k/42.8M [00:00&lt;02:54, 245kB/s]
+  0%|                                       | 136k/42.8M [00:00&lt;01:43, 413kB/s]
+  1%|▎                                      | 304k/42.8M [00:00&lt;00:55, 762kB/s]
+  1%|▌                                     | 625k/42.8M [00:00&lt;00:30, 1.38MB/s]
+  3%|█                                    | 1.29M/42.8M [00:00&lt;00:15, 2.65MB/s]
+  6%|██▎                                  | 2.61M/42.8M [00:00&lt;00:07, 5.10MB/s]
+ 12%|████▌                                | 5.26M/42.8M [00:01&lt;00:03, 9.97MB/s]
+ 19%|███████                              | 8.21M/42.8M [00:01&lt;00:02, 14.0MB/s]
+ 25%|█████████                            | 10.5M/42.8M [00:01&lt;00:02, 15.1MB/s]
+ 30%|███████████▏                         | 13.0M/42.8M [00:01&lt;00:01, 16.3MB/s]
+ 37%|█████████████▌                       | 15.8M/42.8M [00:01&lt;00:01, 17.8MB/s]
+ 43%|███████████████▊                     | 18.3M/42.8M [00:01&lt;00:01, 18.4MB/s]
+ 49%|█████████████████▉                   | 20.8M/42.8M [00:01&lt;00:01, 18.6MB/s]
+ 55%|████████████████████▎                | 23.5M/42.8M [00:01&lt;00:01, 19.2MB/s]
+ 61%|██████████████████████▌              | 26.1M/42.8M [00:02&lt;00:00, 19.5MB/s]
+ 67%|████████████████████████▊            | 28.7M/42.8M [00:02&lt;00:00, 19.6MB/s]
+ 73%|███████████████████████████          | 31.2M/42.8M [00:02&lt;00:00, 19.7MB/s]
+ 79%|█████████████████████████████▎       | 33.8M/42.8M [00:02&lt;00:00, 19.8MB/s]
+ 87%|████████████████████████████████▏    | 37.2M/42.8M [00:02&lt;00:00, 21.6MB/s]
+ 94%|██████████████████████████████████▋  | 40.1M/42.8M [00:02&lt;00:00, 21.7MB/s]
+100%|████████████████████████████████████▉| 42.8M/42.8M [00:02&lt;00:00, 21.5MB/s]
+  0%|                                              | 0.00/42.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.8M/42.8M [00:00&lt;00:00, 229GB/s]
+
+  0%|                                              | 0.00/42.2M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/42.2M [00:00&lt;11:36, 60.6kB/s]
+  0%|                                      | 56.3k/42.2M [00:00&lt;03:01, 233kB/s]
+  0%|                                       | 128k/42.2M [00:00&lt;01:54, 367kB/s]
+  1%|▎                                      | 296k/42.2M [00:00&lt;00:59, 708kB/s]
+  1%|▌                                     | 625k/42.2M [00:00&lt;00:31, 1.32MB/s]
+  3%|█▏                                   | 1.29M/42.2M [00:00&lt;00:16, 2.52MB/s]
+  6%|██▎                                  | 2.61M/42.2M [00:00&lt;00:08, 4.86MB/s]
+ 12%|████▌                                | 5.16M/42.2M [00:01&lt;00:04, 9.26MB/s]
+ 16%|██████                               | 6.96M/42.2M [00:01&lt;00:03, 10.5MB/s]
+ 22%|████████                             | 9.26M/42.2M [00:01&lt;00:02, 12.5MB/s]
+ 27%|█████████▊                           | 11.2M/42.2M [00:01&lt;00:02, 13.0MB/s]
+ 34%|████████████▋                        | 14.6M/42.2M [00:01&lt;00:01, 16.5MB/s]
+ 41%|███████████████                      | 17.2M/42.2M [00:01&lt;00:01, 17.3MB/s]
+ 46%|████████████████▉                    | 19.4M/42.2M [00:01&lt;00:01, 17.0MB/s]
+ 53%|███████████████████▍                 | 22.2M/42.2M [00:02&lt;00:01, 18.0MB/s]
+ 59%|█████████████████████▊               | 24.9M/42.2M [00:02&lt;00:00, 18.6MB/s]
+ 65%|███████████████████████▉             | 27.4M/42.2M [00:02&lt;00:00, 18.4MB/s]
+ 71%|██████████████████████████▏          | 30.0M/42.2M [00:02&lt;00:00, 18.6MB/s]
+ 77%|████████████████████████████▋        | 32.7M/42.2M [00:02&lt;00:00, 19.1MB/s]
+ 84%|██████████████████████████████▉      | 35.3M/42.2M [00:02&lt;00:00, 19.0MB/s]
+ 90%|█████████████████████████████████▏   | 37.9M/42.2M [00:02&lt;00:00, 19.0MB/s]
+ 96%|███████████████████████████████████▌ | 40.5M/42.2M [00:03&lt;00:00, 19.1MB/s]
+  0%|                                              | 0.00/42.2M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 42.2M/42.2M [00:00&lt;00:00, 225GB/s]
+
+  0%|                                              | 0.00/45.0M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/45.0M [00:00&lt;11:46, 63.7kB/s]
+  0%|                                      | 56.3k/45.0M [00:00&lt;03:03, 245kB/s]
+  0%|▏                                      | 153k/45.0M [00:00&lt;01:35, 472kB/s]
+  1%|▎                                      | 337k/45.0M [00:00&lt;00:52, 846kB/s]
+  2%|▌                                     | 713k/45.0M [00:00&lt;00:27, 1.58MB/s]
+  3%|█▏                                   | 1.46M/45.0M [00:00&lt;00:14, 3.01MB/s]
+  7%|██▍                                  | 2.97M/45.0M [00:00&lt;00:07, 5.81MB/s]
+ 13%|████▉                                | 5.97M/45.0M [00:01&lt;00:03, 11.3MB/s]
+ 20%|███████▎                             | 8.94M/45.0M [00:01&lt;00:02, 14.9MB/s]
+ 25%|█████████▏                           | 11.2M/45.0M [00:01&lt;00:02, 15.8MB/s]
+ 31%|███████████▍                         | 13.9M/45.0M [00:01&lt;00:01, 17.2MB/s]
+ 37%|█████████████▊                       | 16.8M/45.0M [00:01&lt;00:01, 18.7MB/s]
+ 43%|███████████████▊                     | 19.3M/45.0M [00:01&lt;00:01, 18.9MB/s]
+ 49%|█████████████████▉                   | 21.9M/45.0M [00:01&lt;00:01, 19.3MB/s]
+ 55%|████████████████████▎                | 24.7M/45.0M [00:01&lt;00:01, 19.9MB/s]
+ 61%|██████████████████████▍              | 27.3M/45.0M [00:02&lt;00:00, 20.1MB/s]
+ 67%|████████████████████████▌            | 30.0M/45.0M [00:02&lt;00:00, 20.1MB/s]
+ 73%|██████████████████████████▊          | 32.7M/45.0M [00:02&lt;00:00, 20.4MB/s]
+ 79%|█████████████████████████████        | 35.4M/45.0M [00:02&lt;00:00, 20.6MB/s]
+ 85%|███████████████████████████████▎     | 38.1M/45.0M [00:02&lt;00:00, 20.6MB/s]
+ 91%|█████████████████████████████████▌   | 40.8M/45.0M [00:02&lt;00:00, 20.7MB/s]
+ 97%|███████████████████████████████████▊ | 43.6M/45.0M [00:02&lt;00:00, 20.9MB/s]
+  0%|                                              | 0.00/45.0M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 45.0M/45.0M [00:00&lt;00:00, 272GB/s]
+
+  0%|                                              | 0.00/46.3M [00:00&lt;?, ?B/s]
+  0%|                                      | 16.4k/46.3M [00:00&lt;06:23, 121kB/s]
+  0%|                                      | 64.5k/46.3M [00:00&lt;02:59, 258kB/s]
+  0%|▏                                      | 161k/46.3M [00:00&lt;01:39, 463kB/s]
+  1%|▎                                      | 352k/46.3M [00:00&lt;00:55, 834kB/s]
+  2%|▌                                     | 736k/46.3M [00:00&lt;00:29, 1.55MB/s]
+  3%|█▏                                   | 1.44M/46.3M [00:00&lt;00:16, 2.78MB/s]
+  6%|██▎                                  | 2.91M/46.3M [00:00&lt;00:08, 5.39MB/s]
+ 12%|████▌                                | 5.65M/46.3M [00:01&lt;00:04, 10.1MB/s]
+ 16%|██████                               | 7.62M/46.3M [00:01&lt;00:03, 11.4MB/s]
+ 22%|████████▏                            | 10.3M/46.3M [00:01&lt;00:02, 13.9MB/s]
+ 31%|███████████▍                         | 14.4M/46.3M [00:01&lt;00:01, 18.8MB/s]
+ 36%|█████████████▍                       | 16.8M/46.3M [00:01&lt;00:01, 18.5MB/s]
+ 42%|███████████████▌                     | 19.4M/46.3M [00:01&lt;00:01, 18.7MB/s]
+ 51%|██████████████████▊                  | 23.5M/46.3M [00:01&lt;00:01, 22.1MB/s]
+ 59%|█████████████████████▉               | 27.4M/46.3M [00:02&lt;00:00, 24.1MB/s]
+ 65%|████████████████████████▏            | 30.3M/46.3M [00:02&lt;00:00, 23.2MB/s]
+ 71%|██████████████████████████▍          | 33.0M/46.3M [00:02&lt;00:00, 22.2MB/s]
+ 79%|█████████████████████████████▍       | 36.8M/46.3M [00:02&lt;00:00, 23.8MB/s]
+ 88%|████████████████████████████████▌    | 40.7M/46.3M [00:02&lt;00:00, 26.2MB/s]
+ 94%|██████████████████████████████████▋  | 43.4M/46.3M [00:02&lt;00:00, 25.8MB/s]
+ 99%|████████████████████████████████████▋| 45.9M/46.3M [00:02&lt;00:00, 24.3MB/s]
+  0%|                                              | 0.00/46.3M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 46.3M/46.3M [00:00&lt;00:00, 311GB/s]
+
+  0%|                                              | 0.00/44.8M [00:00&lt;?, ?B/s]
+  0%|                                     | 8.19k/44.8M [00:00&lt;11:42, 63.8kB/s]
+  0%|                                      | 56.3k/44.8M [00:00&lt;03:02, 245kB/s]
+  0%|                                       | 128k/44.8M [00:00&lt;01:55, 385kB/s]
+  1%|▎                                      | 289k/44.8M [00:00&lt;01:01, 722kB/s]
+  1%|▌                                     | 608k/44.8M [00:00&lt;00:32, 1.35MB/s]
+  3%|█                                    | 1.25M/44.8M [00:00&lt;00:16, 2.57MB/s]
+  6%|██                                   | 2.54M/44.8M [00:00&lt;00:08, 4.97MB/s]
+ 11%|████▏                                | 5.10M/44.8M [00:01&lt;00:04, 9.68MB/s]
+ 19%|██████▊                              | 8.30M/44.8M [00:01&lt;00:02, 14.3MB/s]
+ 24%|████████▋                            | 10.6M/44.8M [00:01&lt;00:02, 15.3MB/s]
+ 29%|██████████▋                          | 13.0M/44.8M [00:01&lt;00:01, 16.3MB/s]
+ 35%|█████████████                        | 15.8M/44.8M [00:01&lt;00:01, 17.9MB/s]
+ 41%|███████████████▏                     | 18.4M/44.8M [00:01&lt;00:01, 18.6MB/s]
+ 47%|█████████████████▎                   | 20.9M/44.8M [00:01&lt;00:01, 18.7MB/s]
+ 53%|███████████████████▍                 | 23.6M/44.8M [00:01&lt;00:01, 19.3MB/s]
+ 58%|█████████████████████▋               | 26.2M/44.8M [00:02&lt;00:00, 19.6MB/s]
+ 64%|███████████████████████▊             | 28.8M/44.8M [00:02&lt;00:00, 19.7MB/s]
+ 70%|█████████████████████████▉           | 31.4M/44.8M [00:02&lt;00:00, 19.9MB/s]
+ 76%|████████████████████████████▏        | 34.1M/44.8M [00:02&lt;00:00, 20.1MB/s]
+ 82%|██████████████████████████████▎      | 36.7M/44.8M [00:02&lt;00:00, 20.0MB/s]
+ 88%|████████████████████████████████▍    | 39.3M/44.8M [00:02&lt;00:00, 20.1MB/s]
+ 94%|██████████████████████████████████▋  | 42.0M/44.8M [00:02&lt;00:00, 20.2MB/s]
+100%|████████████████████████████████████▊| 44.6M/44.8M [00:02&lt;00:00, 20.2MB/s]
+  0%|                                              | 0.00/44.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.8M/44.8M [00:00&lt;00:00, 276GB/s]
+
+  0%|                                              | 0.00/44.8M [00:00&lt;?, ?B/s]
+  0%|                                      | 16.4k/44.8M [00:00&lt;06:10, 121kB/s]
+  0%|                                      | 64.5k/44.8M [00:00&lt;02:53, 258kB/s]
+  0%|▏                                      | 161k/44.8M [00:00&lt;01:36, 463kB/s]
+  1%|▎                                      | 352k/44.8M [00:00&lt;00:53, 834kB/s]
+  2%|▌                                     | 736k/44.8M [00:00&lt;00:28, 1.55MB/s]
+  3%|█▏                                   | 1.51M/44.8M [00:00&lt;00:14, 2.96MB/s]
+  7%|██▌                                  | 3.05M/44.8M [00:00&lt;00:07, 5.67MB/s]
+ 12%|████▌                                | 5.50M/44.8M [00:01&lt;00:04, 9.57MB/s]
+ 17%|██████▏                              | 7.44M/44.8M [00:01&lt;00:03, 11.0MB/s]
+ 22%|████████                             | 9.74M/44.8M [00:01&lt;00:02, 12.8MB/s]
+ 26%|█████████▋                           | 11.8M/44.8M [00:01&lt;00:02, 13.5MB/s]
+ 31%|███████████▌                         | 14.0M/44.8M [00:01&lt;00:02, 14.4MB/s]
+ 36%|█████████████▎                       | 16.1M/44.8M [00:01&lt;00:01, 14.7MB/s]
+ 41%|███████████████▏                     | 18.3M/44.8M [00:01&lt;00:01, 15.1MB/s]
+ 46%|████████████████▉                    | 20.5M/44.8M [00:02&lt;00:01, 15.4MB/s]
+ 51%|██████████████████▋                  | 22.7M/44.8M [00:02&lt;00:01, 15.5MB/s]
+ 56%|████████████████████▌                | 24.9M/44.8M [00:02&lt;00:01, 15.7MB/s]
+ 60%|██████████████████████▎              | 27.0M/44.8M [00:02&lt;00:01, 15.8MB/s]
+ 65%|████████████████████████▏            | 29.2M/44.8M [00:02&lt;00:00, 15.8MB/s]
+ 70%|█████████████████████████▉           | 31.4M/44.8M [00:02&lt;00:00, 15.9MB/s]
+ 75%|███████████████████████████▊         | 33.6M/44.8M [00:02&lt;00:00, 16.0MB/s]
+ 80%|█████████████████████████████▌       | 35.8M/44.8M [00:03&lt;00:00, 16.0MB/s]
+ 85%|███████████████████████████████▍     | 38.0M/44.8M [00:03&lt;00:00, 16.0MB/s]
+ 92%|██████████████████████████████████▏  | 41.4M/44.8M [00:03&lt;00:00, 18.6MB/s]
+ 98%|████████████████████████████████████▎| 43.9M/44.8M [00:03&lt;00:00, 18.7MB/s]
+  0%|                                              | 0.00/44.8M [00:00&lt;?, ?B/s]
+100%|██████████████████████████████████████| 44.8M/44.8M [00:00&lt;00:00, 272GB/s]
+</pre></div>
+</div>
+</section>
+<section id="extracting-the-time-vector">
+<h2>Extracting the Time Vector<a class="headerlink" href="#extracting-the-time-vector" title="Link to this heading">#</a></h2>
+<p>Because we used <code class="docutils literal notranslate"><span class="pre">return_epochs=True</span></code>, we can read the time axis and
+sampling frequency directly from the last Epochs object rather than
+hard-coding dataset-specific values.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.EpochsArray.html#mne.EpochsArray.times" title="mne.EpochsArray.times" class="sphx-glr-backref-module-mne sphx-glr-backref-type-py-property"><span class="n">epochs</span><span class="o">.</span><span class="n">times</span></a>
+<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sfreq</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.Info.html#mne.Info" title="mne._fiff.meas_info.Info" class="sphx-glr-backref-module-mne-_fiff-meas_info sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">epochs</span><span class="o">.</span><span class="n">info</span></a><span class="p">[</span><span class="s2">&quot;sfreq&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling frequency: </span><span class="si">{</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sfreq</span></a><span class="si">}</span><span class="s2"> Hz, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">)</span><span class="si">}</span><span class="s2"> time points&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Sampling frequency: 250.0 Hz, 1001 time points
+</pre></div>
+</div>
+</section>
+<section id="statistical-significance">
+<h2>Statistical Significance<a class="headerlink" href="#statistical-significance" title="Link to this heading">#</a></h2>
+<p>We run a one-sample <em>t</em>-test against chance level (AUC = 0.5) at each time
+point.  Time points with <em>p</em> &lt; 0.05 (uncorrected) are flagged as
+significant.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">p_values</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html#scipy.stats.ttest_1samp" title="scipy.stats.ttest_1samp" class="sphx-glr-backref-module-scipy-stats sphx-glr-backref-type-py-function"><span class="n">ttest_1samp</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig_mask</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">p_values</span></a> <span class="o">&lt;</span> <span class="mf">0.05</span>
+</pre></div>
+</div>
+</section>
+<section id="plot-1-mean-auc-time-course-with-significance">
+<h2>Plot 1 – Mean AUC Time Course with Significance<a class="headerlink" href="#plot-1-mean-auc-time-course-with-significance" title="Link to this heading">#</a></h2>
+<p>We plot the group-average AUC score together with the standard error of the
+mean (SEM) across subjects.  A horizontal dashed line at 0.5 indicates
+chance level.  Time points that are significantly above chance are
+highlighted with an orange bar along the <em>x</em>-axis.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mean_scores</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sem_scores</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span><span class="o">.</span><span class="n">subject_list</span></a><span class="p">))</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="matplotlib.axes.Axes.plot" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mean_scores</span></a><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mean AUC across subjects&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.fill_between.html#matplotlib.axes.Axes.fill_between" title="matplotlib.axes.Axes.fill_between" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span></a><span class="p">(</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">,</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mean_scores</span></a> <span class="o">-</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sem_scores</span></a><span class="p">,</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mean_scores</span></a> <span class="o">+</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sem_scores</span></a><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\u00b1</span><span class="s2">SEM&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axhline.html#matplotlib.axes.Axes.axhline" title="matplotlib.axes.Axes.axhline" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chance level (AUC = 0.5)&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html#matplotlib.axes.Axes.axvline" title="matplotlib.axes.Axes.axvline" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MI onset&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mark significant time points with a bar at the bottom of the axes</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.fill_between.html#matplotlib.axes.Axes.fill_between" title="matplotlib.axes.Axes.fill_between" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span></a><span class="p">(</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">,</span>
+    <span class="mf">0.0</span><span class="p">,</span>
+    <span class="mf">0.03</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sig_mask</span></a><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;p &lt; 0.05 (uncorrected)&quot;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.get_xaxis_transform.html#matplotlib.axes.Axes.get_xaxis_transform" title="matplotlib.axes.Axes.get_xaxis_transform" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis_transform</span></a><span class="p">(),</span>
+<span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel" title="matplotlib.axes.Axes.set_xlabel" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span></a><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel" title="matplotlib.axes.Axes.set_ylabel" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span></a><span class="p">(</span><span class="s2">&quot;AUC&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title" title="matplotlib.axes.Axes.set_title" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span></a><span class="p">(</span><span class="s2">&quot;Time-Resolved Decoding </span><span class="se">\u2013</span><span class="s2"> Left vs. Right Motor Imagery</span><span class="se">\n</span><span class="s2">(BNCI2014-001)&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend" title="matplotlib.axes.Axes.legend" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html#matplotlib.axes.Axes.set_xlim" title="matplotlib.axes.Axes.set_xlim" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html#matplotlib.axes.Axes.set_ylim" title="matplotlib.axes.Axes.set_ylim" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span></a><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_sliding_estimator_001.png" srcset="../../_images/sphx_glr_plot_sliding_estimator_001.png" alt="Time-Resolved Decoding – Left vs. Right Motor Imagery (BNCI2014-001)" class = "sphx-glr-single-img"/></section>
+<section id="plot-2-per-subject-heatmap">
+<h2>Plot 2 – Per-Subject Heatmap<a class="headerlink" href="#plot-2-per-subject-heatmap" title="Link to this heading">#</a></h2>
+<p>A heatmap of AUC scores (subjects x time) gives a richer picture than the
+mean curve alone, revealing inter-subject variability and the temporal
+structure of discriminability for each participant.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.imshow.html#matplotlib.axes.Axes.imshow" title="matplotlib.axes.Axes.imshow" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">all_scores</span></a><span class="p">,</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span><span class="o">.</span><span class="n">subject_list</span></a><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">],</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel" title="matplotlib.axes.Axes.set_xlabel" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span></a><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel" title="matplotlib.axes.Axes.set_ylabel" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span></a><span class="p">(</span><span class="s2">&quot;Subject&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_yticks.html#matplotlib.axes.Axes.set_yticks" title="matplotlib.axes.Axes.set_yticks" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span><span class="o">.</span><span class="n">subject_list</span></a><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title" title="matplotlib.axes.Axes.set_title" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span></a><span class="p">(</span><span class="s2">&quot;Per-Subject Time-Resolved AUC</span><span class="se">\n</span><span class="s2">(BNCI2014-001)&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html#matplotlib.axes.Axes.axvline" title="matplotlib.axes.Axes.axvline" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html#matplotlib.axes.Axes.set_xlim" title="matplotlib.axes.Axes.set_xlim" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">times</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html#matplotlib.figure.Figure.colorbar" title="matplotlib.figure.Figure.colorbar" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><a href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="matplotlib.image.AxesImage" class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a><span class="o">=</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AUC&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_sliding_estimator_002.png" srcset="../../_images/sphx_glr_plot_sliding_estimator_002.png" alt="Per-Subject Time-Resolved AUC (BNCI2014-001)" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (6 minutes 46.606 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  708 MB</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-advanced-examples-plot-sliding-estimator-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1c7d0b138bb905c4ef3742123909d332/plot_sliding_estimator.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_sliding_estimator.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cd8ff102fb368f75d147bdb5163a5737/plot_sliding_estimator.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_sliding_estimator.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5bae9d0028eb0cc051f90dcc81ab511a/plot_sliding_estimator.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_sliding_estimator.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+</div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_select_electrodes_resample.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Select Electrodes and Resampling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plot_statistical_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Statistical Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-paradigm">Choosing a Paradigm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-time-resolved-pipeline">Building a Time-Resolved Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-each-subject">Evaluating Each Subject</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-time-vector">Extracting the Time Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-significance">Statistical Significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1-mean-auc-time-course-with-significance">Plot 1 – Mean AUC Time Course with Significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-2-per-subject-heatmap">Plot 2 – Per-Subject Heatmap</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+
+  <div class="sphx-glr-sidebar-component">
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_sliding_estimator.py">
+          <a download href="../../_downloads/cd8ff102fb368f75d147bdb5163a5737/plot_sliding_estimator.py">
+            <i class="fa-solid fa-download"></i>
+            Download source code
+          </a>
+        </div>
+      
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-jupyter-sidebar" title="plot_sliding_estimator.ipynb">
+          <a download href="../../_downloads/1c7d0b138bb905c4ef3742123909d332/plot_sliding_estimator.ipynb">
+            <i class="fa-solid fa-download"></i>
+            Download Jupyter notebook
+          </a>
+        </div>
+      
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-zip-sidebar" title="plot_sliding_estimator.zip">
+          <a download href="../../_downloads/5bae9d0028eb0cc051f90dcc81ab511a/plot_sliding_estimator.zip">
+            <i class="fa-solid fa-download"></i>
+            Download zipped
+          </a>
+        </div>
+      
+    
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="sd-card sd-shadow-sm sd-mb-3 moabb-colab-card">
+  <div class="sd-card-body moabb-colab-card-body">
+    <p class="sd-card-text sd-fs-5 sd-font-weight-bold sd-mb-0">Run this example</p>
+    <a class="sd-btn sd-btn-primary" href="https://colab.research.google.com/github/NeuroTechX/moabb/blob/gh-pages/docs/auto_examples/_notebooks/advanced_examples/plot_sliding_estimator.ipynb" target="_blank" rel="noopener">
+      <img class="moabb-colab-badge" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg">
+    </a>
+  </div>
+</div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018-2026 MOABB contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
