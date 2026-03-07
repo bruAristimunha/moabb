@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bd6ce74" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d694e5f0" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- So that users can add custom icons -->
@@ -479,7 +479,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_riemannian_artifact_rejection.html">Riemannian Artifact Rejection as a Pre-processing Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_sliding_estimator.html">Time-Resolved Decoding with SlidingEstimator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_statistical_analysis.html">Statistical Analysis and Chance Level Assessment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_use_an_X_y_dataset.html">Using X y data (epoched data) instead of continuous signal</a></li>
 </ul>
 </details></li>
@@ -669,152 +669,21 @@ The CompoundDataset can be used as a <cite>normal</cite> dataset.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>CustomDataset3-WithinSession:   0%|          | 0/4 [00:00&lt;?, ?it/s]
-CustomDataset3-WithinSession:  25%|██▌       | 1/4 [00:11&lt;00:35, 11.86s/it]
-CustomDataset3-WithinSession:  50%|█████     | 2/4 [00:28&lt;00:29, 14.89s/it]
-
-  0%|                                              | 0.00/46.4M [00:00&lt;?, ?B/s]
-
-  0%|                                     | 13.3k/46.4M [00:00&lt;09:03, 85.4kB/s]
-
-  0%|                                      | 41.0k/46.4M [00:00&lt;05:00, 154kB/s]
-
-  0%|                                      | 96.3k/46.4M [00:00&lt;02:50, 271kB/s]
-
-  0%|▏                                      | 168k/46.4M [00:00&lt;02:02, 378kB/s]
-
-  1%|▎                                      | 359k/46.4M [00:00&lt;01:00, 763kB/s]
-
-  2%|▌                                     | 732k/46.4M [00:00&lt;00:31, 1.47MB/s]
-
-  3%|█▏                                   | 1.48M/46.4M [00:00&lt;00:15, 2.86MB/s]
-
-  6%|██▍                                  | 2.99M/46.4M [00:01&lt;00:07, 5.60MB/s]
-
- 13%|████▊                                | 6.00M/46.4M [00:01&lt;00:03, 11.0MB/s]
-
- 21%|███████▊                             | 9.79M/46.4M [00:01&lt;00:02, 16.6MB/s]
-
- 26%|█████████▊                           | 12.3M/46.4M [00:01&lt;00:01, 17.3MB/s]
-
- 33%|████████████▏                        | 15.2M/46.4M [00:01&lt;00:01, 18.9MB/s]
-
- 39%|██████████████▎                      | 18.0M/46.4M [00:01&lt;00:01, 19.6MB/s]
-
- 45%|████████████████▋                    | 20.9M/46.4M [00:01&lt;00:01, 20.3MB/s]
-
- 51%|██████████████████▉                  | 23.7M/46.4M [00:01&lt;00:01, 20.7MB/s]
-
- 58%|█████████████████████▎               | 26.8M/46.4M [00:02&lt;00:00, 21.5MB/s]
-
- 64%|███████████████████████▋             | 29.8M/46.4M [00:02&lt;00:00, 21.8MB/s]
-
- 70%|█████████████████████████▉           | 32.6M/46.4M [00:02&lt;00:00, 21.7MB/s]
-
- 76%|████████████████████████████▎        | 35.5M/46.4M [00:02&lt;00:00, 21.8MB/s]
-
- 83%|██████████████████████████████▊      | 38.7M/46.4M [00:02&lt;00:00, 22.7MB/s]
-
- 91%|█████████████████████████████████▌   | 42.1M/46.4M [00:02&lt;00:00, 23.6MB/s]
-
- 97%|███████████████████████████████████▊ | 45.0M/46.4M [00:02&lt;00:00, 23.2MB/s]
-
-  0%|                                              | 0.00/46.4M [00:00&lt;?, ?B/s]
-100%|██████████████████████████████████████| 46.4M/46.4M [00:00&lt;00:00, 201GB/s]
-
-CustomDataset3-WithinSession:  75%|███████▌  | 3/4 [00:53&lt;00:19, 19.13s/it]
-
-  0%|                                              | 0.00/74.3M [00:00&lt;?, ?B/s]
-
-  0%|                                     | 12.3k/74.3M [00:00&lt;14:51, 83.3kB/s]
-
-  0%|                                      | 41.0k/74.3M [00:00&lt;07:46, 159kB/s]
-
-  0%|                                      | 97.3k/74.3M [00:00&lt;04:25, 280kB/s]
-
-  0%|                                       | 177k/74.3M [00:00&lt;03:02, 406kB/s]
-
-  0%|▏                                      | 304k/74.3M [00:00&lt;02:01, 610kB/s]
-
-  1%|▎                                     | 582k/74.3M [00:00&lt;01:05, 1.12MB/s]
-
-  2%|▌                                    | 1.12M/74.3M [00:00&lt;00:34, 2.09MB/s]
-
-  3%|█                                    | 2.22M/74.3M [00:01&lt;00:17, 4.09MB/s]
-
-  6%|██▏                                  | 4.30M/74.3M [00:01&lt;00:08, 7.79MB/s]
-
-  9%|███▍                                 | 6.84M/74.3M [00:01&lt;00:05, 11.4MB/s]
-
- 12%|████▍                                | 9.03M/74.3M [00:01&lt;00:05, 13.0MB/s]
-
- 16%|█████▊                               | 11.6M/74.3M [00:01&lt;00:04, 15.0MB/s]
-
- 19%|██████▉                              | 13.8M/74.3M [00:01&lt;00:03, 15.6MB/s]
-
- 22%|████████▏                            | 16.4M/74.3M [00:01&lt;00:03, 16.8MB/s]
-
- 25%|█████████▎                           | 18.6M/74.3M [00:01&lt;00:03, 16.9MB/s]
-
- 29%|██████████▌                          | 21.2M/74.3M [00:02&lt;00:02, 17.8MB/s]
-
- 32%|███████████▋                         | 23.5M/74.3M [00:02&lt;00:02, 17.6MB/s]
-
- 35%|████████████▉                        | 26.1M/74.3M [00:02&lt;00:02, 18.3MB/s]
-
- 38%|██████████████▏                      | 28.4M/74.3M [00:02&lt;00:02, 18.1MB/s]
-
- 42%|███████████████▍                     | 30.9M/74.3M [00:02&lt;00:02, 18.5MB/s]
-
- 45%|████████████████▌                    | 33.3M/74.3M [00:02&lt;00:02, 18.3MB/s]
-
- 48%|█████████████████▊                   | 35.8M/74.3M [00:02&lt;00:02, 18.7MB/s]
-
- 51%|███████████████████                  | 38.2M/74.3M [00:03&lt;00:01, 18.5MB/s]
-
- 55%|████████████████████▎                | 40.8M/74.3M [00:03&lt;00:01, 18.8MB/s]
-
- 58%|█████████████████████▌               | 43.2M/74.3M [00:03&lt;00:01, 18.7MB/s]
-
- 62%|██████████████████████▊              | 45.7M/74.3M [00:03&lt;00:01, 18.9MB/s]
-
- 65%|███████████████████████▉             | 48.2M/74.3M [00:03&lt;00:01, 18.9MB/s]
-
- 68%|█████████████████████████▎           | 50.7M/74.3M [00:03&lt;00:01, 19.1MB/s]
-
- 72%|██████████████████████████▌          | 53.2M/74.3M [00:03&lt;00:01, 19.0MB/s]
-
- 75%|███████████████████████████▊         | 55.8M/74.3M [00:03&lt;00:00, 19.2MB/s]
-
- 78%|█████████████████████████████        | 58.3M/74.3M [00:04&lt;00:00, 19.1MB/s]
-
- 82%|██████████████████████████████▎      | 60.8M/74.3M [00:04&lt;00:00, 19.3MB/s]
-
- 85%|███████████████████████████████▌     | 63.3M/74.3M [00:04&lt;00:00, 19.3MB/s]
-
- 89%|████████████████████████████████▊    | 65.9M/74.3M [00:04&lt;00:00, 19.4MB/s]
-
- 92%|██████████████████████████████████   | 68.4M/74.3M [00:04&lt;00:00, 19.4MB/s]
-
- 96%|███████████████████████████████████▎ | 70.9M/74.3M [00:04&lt;00:00, 19.3MB/s]
-
- 99%|████████████████████████████████████▋| 73.5M/74.3M [00:04&lt;00:00, 19.4MB/s]
-
-  0%|                                              | 0.00/74.3M [00:00&lt;?, ?B/s]
-100%|██████████████████████████████████████| 74.3M/74.3M [00:00&lt;00:00, 347GB/s]
-
-CustomDataset3-WithinSession: 100%|██████████| 4/4 [01:31&lt;00:00, 26.81s/it]
-CustomDataset3-WithinSession: 100%|██████████| 4/4 [01:31&lt;00:00, 22.91s/it]
-      score      time  ...  pipeline                  codecarbon_task_name
-0  0.602500  0.332452  ...       MDM  c002a440-f6ff-4fba-80df-a0c3455793a8
-1  0.622500  0.324176  ...       MDM  0dbdeb81-5c32-4cbb-bfac-8b5059a04796
-2  0.647202  1.953068  ...       MDM  7858431d-1dc9-4403-ac79-0b81e84ec5d0
-3  0.551720  4.176010  ...       MDM  d92fb2e9-3fc9-4007-82a0-0745ecec0c5a
-
-[4 rows x 11 columns]
+CustomDataset3-WithinSession:  25%|██▌       | 1/4 [00:00&lt;00:00,  5.98it/s]
+CustomDataset3-WithinSession:  50%|█████     | 2/4 [00:00&lt;00:00,  5.98it/s]
+CustomDataset3-WithinSession:  75%|███████▌  | 3/4 [00:00&lt;00:00,  5.53it/s]
+CustomDataset3-WithinSession: 100%|██████████| 4/4 [00:00&lt;00:00,  5.24it/s]
+CustomDataset3-WithinSession: 100%|██████████| 4/4 [00:00&lt;00:00,  5.42it/s]
+      score      time  ...  samples_test  n_classes
+0  0.602500  0.332452  ...           NaN        NaN
+1  0.622500  0.324176  ...           NaN        NaN
+2  0.647202  1.953068  ...           NaN        NaN
+3  0.551720  4.176010  ...           NaN        NaN
+
+[4 rows x 13 columns]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 32.858 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  539 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.969 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-tutorials-tutorial-5-combining-datasets-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/1d572f55de1f1c75feff109ca6a55fab/tutorial_5_combining_datasets.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tutorial_5_combining_datasets.ipynb</span></code></a></p>

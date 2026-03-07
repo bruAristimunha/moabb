@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bd6ce74" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d694e5f0" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- So that users can add custom icons -->
@@ -479,7 +479,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_riemannian_artifact_rejection.html">Riemannian Artifact Rejection as a Pre-processing Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_select_electrodes_resample.html">Select Electrodes and Resampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_sliding_estimator.html">Time-Resolved Decoding with SlidingEstimator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_statistical_analysis.html">Statistical Analysis and Chance Level Assessment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_examples/plot_use_an_X_y_dataset.html">Using X y data (epoched data) instead of continuous signal</a></li>
 </ul>
 </details></li>
@@ -650,22 +650,22 @@ each subject / session of the dataset, and for each pipeline.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Zhou2016-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Zhou2016-CrossSession:  50%|█████     | 1/2 [00:07&lt;00:07,  8.00s/it]
-Zhou2016-CrossSession: 100%|██████████| 2/2 [00:15&lt;00:00,  7.72s/it]
-Zhou2016-CrossSession: 100%|██████████| 2/2 [00:15&lt;00:00,  7.76s/it]
+Zhou2016-CrossSession:  50%|█████     | 1/2 [00:09&lt;00:09,  9.55s/it]
+Zhou2016-CrossSession: 100%|██████████| 2/2 [00:17&lt;00:00,  8.32s/it]
+Zhou2016-CrossSession: 100%|██████████| 2/2 [00:17&lt;00:00,  8.51s/it]
 
 BNCI2014-001-CrossSession:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:07&lt;00:07,  7.23s/it]
-BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:14&lt;00:00,  7.23s/it]
+BNCI2014-001-CrossSession:  50%|█████     | 1/2 [00:07&lt;00:07,  7.19s/it]
+BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:14&lt;00:00,  7.24s/it]
 BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:14&lt;00:00,  7.23s/it]
      score      time  ...  pipeline                  codecarbon_task_name
-0  0.85113  0.233048  ...   CSP+LDA  35e9ff63-da30-4a72-941b-f7a85ac15675
-1  0.93640  0.243976  ...   CSP+LDA  1184a14f-490b-4ea4-a6a1-bbccecca5d53
-2  0.93960  0.219206  ...   CSP+LDA  5b447df2-2cf3-4b15-9b52-9fab103ddbd1
-3  0.90800  0.215466  ...   CSP+LDA  7c910533-c1e3-45c4-aafe-e62e06e43150
-4  0.77037  0.204824  ...   CSP+LDA  c25fac49-06ea-478f-bfcf-29415ad63aea
+0  0.85113  0.152691  ...   CSP+LDA  002250d6-6e06-441b-9636-e9c1bcd1eb74
+1  0.93640  0.193006  ...   CSP+LDA  326bd733-63a2-43db-87d6-af5ae0bc6e78
+2  0.93960  0.211714  ...   CSP+LDA  8c8003d7-3294-4a6d-aa2e-d0428cbb84cf
+3  0.90800  0.146902  ...   CSP+LDA  829a1548-e6ee-46ca-be2d-b79a8a3324ee
+4  0.77037  0.163163  ...   CSP+LDA  f46441e9-6e49-4524-9355-bcd103104e39
 
-[5 rows x 11 columns]
+[5 rows x 13 columns]
 </pre></div>
 </div>
 </section>
@@ -684,8 +684,7 @@ BNCI2014-001-CrossSession: 100%|██████████| 2/2 [00:14&lt;00
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_cross_session_multiple_datasets_001.png" srcset="../../_images/sphx_glr_plot_cross_session_multiple_datasets_001.png" alt="dataset = Zhou2016, dataset = BNCI2014-001" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.860 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  591 MB</p>
+<img src="../../_images/sphx_glr_plot_cross_session_multiple_datasets_001.png" srcset="../../_images/sphx_glr_plot_cross_session_multiple_datasets_001.png" alt="dataset = Zhou2016, dataset = BNCI2014-001" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 33.576 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-paradigm-examples-plot-cross-session-multiple-datasets-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a236a554370961344b575283a1efbb02/plot_cross_session_multiple_datasets.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cross_session_multiple_datasets.ipynb</span></code></a></p>
