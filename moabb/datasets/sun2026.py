@@ -19,6 +19,7 @@ from mne.channels import make_standard_montage
 from mne_bids import BIDSPath, read_raw_bids
 
 from .base import BaseDataset
+from .bids_interface import StepType
 from .download import get_dataset_path
 from .metadata.schema import (
     AcquisitionMetadata,
@@ -32,6 +33,7 @@ from .metadata.schema import (
     ParticipantMetadata,
     Tags,
 )
+from .preprocessing import FixedPipeline, SetRawAnnotations
 
 
 log = logging.getLogger(__name__)
@@ -79,6 +81,22 @@ _EEG_CH_NAMES = [
 # should carry. With return_all_modalities=False (the default) MOABB keeps only
 # EEG, so these are excluded from motor-imagery decoding.
 _AUX_TYPES = {"HEO": "eog", "VEO": "eog", "EKG": "ecg", "EMG": "emg", "Trigger": "stim"}
+
+# Although the BrainVision header labels the payload as microvolts, the
+# released numeric values are exposed without SI conversion by the current
+# reader stack. Normalize only the 64 scalp EEG channels used for decoding;
+# leave auxiliary channels and Trigger unchanged.
+SUN2026_EEG_SCALE_TO_VOLTS = 1e-6
+SUN2026_CACHE_VERSION = "brainvision-pybv-uv-to-v-v1"
+
+
+class _SunSetRawAnnotations(SetRawAnnotations):
+    """Carry the signal-unit repair version into MOABB raw-cache hashes."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
+
 
 # Root-level BIDS files needed for a valid dataset root.
 _ROOT_FILES = ("dataset_description.json", "participants.tsv", "participants.json")
@@ -255,6 +273,20 @@ class Sun2026(BaseDataset):
             selected_sessions=sessions,
         )
 
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _SunSetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=SUN2026_CACHE_VERSION,
+                    ),
+                )
+            ]
+        )
+
     def _get_single_subject_data(self, subject):
         """Return ``{session: {run: Raw}}`` for one subject."""
         bids_paths = self.data_path(subject)
@@ -264,6 +296,12 @@ class Sun2026(BaseDataset):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 raw = read_raw_bids(bids_path=bids_path, verbose=False).load_data()
+
+            raw.apply_function(
+                lambda data: data * SUN2026_EEG_SCALE_TO_VOLTS,
+                picks=_EEG_CH_NAMES,
+                channel_wise=False,
+            )
 
             # The channels.tsv marks HEO/VEO/EKG/EMG/Trigger as EEG; retype the
             # ones that are present so downstream picks use only scalp EEG.

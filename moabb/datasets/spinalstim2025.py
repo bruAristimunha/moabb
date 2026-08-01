@@ -8,6 +8,7 @@ import mne
 
 from moabb.datasets import download as dl
 from moabb.datasets.base import BaseDataset
+from moabb.datasets.bids_interface import StepType
 from moabb.datasets.metadata.schema import (
     AcquisitionMetadata,
     AuxiliaryChannelsMetadata,
@@ -17,6 +18,7 @@ from moabb.datasets.metadata.schema import (
     ParticipantMetadata,
     Tags,
 )
+from moabb.datasets.preprocessing import FixedPipeline, SetRawAnnotations
 
 
 # Zenodo record 15454355 (concept DOI 10.5281/zenodo.15454354)
@@ -87,6 +89,19 @@ _AUX_CHANNELS = ["sens7", "sens8", "sens9"]
 # GDF event type codes for the two motor-imagery classes (standard Graz/CNBI
 # encoding: 0x0301 = left-hand cue, 0x0302 = right-hand cue).
 _CLASS_CODES = {"769": "left_hand", "770": "right_hand"}
+
+# The GDF payload is expressed in microvolts but its unit metadata is not
+# interpreted by MNE, which otherwise exposes sensor values as volts.
+SPINALSTIM2025_EEG_SCALE_TO_VOLTS = 1e-6
+SPINALSTIM2025_CACHE_VERSION = "gdf-uv-to-v-exact-offline-roots-v1"
+
+
+class _SpinalStimSetRawAnnotations(SetRawAnnotations):
+    """Version unit and subject/run identity repairs in MOABB raw caches."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
 
 
 class SpinalStim2025(BaseDataset):
@@ -206,6 +221,20 @@ class SpinalStim2025(BaseDataset):
             doi="10.5281/zenodo.15454354",
         )
 
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _SpinalStimSetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=SPINALSTIM2025_CACHE_VERSION,
+                    ),
+                )
+            ]
+        )
+
     def data_path(
         self, subject, path=None, force_update=False, update_path=None, verbose=None
     ):
@@ -245,15 +274,26 @@ class SpinalStim2025(BaseDataset):
             with z.ZipFile(path_zip, "r") as zip_ref:
                 zip_ref.extractall(path_folder)
 
-        # Collect this subject's offline recordings by globbing the extracted
-        # tree: the on-disk layout differs between cohorts, so match on the
-        # "Subject_<token>_..._Offline" folder rather than a fixed path.
+        # Resolve the exact subject-level offline folders first. Some d3
+        # inner session directories carry the preceding subject's token, so a
+        # substring match over the full file path would assign eight runs to
+        # two subjects. d4 legitimately has two same-depth roots (REST/TESS).
         prefix = f"Subject_{token}_"
-        subject_paths = [
-            str(p)
-            for p in sorted((path_folder / root_name).rglob("*.gdf"))
-            if prefix in str(p) and "Offline" in str(p) and "Online" not in str(p)
+        archive_root = path_folder / root_name
+        subject_roots = [
+            candidate
+            for candidate in archive_root.rglob(f"{prefix}*_Offline")
+            if candidate.is_dir()
         ]
+        if not subject_roots:
+            return []
+        subject_paths = sorted(
+            {
+                str(file_path)
+                for subject_root in subject_roots
+                for file_path in subject_root.rglob("*.gdf")
+            }
+        )
         return subject_paths
 
     def _get_single_subject_data(self, subject):
@@ -295,12 +335,19 @@ class SpinalStim2025(BaseDataset):
         if aux_present:
             raw.set_channel_types(dict.fromkeys(aux_present, "eog"))
 
-        missing_eeg = [channel for channel in _EEG_CHANNELS if channel not in raw.ch_names]
+        missing_eeg = [
+            channel for channel in _EEG_CHANNELS if channel not in raw.ch_names
+        ]
         if missing_eeg:
             raise ValueError(
                 "SpinalStim2025 recording is missing required EEG channels: "
                 f"{missing_eeg}; available channels: {raw.ch_names}"
             )
+        raw.apply_function(
+            lambda data: data * SPINALSTIM2025_EEG_SCALE_TO_VOLTS,
+            picks=_EEG_CHANNELS,
+            channel_wise=False,
+        )
         # d3/d4 archive recordings swap O2 and OZ in their GDF channel order.
         # The channel set is unchanged, so restore the documented acquisition
         # order before Braindecode caches are combined across cohorts.

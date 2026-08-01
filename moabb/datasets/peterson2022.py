@@ -13,6 +13,7 @@ import numpy as np
 import requests
 
 from .base import BaseBIDSDataset
+from .bids_interface import StepType
 from .download import get_dataset_path
 from .metadata.schema import (
     AcquisitionMetadata,
@@ -28,6 +29,7 @@ from .metadata.schema import (
     SignalProcessingMetadata,
     Tags,
 )
+from .preprocessing import FixedPipeline, SetRawAnnotations
 from .utils import stim_channels_with_selected_ids
 
 
@@ -59,6 +61,20 @@ _EVENTS = {"motor_imagery": 1, "rest": 2}
 # EDF annotation descriptions (OpenViBE GDF stimulation labels) -> class names.
 # OVTK_GDF_Right = MI cue, OVTK_GDF_Tongue = Rest cue.
 _ANNOT_TO_NAME = {"OVTK_GDF_Right": "motor_imagery", "OVTK_GDF_Tongue": "rest"}
+
+# The EDF physical-dimension fields are blank even though channels.tsv records
+# all 15 EEG signals as microvolts. Tell MNE the missing source unit so its EDF
+# reader performs the standard microvolts-to-SI-volts conversion.
+PETERSON2022_CACHE_VERSION = "edf-blank-physdim-uv-to-v-v1"
+
+
+class _PetersonSetRawAnnotations(SetRawAnnotations):
+    """Carry the unit repair version into MOABB's raw-cache fingerprint."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
+
 
 # Minimal BIDS dataset_description.json for mne_bids compatibility.
 _DATASET_DESCRIPTION = {
@@ -203,12 +219,30 @@ class Peterson2022(BaseBIDSDataset):
             return_all_modalities=return_all_modalities,
         )
 
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _PetersonSetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=PETERSON2022_CACHE_VERSION,
+                    ),
+                )
+            ]
+        )
+
     def _get_path_search_params(self, subject):
         """Zero-padded subjects, MI runs only (exclude the RUN0 demo)."""
         out = {"extensions": [".edf"], "runs": list(_RUNS)}
         if subject is not None:
             out["subjects"] = f"{subject:02d}"
         return out
+
+    def _get_read_extra_params(self, subject):
+        """Declare the unit omitted from every published EEG EDF header."""
+        return {"units": "uV"}
 
     def _get_single_subject_data(self, subject):
         """Load BIDS data and remap EDF annotation labels to class names."""
