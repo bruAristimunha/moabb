@@ -29,24 +29,13 @@ EEG_CH_NAMES = [f"EEG{i:02d}" for i in range(24)]
 # are not trial onsets and are dropped.
 EVENT_CODE = {0: 1, 1: 2}  # 0 = left-hand, 1 = right-hand
 
-# The HDF5 root stores an ``eeg_units`` attribute; the published file records
-# the EEG in millivolts (verified: per-sample amplitudes ~0.01 in stored units,
-# i.e. ~10 uV, consistent with scalp EEG). MNE expects SI volts, so the samples
-# must be rescaled. This table maps the documented unit string to the factor
-# that converts to volts. Defaults to millivolts if the attribute is absent.
-_UNIT_TO_VOLTS = {
-    "v": 1.0,
-    "volt": 1.0,
-    "volts": 1.0,
-    "mv": 1e-3,
-    "milivolt": 1e-3,  # codespell:ignore
-    "milivolts": 1e-3,  # codespell:ignore
-    "millivolt": 1e-3,
-    "millivolts": 1e-3,
-    "uv": 1e-6,
-    "microvolt": 1e-6,
-    "microvolts": 1e-6,
-}
+# The published HDF5 root labels EEG as ``milivolts`` (sic), but that  # codespell:ignore
+# attribute is incorrect: the authors' companion ``EegPipe`` loads the payload
+# directly and its plotting helper multiplies those values by 1e3 to display
+# millivolts.  The samples are therefore already SI volts, as also confirmed by
+# their physiological microvolt-scale band-limited RMS.  This is deliberately
+# dataset-specific; do not reinterpret millivolt metadata in other loaders.
+HYGRIP_EEG_SCALE_TO_VOLTS = 1.0
 
 
 class HYGRIP2020(BaseDataset):
@@ -246,19 +235,10 @@ class HYGRIP2020(BaseDataset):
             sfreq = float(ds.attrs["eeg_sfreq"])
             eeg = np.asarray(ds[f"{key}/eeg"][:], dtype=np.float64)
             events_attr = np.asarray(ds[f"{key}/eeg"].attrs["events"])
-            units_attr = ds.attrs.get(
-                "eeg_units",
-                b"milivolts",  # codespell:ignore
-            )
 
-        # The published EEG is stored in millivolts (per the file's ``eeg_units``
-        # attribute); MNE expects SI volts, so rescale accordingly. Fall back to
-        # millivolts if the attribute is missing or unrecognised.
-        if isinstance(units_attr, bytes):
-            units_attr = units_attr.decode("ascii", "ignore")
-        units_key = str(units_attr).strip().lower()
-        scale = _UNIT_TO_VOLTS.get(units_key, 1e-3)
-        eeg = eeg * scale
+        # Ignore the erroneous root ``eeg_units`` attribute. MNE expects volts,
+        # which is already the unit of the published numeric payload.
+        eeg = eeg * HYGRIP_EEG_SCALE_TO_VOLTS
 
         # eeg is (channels, time); guard against a transposed layout.
         if eeg.shape[0] != len(EEG_CH_NAMES) and eeg.shape[-1] == len(EEG_CH_NAMES):
