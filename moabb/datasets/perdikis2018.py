@@ -9,6 +9,7 @@ from mne.channels import make_standard_montage
 
 from moabb.datasets import download as dl
 from moabb.datasets.base import BaseDataset
+from moabb.datasets.bids_interface import StepType
 from moabb.datasets.metadata.schema import (
     AcquisitionMetadata,
     BCIApplicationMetadata,
@@ -23,6 +24,7 @@ from moabb.datasets.metadata.schema import (
     SignalProcessingMetadata,
     Tags,
 )
+from moabb.datasets.preprocessing import FixedPipeline, SetRawAnnotations
 
 from .utils import safe_extract_tar
 
@@ -72,6 +74,26 @@ _CLASS_CODES = {"771": "both_feet", "773": "both_hands", "783": "rest"}
 # presence marks an exploratory taskset (e.g. mi_rlsf) outside the both-hands /
 # both-feet / rest label space, so such offline runs are skipped.
 _OTHER_MI_CODES = {"769", "770", "772"}
+
+# The published GDF 2.x files declare ``uV`` in their legacy physical-dimension
+# fields but leave the newer numeric unit codes at zero. MNE therefore applies
+# no SI scaling and exposes the microvolt numeric payload as though it were
+# volts. Convert only the 16 EEG channels to MNE's required SI volts.
+PERDIKIS2018_EEG_SCALE_TO_VOLTS = 1e-6
+
+# MOABB's native BIDS cache hashes the processing-pipeline parameters, not the
+# dataset loader source. Keep the corrected raw cache alongside (rather than
+# reusing or deleting) the legacy unscaled cache by versioning the otherwise
+# identical annotation transformer.
+PERDIKIS2018_CACHE_VERSION = "gdf-uv-to-v-v1"
+
+
+class _PerdikisSetRawAnnotations(SetRawAnnotations):
+    """Set annotations while carrying the loader version into cache hashes."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
 
 
 class Perdikis2018(BaseDataset):
@@ -242,6 +264,20 @@ class Perdikis2018(BaseDataset):
             doi="10.5281/zenodo.841764",
         )
 
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _PerdikisSetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=PERDIKIS2018_CACHE_VERSION,
+                    ),
+                )
+            ]
+        )
+
     def data_path(
         self, subject, path=None, force_update=False, update_path=None, verbose=None
     ):
@@ -356,6 +392,11 @@ class Perdikis2018(BaseDataset):
                 f"Expected {len(_EEG_CHANNELS)} EEG channels in {gdf_path.name}, "
                 f"found {len(eeg_chs)}: {eeg_chs}"
             )
+        raw.apply_function(
+            lambda data: data * PERDIKIS2018_EEG_SCALE_TO_VOLTS,
+            picks=eeg_chs,
+            channel_wise=False,
+        )
         raw.rename_channels(dict(zip(eeg_chs, _EEG_CHANNELS)))
         drop = [ch for ch in raw.ch_names if ch not in _EEG_CHANNELS]
         if drop:
