@@ -10,6 +10,7 @@ from mne.io import RawArray
 
 from moabb.datasets import download as dl
 from moabb.datasets.base import BaseDataset
+from moabb.datasets.bids_interface import StepType
 from moabb.datasets.metadata.schema import (
     AcquisitionMetadata,
     AuxiliaryChannelsMetadata,
@@ -22,6 +23,7 @@ from moabb.datasets.metadata.schema import (
     ParticipantMetadata,
     Tags,
 )
+from moabb.datasets.preprocessing import FixedPipeline, SetRawAnnotations
 
 
 log = logging.getLogger(__name__)
@@ -78,17 +80,34 @@ EOG_CHANNELS = ["EOG1", "EOG2", "EOG3"]
 _FIELD_TO_CODE = {"L": 1, "R": 2, "Re": 3}
 _EVENTS = {"left_hand": 1, "right_hand": 2, "rest": 3}
 
+# MOABB's native BIDS cache hashes the processing-pipeline parameters, not the
+# dataset loader source. Version the trial-validity repair so processed caches
+# containing a zero-padded, truncated trial cannot be reused.
+PATEL2025_CACHE_VERSION = "mat-reject-short-trials-v1"
+
+
+class _PatelSetRawAnnotations(SetRawAnnotations):
+    """Carry the trial-validity repair version into raw-cache hashes."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
+
+
 # Sampling rate (Hz). Not stored in the .mat files; established from the data
 # (rest segments are pinned at 256 samples = 1.0 s) and the authors' own code
 # (``5 * fs`` samples for a 5 s imagery segment, matching the ~1288-sample
 # median of the imagery trials).
 SFREQ = 256.0
+_ANALYSIS_INTERVAL_END = 1.0
+_MIN_EPOCH_SAMPLES = int(np.ceil(_ANALYSIS_INTERVAL_END * SFREQ))
 
 # Trials are variable length (rest ~1 s, imagery up to ~10 s). Each trial is
-# written into a fixed 2 s (512-sample) block: longer trials are cropped, shorter
-# trials (rest) are zero-padded at the tail. The tail padding falls outside the
-# 1 s default analysis window, so it is never read by the default epoching, and
-# no epoch can bleed into a neighbouring trial.
+# written into a fixed 2 s (512-sample) block: longer trials are cropped and
+# trials between 1 s and 2 s are zero-padded at the tail. Fields shorter than the
+# 1 s analysis interval are rejected instead of contributing synthetic samples.
+# Thus, tail padding is never read by default epoching and no epoch can bleed
+# into a neighbouring trial.
 _BLOCK = int(round(SFREQ * 2.0))  # 512
 
 
@@ -129,19 +148,20 @@ class Patel2025(BaseDataset):
 
     Trials have variable length (rest is about 1 s; imagery trials extend up to
     about 10 s of cursor-control feedback). This loader writes each trial into a
-    fixed 2 s frame (cropping longer imagery trials, zero-padding the tail of the
-    ~1 s rest trials) and marks its onset on a stim channel. The default analysis
-    interval is the first 1 s, which lies within the real signal of every trial;
-    the four original sessions are pooled in the processed data and are exposed
+    fixed 2 s frame (cropping longer imagery trials, zero-padding only after the
+    first 1 s) and marks its onset on a stim channel. A field shorter than the
+    1 s analysis interval is skipped rather than padded into the analysis epoch.
+    The four original sessions are pooled in the processed data and are exposed
     here as a single session.
 
     .. warning::
 
-        The distributed amplitudes are in the dataset's native (uncalibrated)
-        units; this loader applies the conventional ``1e-6`` scaling. Absolute
-        voltage values are therefore not physiological, but this does not affect
-        band-power / spatial-filter motor-imagery decoding, which is invariant to
-        a global scale.
+        The redistributed samples are in undocumented, uncalibrated native
+        numeric units. The loader's ``1e-6`` multiplier is only a nominal storage
+        convention for MNE's volt-valued arrays: no retained gain metadata
+        establishes a physical conversion to volts or microvolts. Consequently,
+        no additional physical rescaling is justified from the public files, and
+        absolute amplitudes must not be interpreted as physiological voltages.
 
     References
     ----------
@@ -253,9 +273,23 @@ class Patel2025(BaseDataset):
             sessions_per_subject=1,
             events=dict(_EVENTS),
             code="Patel2025",
-            interval=[0, 1],
+            interval=[0, _ANALYSIS_INTERVAL_END],
             paradigm="imagery",
             doi="10.5522/04/28156016",
+        )
+
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _PatelSetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=PATEL2025_CACHE_VERSION,
+                    ),
+                )
+            ]
         )
 
     def data_path(
@@ -278,10 +312,11 @@ class Patel2025(BaseDataset):
     def _mat_to_raw(file_path):
         """Load one subject ``.mat`` file into a continuous :class:`mne.io.RawArray`.
 
-        Every ``L`` / ``R`` / ``Re`` trial is written into a fixed 2 s block
-        (cropped or tail-zero-padded), the blocks are concatenated along time, and
-        a stim channel marks each block onset with the trial's class code
-        (1 = left hand, 2 = right hand, 3 = rest).
+        Every ``L`` / ``R`` / ``Re`` field covering the full analysis interval is
+        written into a fixed 2 s block (cropped or tail-zero-padded). Shorter
+        fields are skipped. The blocks are concatenated along time, and a stim
+        channel marks each block onset with the trial's class code (1 = left hand,
+        2 = right hand, 3 = rest).
         """
         mat = sio.loadmat(file_path, squeeze_me=False, struct_as_record=False)
         data_keys = [k for k in mat if not k.startswith("__")]
@@ -294,12 +329,16 @@ class Patel2025(BaseDataset):
 
         blocks = []
         codes = []
-        n_skipped = 0
+        n_bad_shape = 0
+        n_too_short = 0
         for element in struct:
             for field, code in _FIELD_TO_CODE.items():
                 trial = np.asarray(getattr(element, field), dtype=float)
                 if trial.ndim != 2 or trial.shape[0] == 0 or trial.shape[1] != n_ch:
-                    n_skipped += 1
+                    n_bad_shape += 1
+                    continue
+                if trial.shape[0] < _MIN_EPOCH_SAMPLES:
+                    n_too_short += 1
                     continue
                 seg = trial.T  # (n_ch, n_samples)
                 block = np.zeros((n_ch, _BLOCK))
@@ -308,19 +347,30 @@ class Patel2025(BaseDataset):
                 blocks.append(block)
                 codes.append(code)
 
-        if n_skipped:
+        if n_bad_shape:
             log.warning(
                 "Patel2025: skipped %d trial(s) in %s with an unexpected shape "
                 "(empty or channel count != %d).",
-                n_skipped,
+                n_bad_shape,
                 file_path,
                 n_ch,
+            )
+        if n_too_short:
+            log.warning(
+                "Patel2025: skipped %d trial(s) in %s shorter than the %d samples "
+                "required for the [0, %.1f] s analysis interval.",
+                n_too_short,
+                file_path,
+                _MIN_EPOCH_SAMPLES,
+                _ANALYSIS_INTERVAL_END,
             )
 
         if not blocks:
             raise ValueError(f"No usable trials found in {file_path}")
 
-        # Convert from the dataset's native units to volts (nominal scaling).
+        # Store native numeric values nominally in MNE's volt-valued container.
+        # The redistribution has no calibration metadata supporting a physical
+        # unit conversion; see the public warning in the dataset documentation.
         # A one-sample lead pad keeps the first trial's onset off sample 0, so
         # ``mne.find_events`` (used downstream by MOABB) detects its rising edge.
         cont = np.concatenate(blocks, axis=1) * 1e-6
