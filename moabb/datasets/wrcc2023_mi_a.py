@@ -8,6 +8,7 @@ from mne.io import RawArray
 
 from moabb.datasets import download as dl
 from moabb.datasets.base import BaseDataset
+from moabb.datasets.bids_interface import StepType
 from moabb.datasets.metadata.schema import (
     AcquisitionMetadata,
     DatasetMetadata,
@@ -17,6 +18,7 @@ from moabb.datasets.metadata.schema import (
     ParticipantMetadata,
     Tags,
 )
+from moabb.datasets.preprocessing import FixedPipeline, SetRawAnnotations
 
 
 # "MI-A dataset of the BCI competition WRCC2023" on Harvard Dataverse
@@ -58,6 +60,15 @@ WRCC2023_MI_A_CHANNELS = [
 # Class code -> MOABB event name (data-borne in the per-trial ``label`` vector).
 # 1 = left-hand grasping, 2 = right-hand grasping, 3 = foot hooking (both feet).
 WRCC2023_MI_A_EVENTS = {"left_hand": 1, "right_hand": 2, "feet": 3}
+WRCC2023_MI_A_CACHE_VERSION = "mat-source-volts-v1"
+
+
+class _WRCC2023MIASetRawAnnotations(SetRawAnnotations):
+    """Carry the source-unit repair version into MOABB raw-cache hashes."""
+
+    def __init__(self, event_id, interval, cache_version):
+        self.cache_version = cache_version
+        super().__init__(event_id, interval)
 
 
 class WRCC2023_MI_A(BaseDataset):
@@ -95,9 +106,9 @@ class WRCC2023_MI_A(BaseDataset):
     sampling rate ``fs`` (1000). Per-trial class labels are therefore data-borne
     in the ``label`` array.
 
-    Sample amplitudes are stored in millivolts (per-channel values on the order
-    of 1e-2); this loader rescales them by 1e-3 to volts, which places the peak
-    amplitude near 35 uV, in the expected scalp-EEG range.
+    Sample amplitudes are stored in volts. As in the companion MI-B and MI-C
+    tracks, the raw DC-coupled signals include slowly varying per-channel
+    offsets that are removed by the analysis paradigm's band-pass filtering.
 
     This dataset shares the Neuracle 64-channel hardware and the WRC
     left/right/foot motor-imagery paradigm with, but is a distinct recording
@@ -194,6 +205,20 @@ class WRCC2023_MI_A(BaseDataset):
             doi="10.7910/DVN/J9JFES",
         )
 
+    def _create_process_pipeline(self):
+        return FixedPipeline(
+            [
+                (
+                    StepType.RAW,
+                    _WRCC2023MIASetRawAnnotations(
+                        self.event_id,
+                        interval=self.interval,
+                        cache_version=WRCC2023_MI_A_CACHE_VERSION,
+                    ),
+                )
+            ]
+        )
+
     def data_path(
         self, subject, path=None, force_update=False, update_path=None, verbose=None
     ):
@@ -236,8 +261,9 @@ class WRCC2023_MI_A(BaseDataset):
 
         # (n_trials, n_channels, n_samples) -> (n_channels, n_trials, n_samples)
         data = np.transpose(data, (1, 0, 2))
-        # Concatenate trials along time and convert millivolts to volts.
-        cont = data.reshape(n_channels, n_trials * n_samples) * 1e-3
+        # Concatenate trials along time. Values are already in volts, so no
+        # unit rescaling is applied.
+        cont = data.reshape(n_channels, n_trials * n_samples)
         # Pad with a zero sample at each end. The leading pad keeps the first
         # trial's cue off sample 0, where mne.find_events cannot detect a rising
         # edge (it would drop trial 1). The trailing pad gives the last trial's
