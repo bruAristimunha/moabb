@@ -153,3 +153,4 @@ docs/source/_static/viz/
 
 # local API keys (never commit)
 .dataset_keys.env
+.codex-worktrees/

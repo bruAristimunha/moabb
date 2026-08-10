@@ -79,6 +79,10 @@ class KMIHandGrip2025(BaseDataset):
 
     .. versionadded:: 1.1.1
 
+    Each class comes from a single continuous 84 s recording per subject
+    (class==recording-block confound): within-recording CV can exploit recording-level
+    nonstationarity instead of imagery content; prefer cross-subject evaluation.
+
     """
 
     METADATA = DatasetMetadata(

@@ -97,7 +97,8 @@ class InMID2024(BaseDataset):
     imagery) and ``execution`` (motor execution). Each imagery ``.mat`` stores
     four continuous segments (about 19 s each) in ``joined_data``; each movement
     ``.mat`` stores eight continuous segments (about 90-105 s each). Every
-    segment is annotated with one event, placed at the segment onset, and
+    segment is a multi-trial BLOCK; events are tiled one per documented 5 s cue
+    starting 3 s after block onset (protocol baseline skipped), and
     labelled with the reliable, folder-level 3-class task: ``left_hand`` (1)
     from the left-hand folder, ``right_hand`` (2) from the right-hand folder and
     ``trunk`` (3) from the standing/sitting folder. The same class set is used
@@ -334,10 +335,20 @@ class InMID2024(BaseDataset):
                             stacklevel=2,
                         )
                         continue
-                    # trial is (n_channels, n_samples); one event per segment,
-                    # placed at the segment onset and sharing the folder class.
-                    onset_samples.append(cursor)
-                    onset_codes.append(self.event_id[label])
+                    # trial is (n_channels, n_samples). Segments are multi-trial
+                    # BLOCKS (~19 s imagery / ~90-105 s execution), not single
+                    # trials: the documented protocol (sibling MIMED paper,
+                    # Data in Brief 2024) uses repeated 5 s cues with seconds
+                    # 1-3 as baseline. Tile one event per 5 s cue starting at
+                    # onset+3 s (skipping the baseline) so epochs cover the
+                    # task interval instead of block-onset baseline.
+                    n_samp = trial.shape[1]
+                    cue_len = int(round(5.0 * INMID2024_SFREQ))
+                    start = int(round(3.0 * INMID2024_SFREQ))
+                    n_ev = max(1, (n_samp - start) // cue_len)
+                    for k in range(int(n_ev)):
+                        onset_samples.append(cursor + start + k * cue_len)
+                        onset_codes.append(self.event_id[label])
                     segments.append(trial)
                     cursor += trial.shape[1]
 

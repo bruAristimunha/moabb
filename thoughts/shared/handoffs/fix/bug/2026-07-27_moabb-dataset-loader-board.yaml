@@ -1,0 +1,85 @@
+---
+session: fix-bug-moabb-dataset-loader-board
+ts: 2026-07-27T12:32:58+02:00
+commit: 696ba96
+branch: codex/mi-dataset-expansion
+status: complete
+---
+
+scope: bug
+options:
+  dry_run: false
+  no_test: false
+  no_commit: false
+
+issue:
+  description: >-
+    Finish the MOABB imagery-dataset expansion board: wire Ma2022 to local
+    EDF data, validate and register SensoryGuidedMI2026 as dataset 120,
+    repair offline/cache and MOABB key-contract failures, rerun the loader
+    smoke matrix, synchronize local and Jean Zay source, and commit.
+  evidence:
+    - "Ma2022 real-data result: 492 trials, 2 classes, 32 channels, 5 EDF sessions."
+    - "Initial dev loop: 47 OK and 4 diagnosed failures (Jia2019, PerezBlanco2026, Shin2022, Sun2026)."
+    - "SensoryGuidedMI2026 real-data result: 1265 trials, 4 classes, 62 channels."
+    - "Fresh-loader smokes exposed additional Ding2025 key and Garro2025 offline-cache defects."
+    - "Song2026 is the sole registered loader without staged data; its official release is Baidu-only and the loader marks it needs-data."
+
+diagnosis:
+  root_cause: >-
+    Several loaders contacted remote APIs before checking complete local data;
+    Shin2022 and Ding2025 emitted keys that violated MOABB's integer-leading
+    session/run contract; Ma2022 did not use the staged five-session EDF
+    release; SensoryGuidedMI2026 treated group-local subject IDs as global and
+    had event/codebook issues.
+  hypothesis: >-
+    Preferring validated local paths, assigning stable group-scoped identities,
+    and enforcing MOABB key/event contracts before paradigm preprocessing
+    resolves both offline and real-data failures.
+  files:
+    - moabb/datasets/ma2022.py
+    - moabb/datasets/sensoryguidedmi2026.py
+    - moabb/datasets/jia2019.py
+    - moabb/datasets/perezblanco2026.py
+    - moabb/datasets/sun2026.py
+    - moabb/datasets/shin2022.py
+    - moabb/datasets/ding2025.py
+    - moabb/datasets/garro2025.py
+
+fix:
+  approach: >-
+    Added and registered 59 imagery loaders; preferred complete local caches;
+    retained public fallbacks; corrected subject, event, session, and run
+    mappings; added focused regression coverage; and checksum-synchronized
+    the 69 production files with Jean Zay.
+  files_modified:
+    - "59 registered modules under moabb/datasets/"
+    - moabb/datasets/__init__.py
+    - moabb/datasets/summary_imagery.csv
+    - moabb/datasets/utils.py
+    - moabb/tests/doi_cache.json
+    - moabb/tests/test_dataset_fixes.py
+    - moabb/tests/test_datasets.py
+    - moabb/tests/test_metadata.py
+    - docs/source/api.rst
+    - docs/source/whats_new.rst
+    - .gitignore
+  test_added: moabb/tests/test_dataset_fixes.py
+
+verification:
+  test_command: >-
+    pre-commit run; Jean Zay MotorImagery.get_data real-data smokes;
+    16-function regression runner; SHA-256 manifest comparison
+  results:
+    - "All pre-commit hooks passed for the staged 69-file set."
+    - "Regression runner: 16 passed."
+    - "Registry totals: 120 unique imagery rows and 232 DOI records."
+    - "Ding2025: 2200 trials, 4 labels, 128 channels, 3 sessions, 62 runs."
+    - "Garro2025: 89 trials, 3 labels, 127 channels; fully offline."
+    - "Damm2026, Iwama2023, MIND2026, Thapa2025, and SensoryGuidedMI2026 passed real-data pipelines."
+    - "Local/Jean Zay SHA-256 manifests matched for all 69 production files."
+  human_confirmed: true
+
+next:
+  - "Manually obtain Song2026 from the official Baidu Netdisk release and validate its event mapping."
+  - "Review or discard the deliberately unstaged Forenzo rewrite, nine unregistered prototypes, helper scripts, and local artifacts."

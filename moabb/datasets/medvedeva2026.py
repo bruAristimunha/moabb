@@ -96,7 +96,7 @@ class Medvedeva2026(BaseDataset):
             species="homo sapiens",
         ),
         experiment=ExperimentMetadata(
-            paradigm="imagery",
+            paradigm="execution",
             n_classes=2,
             class_labels=["flash_l", "flash_r"],
             trial_duration=4.0,
@@ -141,7 +141,7 @@ class Medvedeva2026(BaseDataset):
             ],
         ),
         sessions_per_subject=6,
-        tags=Tags(pathology=["Stroke"], modality=["Motor"], type=["Motor Imagery"]),
+        tags=Tags(pathology=["Stroke"], modality=["Motor"], type=["Motor Execution"]),
         file_format="EDF and FIF",
     )
 
@@ -152,7 +152,7 @@ class Medvedeva2026(BaseDataset):
             events={"flash_l": 1, "flash_r": 2},
             code="Medvedeva2026",
             interval=(0, 4),
-            paradigm="imagery",
+            paradigm="execution",
             doi="10.6084/m9.figshare.28904942",
             selected_subjects=subjects,
             selected_sessions=sessions,

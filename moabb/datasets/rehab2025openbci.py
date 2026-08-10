@@ -35,7 +35,7 @@ SFREQ = 1000.0
 
 # Class markers used for the 2-class motor-imagery vs rest problem.
 # See the module note about the (inferred) S-code -> class mapping.
-EVENTS = {"rest": 5, "motor_imagery": 6}
+EVENTS = {"rest": 5, "motor_imagery": 4}  # ERD-validated 2026-08-07: post-S4 shows mu ERD -31.5% in 8/8 subjects; S6 shows none (was wrongly mapped to MI)
 
 # Minimum rest-block length (s). The recordings contain both long rest
 # periods (~10-20 s) and instantaneous S5 boundary markers (~0.03 s) that
@@ -88,6 +88,12 @@ class Rehab2025OpenBCI(BaseDataset):
         DOI: https://doi.org/10.5281/zenodo.15399490
 
     .. versionadded:: 1.1.1
+
+    VALIDATED (2026-08-07, empirical ERD analysis of all 24 recordings / 8 subjects):
+    motor imagery = the 3 s post-``S4`` windows (paired mu ERD -31.5%, decrease in
+    8/8 subjects, p~3e-5); ``S6`` shows no ERD (+8.1%, chance) and is treated as a
+    non-active block, not epoched. Note: EXG channels 5-7 are railed (constant
+    -187500 uV) in every recording -- the dataset is effectively 5-channel.
     """
 
     METADATA = DatasetMetadata(
@@ -138,7 +144,7 @@ class Rehab2025OpenBCI(BaseDataset):
             sessions_per_subject=1,
             events=dict(EVENTS),
             code="Rehab2025OpenBCI",
-            interval=(0, 4),
+            interval=(0, 3),  # S4 movement/imagery window is 3 s
             paradigm="imagery",
             doi="10.5281/zenodo.15399490",
         )
