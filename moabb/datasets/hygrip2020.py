@@ -257,7 +257,10 @@ class HYGRIP2020(BaseDataset):
         if isinstance(units_attr, bytes):
             units_attr = units_attr.decode("ascii", "ignore")
         units_key = str(units_attr).strip().lower()
-        scale = _UNIT_TO_VOLTS.get(units_key, 1e-3)
+        # UNITS FIX: files with an absent/unknown units attribute are ALREADY
+        # in volts — the previous mV default (1e-3) left cached amplitude at
+        # 0.0025 uV (~1000x below physiological ~2.5 uV).
+        scale = _UNIT_TO_VOLTS.get(units_key, 1.0)
         eeg = eeg * scale
 
         # eeg is (channels, time); guard against a transposed layout.

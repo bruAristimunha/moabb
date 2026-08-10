@@ -237,7 +237,10 @@ class WRCC2023_MI_A(BaseDataset):
         # (n_trials, n_channels, n_samples) -> (n_channels, n_trials, n_samples)
         data = np.transpose(data, (1, 0, 2))
         # Concatenate trials along time and convert millivolts to volts.
-        cont = data.reshape(n_channels, n_trials * n_samples) * 1e-3
+        # UNITS FIX: the .mat values are ALREADY volts (~3e-6 V = ~3 uV
+        # physiological); the docstring's millivolt assumption (*1e-3) left
+        # cached amplitude at 0.0029 uV (1000x low). No rescale.
+        cont = data.reshape(n_channels, n_trials * n_samples)
         # Pad with a zero sample at each end. The leading pad keeps the first
         # trial's cue off sample 0, where mne.find_events cannot detect a rising
         # edge (it would drop trial 1). The trailing pad gives the last trial's

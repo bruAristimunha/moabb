@@ -320,10 +320,14 @@ class Patel2025(BaseDataset):
         if not blocks:
             raise ValueError(f"No usable trials found in {file_path}")
 
-        # Convert from the dataset's native units to volts (nominal scaling).
+        # UNITS FIX: the stored trial matrices are nanovolt-scale numbers
+        # (microvolts x1000, e.g. an undivided gain in the processed
+        # redistribution) — the previous uV assumption (*1e-6) left the
+        # empirical cached 4-38 Hz amplitude at 4551 uV (1e3 high); *1e-9
+        # brings it to ~4.6 uV (physiological).
         # A one-sample lead pad keeps the first trial's onset off sample 0, so
         # ``mne.find_events`` (used downstream by MOABB) detects its rising edge.
-        cont = np.concatenate(blocks, axis=1) * 1e-6
+        cont = np.concatenate(blocks, axis=1) * 1e-9
         n_lead = 1
         cont = np.pad(cont, ((0, 0), (n_lead, 0)))
 

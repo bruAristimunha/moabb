@@ -326,7 +326,9 @@ class AguileraRodriguez2025(BaseDataset):
                         f"EEG or Marker stream not found for subject {subject}"
                     )
 
-                data_exp = eeg_stream["time_series"].T
+                # UNITS FIX: XDF EEG streams deliver microvolts; RawArray
+                # expects Volts (cached amplitude was 3.2e6 uV = 3.2 V).
+                data_exp = eeg_stream["time_series"].T * 1e-6
                 t_start = eeg_stream["time_stamps"][0]
                 onsets = marker_stream["time_stamps"] - t_start
                 descriptions = [str(t[0]) for t in marker_stream["time_series"]]

@@ -306,6 +306,15 @@ class SpinalStim2025(BaseDataset):
         # order before Braindecode caches are combined across cohorts.
         raw.reorder_channels([*_EEG_CHANNELS, *aux_present])
 
+        # UNITS FIX: the CNBI GDF2 headers carry physical-dimension code 0
+        # (unrecognised) with identity calibration (digital = physical =
+        # ±3.4e38), so MNE reads the stored microvolt numbers as volts —
+        # empirical cached 4-38 Hz amplitude was 3.2e6 uV (1e6 high; verified
+        # on Subject_501 s001 r001: stored values ~10 uV demeaned, MNE read
+        # 6.3e6 uV -> 6.3 uV after fix). Scale uV -> V (EEG and the sens EOG
+        # channels share the amplifier scale; the trigger was dropped above).
+        raw._data[:] *= 1e-6
+
         # Keep only the two motor-imagery class cues and label them by class.
         onset, duration, desc = [], [], []
         for ann in raw.annotations:

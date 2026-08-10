@@ -218,6 +218,15 @@ class Peterson2022(BaseBIDSDataset):
         for sess_key, session_runs in data.items():
             runs = {}
             for run_key, raw in session_runs.items():
+                # UNITS FIX: the EDF physical-dimension fields are blank, so
+                # MNE reads the stored microvolt numbers as volts — empirical
+                # cached 4-38 Hz amplitude was ~1.4e7 uV (~13.5 V, 1e6 high);
+                # verified on sub-02 run-1 (units 'n/a', 3.3e6 uV -> 3.3 uV
+                # after fix). Scale EEG uV -> V.
+                picks = [
+                    i for i, t in enumerate(raw.get_channel_types()) if t == "eeg"
+                ]
+                raw._data[picks] *= 1e-6
                 desc = raw.annotations.description.astype(np.dtype("<25U"))
                 for label, name in _ANNOT_TO_NAME.items():
                     desc[desc == label] = name

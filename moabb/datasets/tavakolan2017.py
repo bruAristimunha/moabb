@@ -278,7 +278,9 @@ class Tavakolan2017(BaseDataset):
             if m:
                 gain_uv = float(m.group(1))
 
-        data = reader.signals[:n_eeg].astype(np.float64) * gain_uv * 1e-6  # -> V
+        # UNITS FIX: signals are already gain-applied uV; applying _GAIN_UV
+        # again gave ~0.10 uV cached amplitude (42x low). Scale uV -> V only.
+        data = reader.signals[:n_eeg].astype(np.float64) * 1e-6  # -> V
 
         # Channel names
         ch_names = [f"E{i}" for i in range(1, n_eeg + 1)]

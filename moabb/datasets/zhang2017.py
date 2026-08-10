@@ -138,8 +138,12 @@ def _bci2000_to_raw(fpath, event_mapping):
         if m:
             gain_uv = float(m.group(1))
 
+    # UNITS FIX: the stored signals are ALREADY gain-applied microvolts —
+    # multiplying by the EGI gain (0.0238 uV/count) again left the cached
+    # amplitude at ~0.08 uV (~42x = 1/0.0238 below physiological ~3.5 uV).
+    # Scale uV -> V only.
     raw = mne.io.RawArray(
-        signals.astype(np.float64) * gain_uv * 1e-6, info, verbose=False
+        signals.astype(np.float64) * 1e-6, info, verbose=False
     )
 
     # Attach electrode positions: standard_1005 for header-provided 10-20

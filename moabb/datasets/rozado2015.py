@@ -274,8 +274,14 @@ class Rozado2015(BaseDataset):
                 if 0 <= sample_idx < eeg_data.shape[1]:
                     stim[0, sample_idx] = self._MARKER_MAP[label]
 
-        # Scale to Volts: BioSemi raw 24-bit ADC counts, LSB = 31.25 nV
-        data = np.concatenate([31.25e-9 * eeg_data, stim], axis=0)
+        # UNITS FIX: the XDF EEG stream carries microvolts (the standard LSL
+        # BioSemi output), not raw 24-bit ADC counts — the count assumption
+        # (LSB 31.25 nV) left the empirical cached 4-38 Hz amplitude at
+        # 0.146 uV (~27x low); 1e-6 / 31.25e-9 = 32x restores ~4.7 uV
+        # (physiological). The ~38x max/min spread across subjects is all on
+        # the low side, consistent with one uniform factor plus inter-subject
+        # variability. Scale uV -> V.
+        data = np.concatenate([1e-6 * eeg_data, stim], axis=0)
 
         ch_types = ["eeg"] * n_channels + ["stim"]
         ch_names_full = list(ch_names_used) + ["stim"]

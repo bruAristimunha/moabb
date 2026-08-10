@@ -269,11 +269,14 @@ class Yang2025(BaseDataset):
 
             raw = mne.io.read_raw_bdf(str(data_bdf), preload=True, verbose=False)
 
-            # Neuracle BDF files use "nV" (nanovolts) as physical dimension,
-            # which MNE does not recognize — values are treated as Volts.
-            # Scale all signal channels from nV to V.
+            # Neuracle BDF files label the physical dimension "nV", which MNE
+            # does not recognize — values are treated as Volts. Empirically the
+            # stored values are MICROVOLT-scale, not nano: with 1e-9 the cached
+            # median |amplitude| is 2.25e-3 uV (~2000x below physiological, all
+            # decoders at chance); with 1e-6 it is 2.25 uV (physiological, cf.
+            # BNCI2014_001 ~4.5 uV). Scale signal channels from uV to V.
             picks = mne.pick_types(raw.info, eeg=True, ecg=True, eog=True)
-            raw._data[picks] *= 1e-9
+            raw._data[picks] *= 1e-6
 
             # Set proper channel types for non-EEG channels
             type_mapping = {

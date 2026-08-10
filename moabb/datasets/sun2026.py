@@ -271,6 +271,17 @@ class Sun2026(BaseDataset):
             if retype:
                 raw.set_channel_types(retype, verbose=False)
 
+            # UNITS FIX: the BrainVision IEEE_FLOAT_32 files store
+            # microvolt-scale numbers written as if volts (channels.tsv says
+            # units "V"), so MNE yields values 1e6 high — empirical cached
+            # 4-38 Hz amplitude was 4.3e6 uV; verified on sub-01 ses-01
+            # run-01 (9.9e6 uV -> 9.9 uV after fix). Scale all data channels
+            # uV -> V (aux HEO/VEO/EKG/EMG share the amplifier scale).
+            data_picks = [
+                i for i, t in enumerate(raw.get_channel_types()) if t != "stim"
+            ]
+            raw._data[data_picks] *= 1e-6
+
             # Electrode positions come from the CapTrak electrodes.tsv when
             # present; fall back to a standard montage if any EEG channel has
             # no coordinates so spatial filters still have positions.

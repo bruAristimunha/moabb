@@ -361,6 +361,15 @@ class Perdikis2018(BaseDataset):
         if drop:
             raw.drop_channels(drop)
 
+        # UNITS FIX: the CNBI GDF2 headers carry physical-dimension code 0
+        # (unrecognised), so MNE applies no unit scale and the microvolt
+        # numbers (float samples calibrated digital ±3.4e38 -> physical
+        # ±262144 uV) are read as volts — empirical cached 4-38 Hz amplitude
+        # was 4.6e6 uV (1e6 high; verified on an MA25VE offline run:
+        # 4.58e6 uV -> 4.58 uV after fix). Scale uV -> V (all remaining
+        # channels are EEG at this point).
+        raw._data[:] *= 1e-6
+
         # Keep only the class-cue events, relabelled to class names.
         onset, duration, desc = [], [], []
         for ann in raw.annotations:
