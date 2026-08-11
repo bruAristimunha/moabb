@@ -265,6 +265,26 @@ def nemar_dl(
     root = Path(get_dataset_path(dataset_code, path))
     target_dir = root / f"MNE-{dataset_code.lower()}-data" / nemar_id
 
+    # MOABB_LOCAL_BIDS=1: serve the subject from a BIDS tree that is already on
+    # disk instead of contacting NEMAR. This lets a pre-staged mirror (e.g. an
+    # HPC-to-cloud transfer) satisfy the loader with no network access. The
+    # check is deliberately strict: a candidate only wins if it actually holds
+    # a sub-<subject> directory, so a partial or mislabelled tree falls through
+    # to the normal download rather than silently yielding no data.
+    if os.environ.get("MOABB_LOCAL_BIDS") == "1" and subject is not None:
+        slug = dataset_code.lower().replace(" ", "-").replace("_", "-")
+        for cand in (
+            target_dir,
+            root / f"MNE-BIDS-{slug}",
+            root / f"MNE-{slug}-data" / nemar_id,
+            root / f"MNE-{slug}-data",
+        ):
+            sub_dir = Path(cand) / f"sub-{subject}"
+            if sub_dir.is_dir() and any(sub_dir.iterdir()):
+                logger.info("Using local BIDS tree for %s sub-%s: %s",
+                            dataset_code, subject, cand)
+                return str(cand)
+
     # ``force_update`` is handled by ``trust_existing=False`` below, which makes
     # nemar-py re-fetch the requested subject. Do not delete ``target_dir``
     # here: it is the shared BIDS root, and ``download()`` calls this once per
