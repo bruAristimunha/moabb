@@ -1050,6 +1050,35 @@ class BaseDataset(metaclass=MetaclassDataset):
             **(self.nemar_bids_filters or {}),
         )
 
+    def _load_single_subject_data(self, subject):
+        """Load one subject, preferring NEMAR when the dataset declares one.
+
+        Mirrors :meth:`download`, which already tries NEMAR before the
+        dataset's own downloader.  Without this, ``get_data`` went straight to
+        ``_get_single_subject_data`` -> ``data_path`` -> ``data_dl`` even for
+        datasets whose ``nemar_id`` is set, so
+        :meth:`_get_single_subject_data_from_nemar` was unreachable and a
+        dataset whose original host is gone could not be read at all even with
+        the NEMAR copy already on disk (e.g. Schirrmeister2017, whose GIN
+        host stopped serving HTTP).
+
+        The fallback catches broadly on purpose: this runs for every
+        NEMAR-enabled dataset, and any problem in the NEMAR path must degrade
+        to the previous behaviour rather than break a dataset that works today.
+        """
+        if getattr(self, "nemar_id", None) is not None:
+            try:
+                return self._get_single_subject_data_from_nemar(subject)
+            except Exception as exc:  # noqa: BLE001 - see docstring
+                warnings.warn(
+                    f"Could not load {self.code} from NEMAR ({self.nemar_id}); "
+                    "falling back to the dataset's own reader. "
+                    f"Original error: {exc}",
+                    RuntimeWarning,
+                    stacklevel=2,
+                )
+        return self._get_single_subject_data(subject)
+
     def _get_single_subject_data_from_nemar(self, subject, path=None):
         """Download and load one subject from the NEMAR BIDS dataset."""
         try:
@@ -1254,7 +1283,7 @@ class BaseDataset(metaclass=MetaclassDataset):
             sessions_data = None
             # Load and eventually overwrite:
             if len(cached_steps) == 0:  # last option: we don't use cache
-                sessions_data = self._get_single_subject_data(subject)
+                sessions_data = self._load_single_subject_data(subject)
                 assert sessions_data is not None  # should not happen
                 # Enrich raw.info from METADATA (sex, hand, age, line_freq)
                 metadata = getattr(self, "METADATA", None)
